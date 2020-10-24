@@ -35,7 +35,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (MaHH > 0)
+                if (value > 0)
                     MaHH = value;
             }
         }
@@ -47,7 +47,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (MaLoai > 0)
+                if (value > 0)
                     MaLoai = value;
             }
         }
@@ -59,7 +59,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (SLNhapVe > 0)
+                if (value > 0)
                     SLNhapVe = value;
             }
         }
@@ -71,7 +71,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (SLHienCo > 0)
+                if (value  > 0)
                     SLHienCo = value;
             }    
         }
@@ -83,7 +83,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (TenHang != "")
+                if (value != "")
                     TenHang = value;
             }
         }

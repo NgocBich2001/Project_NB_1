@@ -47,7 +47,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (MaCTHDN > 0)
+                if (value > 0)
                     MaCTHDN = value;
             }    
         }
@@ -59,7 +59,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (MaHDN > 0)
+                if (value > 0)
                     MaHDN = value;
             }
         }
@@ -71,7 +71,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (MaHang > 0)
+                if (value > 0)
                     MaHang = value;
             }
         }
@@ -83,7 +83,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (SoLuong > 0)
+                if (value > 0)
                     SoLuong = value;
             }
         }
@@ -95,7 +95,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (DonGiaNhap > 0)
+                if (value > 0)
                     DonGiaNhap = value;
             }
         }
@@ -128,7 +128,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (VAT >= 0)
+                if (value >= 0)
                     VAT = value;
             }
         }
@@ -140,7 +140,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (ThanhTien > 0)
+                if (value > 0)
                     ThanhTien = value;
             }
         }

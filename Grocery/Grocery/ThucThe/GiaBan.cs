@@ -38,7 +38,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (MaGiaBan > 0)
+                if (value > 0)
                     MaGiaBan = value;
             }
         }
@@ -50,7 +50,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (MaHang > 0)
+                if (value > 0)
                     MaHang = value;
             }
         }
@@ -62,7 +62,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (GiaBan > 0)
+                if (value > 0)
                     GiaBan = value;
             }
         }
@@ -74,7 +74,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (DonViTinh != "")
+                if (value  != "")
                     DonViTinh = value;
             }
         }

@@ -32,7 +32,7 @@ namespace Grocery.ThucThe
             }    
             set
             {
-                if (MaHDB > 0)
+                if (value  > 0)
                     MaHDB = value;
             }    
         }
@@ -44,7 +44,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (MaNVBan> 0)
+                if (value > 0)
                     MaNVBan = value;
             }
         }
@@ -67,7 +67,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (TongTien > 0)
+                if (value > 0)
                     TongTien = value;
             }
         }

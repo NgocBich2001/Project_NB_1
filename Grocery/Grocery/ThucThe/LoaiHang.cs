@@ -6,19 +6,18 @@ namespace Grocery.ThucThe
 {
     class LoaiHang
     {
-        public static int STT = 0;
         private int Maloai;
         private string TenLoai;
         private string DacDiem;
         public LoaiHang()
         {
-            STT++;
-            Maloai = STT;
+            Maloai = 0;
+            TenLoai = "";
+            DacDiem = "";
         }
-        public LoaiHang(string tenloai, string dacdiem)
+        public LoaiHang( int maloai, string tenloai, string dacdiem)
         {
-            STT++;
-            Maloai = STT;
+            this.Maloai = maloai;
             this.TenLoai = tenloai;
             this.DacDiem = dacdiem;
         }
@@ -30,7 +29,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (Maloai > 0)
+                if (value > 0)
                     Maloai = value;
             }
         }
@@ -42,7 +41,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (TenLoai != "")
+                if (value != "")
                     TenLoai = value;
             }
         }
@@ -54,7 +53,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (DacDiem != "")
+                if (value != "")
                     DacDiem = value;
             }
         }

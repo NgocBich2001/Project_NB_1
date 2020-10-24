@@ -32,7 +32,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (MaNCC > 0)
+                if (value > 0)
                     MaNCC = value;
             }    
         }    
@@ -44,7 +44,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (TenNCC != "")
+                if (value != "")
                     TenNCC = value;
             }
         }
@@ -56,7 +56,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (DiaChi != "")
+                if (value != "")
                     DiaChi = value;
             }    
         }    
@@ -68,7 +68,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (SDT > 0)
+                if (value > 0)
                     SDT = value;
             }    
         }

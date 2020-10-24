@@ -50,7 +50,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (MaHDN > 0)
+                if (value > 0)
                     MaHDN = value;
             }
         }
@@ -62,7 +62,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (MaNCC > 0)
+                if (value > 0)
                     MaNCC = value;
             }
         }
@@ -74,7 +74,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (NVGiao != "")
+                if (value != "")
                     NVGiao = value;
             }
         }
@@ -86,7 +86,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (MaNVNhan > 0)
+                if (value  > 0)
                     MaNVNhan = value;
             }
         }
@@ -133,7 +133,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (DaTT > 0)
+                if (value > 0)
                     DaTT = value;
             }
         }
@@ -145,7 +145,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (ConNo >= 0)
+                if (value  >= 0)
                     ConNo = value;
             }
         }

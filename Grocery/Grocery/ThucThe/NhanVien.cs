@@ -41,7 +41,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (MaNV > 0)
+                if (value  > 0)
                     MaNV = value;
             }    
         }    
@@ -53,7 +53,7 @@ namespace Grocery.ThucThe
             }    
             set
             {
-                if (TenNV != "")
+                if (value  != "")
                     TenNV = value;
             }
         }    
@@ -76,7 +76,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (GioiTinh.ToLower() == "Nam" || GioiTinh.ToLower() == "Nữ")
+                if (value.ToLower() == "Nam" || value.ToLower() == "Nữ")
                     GioiTinh = value;
             }
         }    
@@ -99,7 +99,7 @@ namespace Grocery.ThucThe
             }    
             set
             {
-                if (Pass != "")
+                if (value  != "")
                     Pass = value;
             }
         }
