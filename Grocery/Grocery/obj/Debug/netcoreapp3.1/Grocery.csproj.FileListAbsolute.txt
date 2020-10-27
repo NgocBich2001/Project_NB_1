@@ -1,0 +1,4 @@
+E:\GITHUB\Project_NB_1\Grocery\Grocery\obj\Debug\netcoreapp3.1\Grocery.csprojAssemblyReference.cache
+E:\GITHUB\Project_NB_1\Grocery\Grocery\obj\Debug\netcoreapp3.1\Grocery.AssemblyInfoInputs.cache
+E:\GITHUB\Project_NB_1\Grocery\Grocery\obj\Debug\netcoreapp3.1\Grocery.AssemblyInfo.cs
+E:\GITHUB\Project_NB_1\Grocery\Grocery\obj\Debug\netcoreapp3.1\Grocery.csproj.CoreCompileInputs.cache
