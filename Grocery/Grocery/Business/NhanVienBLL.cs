@@ -9,72 +9,73 @@ using Grocery.Business.Interface;
 namespace Grocery.Business
 {
     //Thực thi các yêu cầu nghiệm vụ 
-    public class LoaiHangBLL : IFLoaiHangBLL
+    public class NhanVienBLL : IFNhanVienBLL
     {
-        private IDLoaiHangDAL MLDA = new LoaiHangDAL();
+        private IDNhanVienDAL NVDA = new NhanVienDAL();
         //Thực thi các yêu cầu
-        public List<LoaiHang> XemDSLoaiHang()
+        public List<NhanVien> XemDSNhanVien()
         {
-            return MLDA.GetData();
+            return NVDA.GetData();
         }
-        public void ThemLoaiHang(LoaiHang LH)
+        public void ThemNhanVien(NhanVien NV)
         {
-            if (LH.tenloai != "" && LH.dacdiem != "")
+            if (NV.tennv != "" && NV.gt!= "" && NV.pass != "")
             {
-                LH.tenloai = Grocery.Utiility.CongCu.ChuanHoaXau(LH.tenloai);
-                LH.dacdiem = Grocery.Utiility.CongCu.ChuanHoaXau(LH.dacdiem);
-                MLDA.Insert(LH);
+                NV.tennv = Grocery.Utiility.CongCu.ChuanHoaXau(NV.tennv);
+                NV.gt = Grocery.Utiility.CongCu.ChuanHoaXau(NV.gt);
+                NV.pass = Grocery.Utiility.CongCu.ChuanHoaXau(NV.pass);
+                NVDA.Insert(NV);
             }
             else
                 throw new Exception("Du lieu sai!");
         }
-        public void XoaLoaiHang( int malh)
+        public void XoaNhanVien(int manv)
         {
             int i;
-            List<LoaiHang> list = MLDA.GetData();
+            List<NhanVien> list = NVDA.GetData();
             for (i = 0; i < list.Count; ++i)
-                if (list[i].maloai == malh)
+                if (list[i].manv == manv)
                     break;
             if (i < list.Count)
             {
                 list.RemoveAt(i);
-                MLDA.Update(list);
-            }
-            else
-                throw new Exception("Không tồn tại mã này!");
-        }    
-        public void SuaLoaiHang(LoaiHang LH)
-        {
-            int i;
-            List<LoaiHang> list = MLDA.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maloai == LH.maloai)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                list.Add(LH, i);
-                MLDA.Update(list);
+                NVDA.Update(list);
             }
             else
                 throw new Exception("Không tồn tại mã này!");
         }
-        public List<LoaiHang> TimLoaiHang(LoaiHang LH)
+        public void SuaNhanVien(NhanVien nv)
         {
-            List<LoaiHang> list = MLDA.GetData();
-            List<LoaiHang> KQ = new List<LoaiHang>();
+            int i;
+            List<NhanVien> list = NVDA.GetData();
+            for (i = 0; i < list.Count; ++i)
+                if (list[i].manv == nv.manv)
+                    break;
+            if (i < list.Count)
+            {
+                list.RemoveAt(i);
+                list.Add(nv, i);
+                NVDA.Update(list);
+            }
+            else
+                throw new Exception("Không tồn tại mã này!");
+        }
+        public List<NhanVien> TimNhanVien(NhanVien NV)
+        {
+            List<NhanVien> list = NVDA.GetData();
+            List<NhanVien> KQ = new List<NhanVien>();
             //Với giá trị ngầm định ban đầu
-            if (LH.maloai==0 && LH.tenloai==null && LH.dacdiem==null)
+            if (NV.manv == 0 && NV.tennv == null && NV.gt == null && NV.pass==null)
             {
                 KQ = list;
             }
             //Tìm theo mã
-            if (LH.maloai != 0 && LH.tenloai == null && LH.dacdiem == null)
+            if (NV.manv != 0 && NV.tennv == null && NV.pass == null)
             {
                 for (int i = 0; i < list.Count; ++i)
-                    if (list[i].maloai == LH.maloai)
+                    if (list[i].manv == NV.manv)
                     {
-                        KQ.Add(new LoaiHang(list[i]));
+                        KQ.Add(new NhanVien(list[i]));
                     }
             }
             else KQ = null;

@@ -9,72 +9,72 @@ using Grocery.Business.Interface;
 namespace Grocery.Business
 {
     //Thực thi các yêu cầu nghiệm vụ 
-    public class LoaiHangBLL : IFLoaiHangBLL
+    public class NhaCCBLL : IFNhaCCBLL
     {
-        private IDLoaiHangDAL MLDA = new LoaiHangDAL();
+        private IDNhaCCDAL NCCDA = new NhaCCDAL();
         //Thực thi các yêu cầu
-        public List<LoaiHang> XemDSLoaiHang()
+        public List<NCC> XemDSNhaCC()
         {
-            return MLDA.GetData();
+            return NCCDA.GetData();
         }
-        public void ThemLoaiHang(LoaiHang LH)
+        public void ThemNhaCC(NCC nc)
         {
-            if (LH.tenloai != "" && LH.dacdiem != "")
+            if (nc.tenncc != "" && nc.diachi != "")
             {
-                LH.tenloai = Grocery.Utiility.CongCu.ChuanHoaXau(LH.tenloai);
-                LH.dacdiem = Grocery.Utiility.CongCu.ChuanHoaXau(LH.dacdiem);
-                MLDA.Insert(LH);
+                nc.tenncc = Grocery.Utiility.CongCu.ChuanHoaXau(nc.tenncc);
+                nc.diachi = Grocery.Utiility.CongCu.ChuanHoaXau(nc.diachi);
+                NCCDA.Insert(nc);
             }
             else
                 throw new Exception("Du lieu sai!");
         }
-        public void XoaLoaiHang( int malh)
+        public void XoaNhaCC(int mancc)
         {
             int i;
-            List<LoaiHang> list = MLDA.GetData();
+            List<NCC> list = NCCDA.GetData();
             for (i = 0; i < list.Count; ++i)
-                if (list[i].maloai == malh)
+                if (list[i].mancc == mancc)
                     break;
             if (i < list.Count)
             {
                 list.RemoveAt(i);
-                MLDA.Update(list);
-            }
-            else
-                throw new Exception("Không tồn tại mã này!");
-        }    
-        public void SuaLoaiHang(LoaiHang LH)
-        {
-            int i;
-            List<LoaiHang> list = MLDA.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].maloai == LH.maloai)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                list.Add(LH, i);
-                MLDA.Update(list);
+                NCCDA.Update(list);
             }
             else
                 throw new Exception("Không tồn tại mã này!");
         }
-        public List<LoaiHang> TimLoaiHang(LoaiHang LH)
+        public void SuaNhaCC(NCC nc)
         {
-            List<LoaiHang> list = MLDA.GetData();
-            List<LoaiHang> KQ = new List<LoaiHang>();
+            int i;
+            List<NCC> list = NCCDA.GetData();
+            for (i = 0; i < list.Count; ++i)
+                if (list[i].mancc == nc.mancc)
+                    break;
+            if (i < list.Count)
+            {
+                list.RemoveAt(i);
+                list.Add(nc, i);
+                NCCDA.Update(list);
+            }
+            else
+                throw new Exception("Không tồn tại mã này!");
+        }
+        public List<NCC> TimNhaCC(NCC nc)
+        {
+            List<NCC> list = NCCDA.GetData();
+            List<NCC> KQ = new List<NCC>();
             //Với giá trị ngầm định ban đầu
-            if (LH.maloai==0 && LH.tenloai==null && LH.dacdiem==null)
+            if (nc.mancc == 0 && nc.tenncc == null && nc.diachi == null && nc.sdt==0)
             {
                 KQ = list;
             }
             //Tìm theo mã
-            if (LH.maloai != 0 && LH.tenloai == null && LH.dacdiem == null)
+            if (nc.mancc != 0 && nc.tenncc == null && nc.diachi == null && nc.sdt==0)
             {
                 for (int i = 0; i < list.Count; ++i)
-                    if (list[i].maloai == LH.maloai)
+                    if (list[i].mancc == nc.mancc)
                     {
-                        KQ.Add(new LoaiHang(list[i]));
+                        KQ.Add(new NCC(list[i]));
                     }
             }
             else KQ = null;

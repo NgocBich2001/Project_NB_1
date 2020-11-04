@@ -53,8 +53,8 @@ namespace Grocery.Utiility
             IO.Writexy("                               ", x + 2, y + 12, ConsoleColor.Black, ConsoleColor.White);
             do
             {
-                this.User = IO.ReadString(x + 15, y + 5);
-                this.Password = IO.ReadPassword(x + 15, y + 8);
+                this.User = IO.ReadString(x + 9, y + 5);
+                this.Password = IO.ReadPassword(x + 14, y + 8);
                 IO.Writexy("Nhan Enter de dang nhap hoac nhan phim ESC de thoat!", x + 2, y + 12);
                 IO.Writexy("Dang nhap", x + 40, y + 10, ConsoleColor.Blue, ConsoleColor.White);
                 ConsoleKeyInfo kt = Console.ReadKey();

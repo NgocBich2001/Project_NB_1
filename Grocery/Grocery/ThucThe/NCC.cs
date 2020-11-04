@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Grocery.ThucThe
 {
-    class NCC
+    public class NCC
     {
         private int MaNCC;
         private string TenNCC;
@@ -23,6 +23,13 @@ namespace Grocery.ThucThe
             this.TenNCC = tenncc;
             this.DiaChi = diachi;
             this.SDT = sdt;
+        }
+        public NCC(NCC nc)
+        {
+            this.MaNCC = nc.MaNCC;
+            this.TenNCC = nc.TenNCC;
+            this.DiaChi = nc.DiaChi;
+            this.SDT = nc.SDT;
         }
         public int mancc
         {

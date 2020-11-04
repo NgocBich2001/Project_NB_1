@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Grocery.ThucThe
 {
-    class HoaDonNhap
+    public class HoaDonNhap
     {
         private int MaHDN;
         private int MaNCC;
         private string NVGiao;
         private int MaNVNhan;
         private DateTime NgayNhan;
-        private double TongTien;
-        private string TrangThai;
-        private double DaTT;
-        private double ConNo;
+        private int MaHang;
+        private int SoLuong;
+        private double DonGiaNhap;
+        private double ThanhTien;
         private string GhiChu;
         public HoaDonNhap()
         {
@@ -23,24 +24,39 @@ namespace Grocery.ThucThe
             NVGiao = "";
             MaNVNhan = 0;
             NgayNhan = DateTime.Now;
-            TongTien = 0;
-            TrangThai = "";
-            DaTT = 0;
-            ConNo = 0;
+            MaHang = 0;
+            SoLuong = 0;
+            DonGiaNhap = 0;
+            ThanhTien = 0;
             GhiChu = "";
         }    
-        public HoaDonNhap(int mahdn, int mancc, string nvgiao, int manvnhan, DateTime ngaynhan, double tongtien, string trangthai, double datt, double conno, string ghichu)
+        public HoaDonNhap(int mahdn, int mancc, string nvgiao, int manvnhan, DateTime ngaynhan, int mahang, int sl, double gianhap, double thanhtien, string ghichu)
         {
             this.MaHDN = mahdn;
             this.MaNCC = mancc;
             this.NVGiao = nvgiao;
             this.MaNVNhan = manvnhan;
             this.NgayNhan = ngaynhan;
-            this.TongTien = tongtien;
-            this.TrangThai = trangthai;
-            this.DaTT = datt;
-            this.ConNo = conno;
+            this.MaHang = mahang;
+            this.SoLuong = sl;
+            this.DonGiaNhap = gianhap;
+            this.ThanhTien = thanhtien;
             this.GhiChu = ghichu;
+        }
+        
+        
+        public HoaDonNhap(HoaDonNhap hdn)
+        {
+            this.MaHDN = hdn.MaHDN;
+            this.MaNCC = hdn.MaNCC;
+            this.NVGiao = hdn.NVGiao;
+            this.MaNVNhan = hdn.MaNVNhan;
+            this.NgayNhan = hdn.NgayNhan;
+            this.MaHang = hdn.MaHang;
+            this.SoLuong = hdn.SoLuong;
+            this.DonGiaNhap = hdn.DonGiaNhap;
+            this.ThanhTien = hdn.ThanhTien;
+            this.GhiChu = hdn.GhiChu;
         }
         public int mahdn
         {
@@ -101,52 +117,52 @@ namespace Grocery.ThucThe
                 NgayNhan = value;
             }
         }
-        public double tongtien
+        public int mahang
         {
             get
             {
-                return TongTien;
-            }
-            set
-            {
-                if (TongTien > 0)
-                    TongTien = value;
-            }
-        }
-        public string trangthai
-        {
-            get
-            {
-                return TrangThai;
-            }
-            set
-            {
-                if (TrangThai != "")
-                    TrangThai = value;
-            }
-        }
-        public double datt
-        {
-            get
-            {
-                return DaTT;
+                return MaHang;
             }
             set
             {
                 if (value > 0)
-                    DaTT = value;
+                    MaHang = value;
             }
         }
-        public double conno
+        public int soluong
         {
             get
             {
-                return ConNo;
+                return SoLuong;
             }
             set
             {
-                if (value  >= 0)
-                    ConNo = value;
+                if (value > 0)
+                    SoLuong = value;
+            }
+        }  
+        public double gianhap
+        {
+            get
+            {
+                return DonGiaNhap;
+            }
+            set
+            {
+                if (value > 0)
+                    DonGiaNhap = value;
+            }
+        }
+        public double thanhtien
+        {
+            get
+            {
+                return ThanhTien;
+            }
+            set
+            {
+                if (ThanhTien > 0)
+                    ThanhTien = value;
             }
         }
         public string ghichu

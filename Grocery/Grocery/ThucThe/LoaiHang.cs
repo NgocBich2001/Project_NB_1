@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Grocery.ThucThe
 {
-    class LoaiHang
+    public class LoaiHang
     {
         private int Maloai;
         private string TenLoai;
@@ -15,11 +15,17 @@ namespace Grocery.ThucThe
             TenLoai = "";
             DacDiem = "";
         }
-        public LoaiHang( int maloai, string tenloai, string dacdiem)
+        public LoaiHang(int maloai, string tenloai, string dacdiem)
         {
             this.Maloai = maloai;
             this.TenLoai = tenloai;
             this.DacDiem = dacdiem;
+        }
+        public LoaiHang (LoaiHang lh)
+        {
+            this.Maloai = lh.Maloai;
+            this.TenLoai = lh.TenLoai;
+            this.DacDiem = lh.DacDiem;
         }
         public int maloai
         {

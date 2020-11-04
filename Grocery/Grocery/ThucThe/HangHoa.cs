@@ -4,13 +4,14 @@ using System.Text;
 
 namespace Grocery.ThucThe
 {
-    class HangHoa
+    public class HangHoa
     {
         private int MaHH;
         private int MaLoai;
+        private string TenHang;
         private int SLNhapVe;
         private int SLHienCo;
-        private string TenHang;
+        
         public HangHoa()
         {
             MaHH = 0;
@@ -19,7 +20,7 @@ namespace Grocery.ThucThe
             SLHienCo = 0;
             TenHang = "";
         }
-        public HangHoa(int mahh, int maloai, int slnhap, int slhienco, string tenhang)
+        public HangHoa(int mahh, int maloai, string tenhang, int slnhap, int slhienco)
         {
             this.MaHH = mahh;
             this.MaLoai = maloai;

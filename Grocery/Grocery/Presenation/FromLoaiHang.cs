@@ -7,7 +7,5 @@ using Grocery.Business;
 
 namespace Grocery.Presenation
 {
-      FromLoaiHang
-    {
-    }
+     
 }

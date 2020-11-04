@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Grocery.ThucThe
 {
-    class NhanVien
+    public class NhanVien
     {
         private int MaNV;
         private string TenNV;
@@ -12,7 +12,6 @@ namespace Grocery.ThucThe
         private string GioiTinh;
         private DateTime NgayVaoLV;
         private string Pass;
-        private string LoaiNV;
         public NhanVien()
         {
             MaNV = 0;
@@ -21,9 +20,8 @@ namespace Grocery.ThucThe
             GioiTinh = "";
             NgayVaoLV = DateTime.Now;
             Pass = "";
-            LoaiNV = "";
         }    
-        public NhanVien(int manv, string tennv, DateTime ngaysinh, string gt, DateTime ngayvaolv, string pass, string loainv)
+        public NhanVien(int manv, string tennv, DateTime ngaysinh, string gt, DateTime ngayvaolv, string pass)
         {
             this.MaNV = manv;
             this.TenNV = tennv;
@@ -31,7 +29,15 @@ namespace Grocery.ThucThe
             this.GioiTinh = gt;
             this.NgayVaoLV = ngayvaolv;
             this.Pass = pass;
-            this.LoaiNV = loainv;
+        }
+        public NhanVien(NhanVien nv)
+        {
+            this.MaNV = nv.MaNV;
+            this.TenNV = nv.TenNV;
+            this.NgaySinh = nv.NgaySinh;
+            this.GioiTinh = nv.GioiTinh;
+            this.NgayVaoLV = nv.NgayVaoLV;
+            this.Pass = nv.Pass;
         }
         public int manv
         {

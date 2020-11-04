@@ -1,13 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using Grocery.ThucThe;
 using Grocery.Utiility;
+using Grocery.DataAccessLayer;
 
 namespace Grocery.Business.Interface
 {
     public interface IFLoaiHangBLL
     {
-      
+        List<LoaiHang> XemDSLoaiHang();
+        void ThemLoaiHang(LoaiHang LH);
+        void XoaLoaiHang(int malh);
+        void SuaLoaiHang(LoaiHang LH);
+        List<LoaiHang> TimLoaiHang(LoaiHang LH);
     }
 }

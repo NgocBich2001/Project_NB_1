@@ -2,3 +2,12 @@ E:\GITHUB\Project_NB_1\Grocery\Grocery\obj\Debug\netcoreapp3.1\Grocery.csprojAss
 E:\GITHUB\Project_NB_1\Grocery\Grocery\obj\Debug\netcoreapp3.1\Grocery.AssemblyInfoInputs.cache
 E:\GITHUB\Project_NB_1\Grocery\Grocery\obj\Debug\netcoreapp3.1\Grocery.AssemblyInfo.cs
 E:\GITHUB\Project_NB_1\Grocery\Grocery\obj\Debug\netcoreapp3.1\Grocery.csproj.CoreCompileInputs.cache
+E:\GITHUB\Project_NB_1\Grocery\Grocery\bin\Debug\netcoreapp3.1\Grocery.exe
+E:\GITHUB\Project_NB_1\Grocery\Grocery\bin\Debug\netcoreapp3.1\Grocery.deps.json
+E:\GITHUB\Project_NB_1\Grocery\Grocery\bin\Debug\netcoreapp3.1\Grocery.runtimeconfig.json
+E:\GITHUB\Project_NB_1\Grocery\Grocery\bin\Debug\netcoreapp3.1\Grocery.runtimeconfig.dev.json
+E:\GITHUB\Project_NB_1\Grocery\Grocery\bin\Debug\netcoreapp3.1\Grocery.dll
+E:\GITHUB\Project_NB_1\Grocery\Grocery\bin\Debug\netcoreapp3.1\Grocery.pdb
+E:\GITHUB\Project_NB_1\Grocery\Grocery\obj\Debug\netcoreapp3.1\Grocery.dll
+E:\GITHUB\Project_NB_1\Grocery\Grocery\obj\Debug\netcoreapp3.1\Grocery.pdb
+E:\GITHUB\Project_NB_1\Grocery\Grocery\obj\Debug\netcoreapp3.1\Grocery.genruntimeconfig.cache
