@@ -58,6 +58,20 @@ namespace Grocery.Business
             else
                 throw new Exception("Không tồn tại mã này!");
         }
+        public HoaDonBan LayHoaDonBan(int mahdb)
+        {
+            int i;
+            List<HoaDonBan> list = HDBDA.GetData();
+            for (i = 0; i < list.Count; ++i)
+                if (list[i].mahdb == mahdb) break;
+            if (i < list.Count)
+            {
+                return list[i];
+            }
+            else
+                throw new Exception("Khong ton tai ma nay");
+
+        }
         public List<HoaDonBan> TimHoaDonBan(HoaDonBan HDB)
         {
             List<HoaDonBan> list = HDBDA.GetData();

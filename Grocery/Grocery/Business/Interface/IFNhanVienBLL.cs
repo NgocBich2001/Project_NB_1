@@ -12,6 +12,7 @@ namespace Grocery.Business.Interface
         void ThemNhanVien(NhanVien NV);
         void XoaNhanVien(int manv);
         void SuaNhanVien(NhanVien nv);
+        NhanVien LayNhanVien(int manv);
         List<NhanVien> TimNhanVien(NhanVien NV);
     }
 }

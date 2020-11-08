@@ -12,6 +12,7 @@ namespace Grocery.Business.Interface
         void ThemNhaCC(NCC nc);
         void XoaNhaCC(int manc);
         void SuaNhaCC(NCC nc);
+        NhanVien LayNCC (int mancc);
         List<NCC> TimNhaCC(NCC nc);
     }
 }

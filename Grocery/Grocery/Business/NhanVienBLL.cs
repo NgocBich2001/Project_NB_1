@@ -60,6 +60,20 @@ namespace Grocery.Business
             else
                 throw new Exception("Không tồn tại mã này!");
         }
+        public NhanVien LayNhanVien(int manv)
+        {
+            int i;
+            List<NhanVien> list = NVDA.GetData();
+            for (i = 0; i < list.Count; ++i)
+                if (list[i].manv == manv) break;
+            if (i < list.Count)
+            {
+                return list[i];
+            }
+            else
+                throw new Exception("Khong ton tai ma nay");
+
+        }
         public List<NhanVien> TimNhanVien(NhanVien NV)
         {
             List<NhanVien> list = NVDA.GetData();

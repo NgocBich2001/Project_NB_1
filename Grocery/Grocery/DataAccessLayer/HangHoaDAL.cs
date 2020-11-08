@@ -24,7 +24,7 @@ namespace Grocery.DataAccessLayer
                 {
                     s = Grocery.Utiility.CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new HangHoa(int.Parse(a[0]), int.Parse(a[1]), int.Parse(a[2]), int.Parse(a[3]), (a[4])));
+                    list.Add(new HangHoa(int.Parse(a[0]), int.Parse(a[1]), a[2], int.Parse(a[3]), int.Parse(a[4])));
 
                 }
                 s = fread1.ReadLine();
@@ -64,7 +64,7 @@ namespace Grocery.DataAccessLayer
             int mahh = mahang + 1;
             StreamWriter fwrite = File.AppendText(txtfile1);
             fwrite.WriteLine();
-            fwrite.Write(mahh + "\t" + HH.tenhang + "\t" + HH.maloai +"\t" + HH.slnhapve + "\t" +HH.slhienco);
+            fwrite.Write(mahh + "\t" + HH.maloai + "\t" + HH.tenhang +  "\t" + HH.slnhapve + "\t" +HH.slhienco);
             fwrite.Close();
         }
         //Cập nhật lại danh sách vào tệp
@@ -72,7 +72,7 @@ namespace Grocery.DataAccessLayer
         {
             StreamWriter fwrite = File.CreateText(txtfile1);
             for (int i = 0; i < list.Count; ++i)
-                fwrite.WriteLine(list[i].mahh+ "\t" + list[i].tenhang + "\t" + list[i].maloai + "\t" +list[i].slnhapve + "\t" + list[i].slhienco);
+                fwrite.WriteLine(list[i].mahh+ "\t" + list[i].maloai+ "\t" + list[i].tenhang  + "\t" +list[i].slnhapve + "\t" + list[i].slhienco);
             fwrite.Close();
         }
     }

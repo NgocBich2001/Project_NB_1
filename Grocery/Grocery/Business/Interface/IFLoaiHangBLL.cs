@@ -12,6 +12,7 @@ namespace Grocery.Business.Interface
         void ThemLoaiHang(LoaiHang LH);
         void XoaLoaiHang(int malh);
         void SuaLoaiHang(LoaiHang LH);
+        LoaiHang LayLoaiHang(int malh);
         List<LoaiHang> TimLoaiHang(LoaiHang LH);
     }
 }

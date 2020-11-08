@@ -59,6 +59,20 @@ namespace Grocery.Business
             else
                 throw new Exception("Không tồn tại mã này!");
         }
+        public NCC LayNCC(int mancc)
+        {
+            int i;
+            List<NCC> list = NCCDA.GetData();
+            for (i = 0; i < list.Count; ++i)
+                if (list[i].mancc == mancc) break;
+            if (i < list.Count)
+            {
+                return list[i];
+            }
+            else
+                throw new Exception("Khong ton tai ma nay");
+
+        }
         public List<NCC> TimNhaCC(NCC nc)
         {
             List<NCC> list = NCCDA.GetData();

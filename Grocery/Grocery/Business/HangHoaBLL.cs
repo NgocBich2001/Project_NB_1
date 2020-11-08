@@ -58,6 +58,20 @@ namespace Grocery.Business
             else
                 throw new Exception("Không tồn tại mã này!");
         }
+        public HangHoa LayHangHoa(int mahh)
+        {
+            int i;
+            List<HangHoa> list = HHDA.GetData();
+            for (i = 0; i < list.Count; ++i)
+                if (list[i].mahh == mahh) break;
+            if (i < list.Count)
+            {
+                return list[i];
+            }
+            else
+                throw new Exception("Khong ton tai ma nay");
+
+        }
         public List<HangHoa> TimHangHoa(HangHoa HH)
         {
             List<HangHoa> list = HHDA.GetData();

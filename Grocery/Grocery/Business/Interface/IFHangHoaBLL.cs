@@ -12,6 +12,7 @@ namespace Grocery.Business.Interface
         void ThemHangHoa(HangHoa HH);
         void XoaHangHoa(int mahh);
         void SuaHangHoa(HangHoa HH);
+        HangHoa LayHangHoa(int mahh);
         List<HangHoa> TimHangHoa(HangHoa HH);
     }
 }

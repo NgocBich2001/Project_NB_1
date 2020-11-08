@@ -12,6 +12,7 @@ namespace Grocery.Business.Interface
         void ThemHoaDonNhap(HoaDonNhap HDN);
         void XoaHoaDonNhap(int mahdn);
         void SuaHoaDonNhap(HoaDonNhap HDN);
+        HoaDonNhap LayHoaDonNhap(int mahdn);
         List<HoaDonNhap> TimHoaDonNhap(HoaDonNhap HDN);
     }
 }
