@@ -61,7 +61,7 @@ namespace Grocery.Utiility
                     else Writexy(s, x, y);
                 }
                 else if (kt.Key == ConsoleKey.Enter) break;
-                else if (kt.Key == ConsoleKey.Escape) Grocery.Program.HienThi();
+                else if (kt.Key == ConsoleKey.Escape) Presenation.FormMenuMain.HienThi();
             } while (true);
             return s;
         }
@@ -87,7 +87,7 @@ namespace Grocery.Utiility
                     else Writexy(s, x, y);
                 }
                 else if (kt.Key == ConsoleKey.Enter) break;
-                else if (kt.Key == ConsoleKey.Escape) Grocery.Program.HienThi();
+                else if (kt.Key == ConsoleKey.Escape) Presenation.FormMenuMain.HienThi();
             } while (true);
             return s;
         }

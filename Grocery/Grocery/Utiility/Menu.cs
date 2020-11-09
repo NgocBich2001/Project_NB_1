@@ -51,50 +51,10 @@ namespace Grocery.Utiility
             ConsoleKeyInfo kt = Console.ReadKey();
             string[] key = new string[mn.Length];
             for (int i = 0; i < mn.Length; ++i)
-                key[i] = mn[i].Substring(0, mn[i].IndexOf("."));
+                key[i] = mn[i].Substring(0, mn[i].IndexOf(":"));
             for (int i = 0; i < key.Length; ++i)
                 if (kt.Key.ToString() == key[i])
                     ThucHien(i);
-        }    
-        public void HienTheoKieuCuon(int x, int y, ConsoleColor maunen_t, ConsoleColor mauchu_t,ConsoleColor maunen_s, ConsoleColor mauchu_s)
-        {
-            ChuanHoaMenu();
-            int chon = 0;
-            for (int i = 0; i < mn.Length; ++i)
-                Writexy(x, y + i, i, maunen_t, mauchu_t);
-            Writexy(x, y + chon, chon, maunen_s, mauchu_s);
-            do
-            {
-                ConsoleKeyInfo kt = Console.ReadKey();
-                for (int i = 0; i < mn.Length; ++i)
-                    Writexy(x, y + i, i, maunen_t, mauchu_t);
-                switch (kt.Key)
-                {
-                    case ConsoleKey.DownArrow://↓
-                        if (chon == mn.Length - 1)
-                            chon = 0;
-                        else
-                            chon = chon + 1;
-                        Writexy(x, y + chon, chon, maunen_s, mauchu_s);
-                        break;
-                    case ConsoleKey.UpArrow://↑
-                        if (chon == 0)
-                            chon = mn.Length - 1;
-                        else
-                            chon = chon - 1;
-                        Writexy(x, y + chon, chon, maunen_s, mauchu_s);
-                        break;
-                    case ConsoleKey.Enter:
-                        ThucHien(chon);
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        Console.Clear();
-                        for (int i = 0; i < mn.Length; ++i)
-                            Writexy(x, y + i, i, maunen_t, mauchu_t);
-                        Writexy(x, y + chon, chon, maunen_s, mauchu_s);
-                        break;
-                }
-                Writexy(x, y + mn.Length + 1, "Ban dang chon muc: " + chon);
-            } while (true);
-        }    
+        }
     }
 }

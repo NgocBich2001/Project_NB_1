@@ -7,7 +7,6 @@ namespace Grocery.ThucThe
     public class HangHoa
     {
         private int MaHH;
-        private int MaLoai;
         private string TenHang;
         private int SLNhapVe;
         private int SLHienCo;
@@ -15,16 +14,13 @@ namespace Grocery.ThucThe
         public HangHoa()
         {
             MaHH = 0;
-            MaLoai = 0;
             TenHang = "";
             SLNhapVe = 0;
             SLHienCo = 0;
            
         }
-        public HangHoa(int mahh, int maloai, string tenhang, int slnhap, int slhienco)
+        public HangHoa(int mahh, string tenhang, int slnhap, int slhienco)
         {
-            this.MaHH = mahh;
-            this.MaLoai = maloai;
             this.TenHang = tenhang;
             this.SLNhapVe = slnhap;
             this.SLHienCo = slhienco;
@@ -33,7 +29,6 @@ namespace Grocery.ThucThe
         public HangHoa(HangHoa hh)
         {
             this.MaHH = hh.mahh;
-            this.MaLoai = hh.maloai;
             this.TenHang = hh.tenhang;
             this.SLNhapVe = hh.slnhapve;
             this.SLHienCo = hh.slhienco;
@@ -49,18 +44,6 @@ namespace Grocery.ThucThe
             {
                 if (value > 0)
                     MaHH = value;
-            }
-        }
-        public int maloai
-        {
-            get
-            {
-                return MaLoai;
-            }
-            set
-            {
-                if (value > 0)
-                    MaLoai = value;
             }
         }
         public string tenhang

@@ -77,12 +77,12 @@ namespace Grocery.Business
             List<HangHoa> list = HHDA.GetData();
             List<HangHoa> KQ = new List<HangHoa>();
             //Với giá trị ngầm định ban đầu
-            if (HH.mahh == 0 && HH.maloai == 0 && HH.tenhang == "" && HH.slnhapve == 0 && HH.slhienco == 0)
+            if (HH.mahh == 0 && HH.tenhang == "" && HH.slnhapve == 0 && HH.slhienco == 0)
             {
                 KQ = list;
             }
             //Tìm theo mã
-            if (HH.mahh != 0 && HH.maloai == 0 && HH.tenhang == "" && HH.slnhapve == 0 && HH.slhienco == 0)
+            if (HH.mahh != 0 && HH.tenhang == "" && HH.slnhapve == 0 && HH.slhienco == 0)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].mahh == HH.mahh)

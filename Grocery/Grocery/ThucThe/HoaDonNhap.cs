@@ -157,7 +157,7 @@ namespace Grocery.ThucThe
         {
             get
             {
-                return ThanhTien;
+                return soluong * gianhap;
             }
             set
             {
