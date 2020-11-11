@@ -8,20 +8,20 @@ namespace Grocery.ThucThe
     {
         private int MaNV;
         private string TenNV;
-        private DateTime NgaySinh;
+        private string NgaySinh;
         private string GioiTinh;
-        private DateTime NgayVaoLV;
+        private string NgayVaoLV;
         private string Pass;
         public NhanVien()
         {
             MaNV = 0;
             TenNV = "";
-            NgaySinh = DateTime.Now;
+            NgaySinh = "";
             GioiTinh = "";
-            NgayVaoLV = DateTime.Now;
+            NgayVaoLV = "";
             Pass = "";
         }    
-        public NhanVien(int manv, string tennv, DateTime ngaysinh, string gt, DateTime ngayvaolv, string pass)
+        public NhanVien(int manv, string tennv, string ngaysinh, string gt, string ngayvaolv, string pass)
         {
             this.MaNV = manv;
             this.TenNV = tennv;
@@ -63,7 +63,7 @@ namespace Grocery.ThucThe
                     TenNV = value;
             }
         }    
-        public DateTime ngaysinh
+        public string ngaysinh
         {
             get
             {
@@ -71,6 +71,7 @@ namespace Grocery.ThucThe
             }
             set
             {
+                if (value != "")
                 NgaySinh = value;
             }    
         }    
@@ -86,7 +87,7 @@ namespace Grocery.ThucThe
                     GioiTinh = value;
             }
         }    
-        public DateTime ngayvaolam
+        public string ngayvaolam
         {
             get
             {
@@ -94,6 +95,7 @@ namespace Grocery.ThucThe
             }
             set
             {
+                if (value != "")
                 NgayVaoLV = value;
             }
         }    

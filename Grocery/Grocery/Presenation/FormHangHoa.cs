@@ -32,7 +32,7 @@ namespace ComputerStore.Presenation
                 if (kt.Key == ConsoleKey.Escape)
                     HienChucNang();
                 else if (kt.Key == ConsoleKey.X)
-                    Hien(1, 13,hanghoa.XemDSHangHoa(), 5, 1);
+                    Hien(1, 13, hanghoa.XemDSHangHoa(), 5, 1);
                 else if (kt.Key == ConsoleKey.Enter)
                     hanghoa.ThemHangHoa(hh);
             } while (true);
@@ -54,13 +54,13 @@ namespace ComputerStore.Presenation
             string tenhang;
             int sln;
             int slc;
-            //Lấy thông tin theo mã
+
             mahh = int.Parse(IO.ReadNumber(10, 4));
             HangHoa hh = hanghoa.LayHangHoa(mahh);
             IO.Writexy(hh.tenhang, 65, 4);
             IO.Writexy(hh.slnhapve.ToString(), 18, 6);
             IO.Writexy(hh.slhienco.ToString(), 77, 6);
-            //Nhập lại thông tin
+
             tenhang = IO.ReadString(65, 4);
             if (tenhang != hh.tenhang && tenhang != null)
                 hh.tenhang = tenhang;
@@ -164,28 +164,28 @@ namespace ComputerStore.Presenation
                 x = xx;
                 y = yy;
                 d = 0;
-                IO.Writexy("                          DANH SÁCH HÀNG HÓA", x, y);
-                IO.Writexy("┌─────────────┬─────────────────────────┬───────────────┬──────────────┐", x, y + 1);
-                IO.Writexy("│ Mã hàng hóa │      Tên hàng hóa       │ Số lượng nhập │ Số lượng có  │", x, y + 2);
-                IO.Writexy("├─────────────┼─────────────────────────┼───────────────┼──────────────┤", x, y + 3);
+                IO.Writexy("                      DANH SÁCH MÁY TÍNH", x, y);
+                IO.Writexy("┌─────────────┬────────────────┬───────────────┬──────────────┐", x, y + 1);
+                IO.Writexy("│ Mã hàng hóa │  Tên hàng hóa  │ Số lượng nhập │ Số lượng còn │", x, y + 2);
+                IO.Writexy("├─────────────┼────────────────┼───────────────┼──────────────┤", x, y + 3);
                 y += 4;
                 for (int i = head; i < final; i++)
                 {
                     IO.Writexy("│", x, y + d, 14);
                     IO.Writexy(list[i].mahh.ToString(), x + 1, y + d, 14);
                     IO.Writexy("│", x + 14, y + d);
-                    IO.Writexy(list[i].tenhang, x + 15, y + d, 26);
-                    IO.Writexy("│", x + 40, y + d);
-                    IO.Writexy(list[i].slnhapve.ToString(), x + 41, y + d, 16);
-                    IO.Writexy("│", x + 56, y + d);
-                    IO.Writexy(list[i].slhienco.ToString(), x + 57, y + d, 15);
-                    IO.Writexy("│", x + 71, y + d);
+                    IO.Writexy(list[i].tenhang.ToString(), x + 15, y + d, 17);
+                    IO.Writexy("│", x + 31, y + d);
+                    IO.Writexy(list[i].slnhapve.ToString(), x + 32, y + d, 16);
+                    IO.Writexy("│", x + 47, y + d);
+                    IO.Writexy(list[i].slhienco.ToString(), x + 48, y + d, 15);
+                    IO.Writexy("│", x + 62, y + d);
                     if (i < final - 1)
-                        IO.Writexy("├─────────────┼─────────────────────────┼───────────────┼──────────────┤", x, y + d + 1);
+                        IO.Writexy("├─────────────┼────────────────┼───────────────┼──────────────┤", x, y + d + 1);
                     y += 1;
                     d += 1;
                 }
-                IO.Writexy("└─────────────┴─────────────────────────┴───────────────┴──────────────┘", x, y + d - 1);
+                IO.Writexy("└─────────────┴────────────────┴───────────────┴──────────────┘", x, y + d - 1);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage, x, y + d);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage + "          Nhấn PagegUp để xem trước, PagegDown để xem tiep, Esc để thoát...", x, y + d);
                 if (type == 0)
@@ -214,12 +214,12 @@ namespace ComputerStore.Presenation
             Console.WindowHeight = Console.LargestWindowHeight;
             string[] mn =
             {
-                " F1:Nhập danh sách hàng hóa ",
-                " F2:Sửa thông tin hàng hóa ",
-                " F3:Xóa hàng hóa ",
-                " F4:Hiển thị danh sách hàng hóa ",
-                " F5:Tìm kiếm hàng hóa ",
-                " F6:Quay lại "
+                " F1:Nhập danh sách hàng hóa. ",
+                " F2:Sửa hàng hóa. ",
+                " F3:Xóa hàng hóa. ",
+                " F4:Hiển thị danh sách hàng hóa. ",
+                " F5:Tìm kiếm hàng hóa. ",
+                " F6:Quay lại. "
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
@@ -258,15 +258,14 @@ namespace ComputerStore.Presenation
                 }
             }
         }
-        
         public void HienTim()
         {
             Console.WindowHeight = Console.LargestWindowHeight;
             string[] mn =
             {
-                " F1: Tìm kiếm hàng hóa theo mã hàng hóa ",
-                " F2: Tìm kiếm hàng hóa theo tên hàng hóa ",
-                " F3: Quay trở lại "
+                " F1:Tìm kiếm hàng hóa theo mã. ",
+                " F2:Tìm kiếm hàng hóa theo tên. ",
+                " F3:Quay lại. "
             };
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();

@@ -24,7 +24,7 @@ namespace Grocery.DataAccessLayer
                 {
                     s = Grocery.Utiility.CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new HoaDonBan(int.Parse(a[0]), int.Parse(a[1]), DateTime.Parse(a[2]), int.Parse(a[3]), int.Parse(a[4]), double .Parse(a[5]), a[6], double.Parse(a[7])));
+                    list.Add(new HoaDonBan(int.Parse(a[0]), int.Parse(a[1]), a[2], int.Parse(a[3]), int.Parse(a[4]), double .Parse(a[5]), a[6], double.Parse(a[7])));
 
                 }
                 s = fread6.ReadLine();

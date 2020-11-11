@@ -8,7 +8,7 @@ namespace Grocery.ThucThe
     {
         private int MaHDB;
         private int MaNVBan;
-        private DateTime NgayBan;
+        private string NgayBan;
         private int MaHang;
         private int SoLuong;
         private double GiaBan;
@@ -18,14 +18,14 @@ namespace Grocery.ThucThe
         {
             MaHDB = 0;
             MaNVBan = 0;
-            NgayBan = DateTime.Now;
+            NgayBan = "";
             MaHang = 0;
             SoLuong = 0;
             GiaBan = 0;
             DonViTinh = "";
             ThanhTien = 0;
         }
-        public HoaDonBan(int mahdb, int manvban, DateTime ngayban,int mh, int soluong, double giaban, string donvi, double thanhtien)
+        public HoaDonBan(int mahdb, int manvban, string ngayban,int mh, int soluong, double giaban, string donvi, double thanhtien)
         {
             this.MaHDB = mahdb;
             this.MaNVBan = manvban;
@@ -72,7 +72,7 @@ namespace Grocery.ThucThe
                     MaNVBan = value;
             }
         }
-        public DateTime ngayban
+        public string ngayban
         {
             get
             {
@@ -80,6 +80,7 @@ namespace Grocery.ThucThe
             }
             set
             {
+                if (value != "")
                 NgayBan = value;
             }
         }

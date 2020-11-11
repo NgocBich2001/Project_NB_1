@@ -125,32 +125,8 @@ namespace Grocery.Utiility
             Console.ForegroundColor = mauchu;
             Console.Write(s);
         }
-        public static void Box(int x, int y, int chieucao, int chieurong)
-        {
-            Writexy("┌", x, y);
-            for (int i = 1; i <= chieurong - 2; ++i) Writexy("─", x + i, y);
-            Writexy("┐", x + (chieurong - 1), y);
-
-            for (int i = 1; i <= chieucao - 2; ++i) Writexy("│", x, y + i);
-            for (int i = 1; i <= chieucao - 2; ++i) Writexy("│", x + (chieurong - 1), y + i);
-
-            Writexy("└", x, y + (chieucao - 1));
-            for (int i = 1; i <= chieurong - 2; ++i) Writexy("─", x + i, y + (chieucao - 1));
-            Writexy("┘", x + (chieurong - 1), y + (chieucao - 1));
-        }
-        public static void Box(int x, int y, int chieucao, int chieurong, ConsoleColor maunen, ConsoleColor mauchu)
-        {
-            Writexy("┌", x, y, maunen, mauchu);
-            for (int i = 1; i <= chieurong - 2; ++i) Writexy("─", x + i, y, maunen, mauchu);
-            Writexy("┐", x + (chieurong - 1), y, maunen, mauchu);
-
-            for (int i = 1; i <= chieucao - 2; ++i) Writexy("│", x, y + i, maunen, mauchu);
-            for (int i = 1; i <= chieucao - 2; ++i) Writexy("│", x + (chieurong - 1), y + i, maunen, mauchu);
-
-            Writexy("└", x, y + (chieucao - 1), maunen, mauchu);
-            for (int i = 1; i <= chieurong - 2; ++i) Writexy("─", x + i, y + (chieucao - 1), maunen, mauchu);
-            Writexy("┘", x + (chieurong - 1), y + (chieucao - 1), maunen, mauchu);
-        }
+        
+        
 
         public static void BoxTitle(string title, int x, int y, int chieucao, int chieurong)
         {
@@ -174,27 +150,6 @@ namespace Grocery.Utiility
             for (int i = 1; i < chieurong - 1; ++i) Writexy("─", x + i, y + (chieucao - 1));
             Writexy("┘", x + (chieurong - 1), y + (chieucao - 1));
         }
-        public static void BoxTitle(string title, int x, int y, int chieucao, int chieurong, ConsoleColor maunen, ConsoleColor mauchu)
-        {
-
-            Writexy("┌", x, y, maunen, mauchu);
-            for (int i = 1; i <= chieurong - 2; ++i) Writexy("─", x + i, y, maunen, mauchu);
-            Writexy("┐", x + (chieurong - 1), y, maunen, mauchu);
-
-            Writexy(title, x + 2, y + 1, maunen, mauchu);
-
-            Writexy("├", x, y + 2, maunen, mauchu);
-            for (int i = 1; i <= chieurong - 2; ++i) Writexy("─", x + i, y + 2, maunen, mauchu);
-            Writexy("┤", x + (chieurong - 1), y + 2, maunen, mauchu);
-
-
-
-            for (int i = 1; i <= chieucao - 2; ++i) Writexy("│", x, y + i, maunen, mauchu);
-            for (int i = 1; i <= chieucao - 2; ++i) Writexy("│", x + (chieurong - 1), y + i, maunen, mauchu);
-
-            Writexy("└", x, y + (chieucao - 1), maunen, mauchu);
-            for (int i = 1; i < chieurong - 1; ++i) Writexy("─", x + i, y + (chieucao - 1), maunen, mauchu);
-            Writexy("┘", x + (chieurong - 1), y + (chieucao - 1), maunen, mauchu);
-        }
+        
     }
 }

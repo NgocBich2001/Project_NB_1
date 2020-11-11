@@ -11,7 +11,7 @@ namespace Grocery.ThucThe
         private int MaNCC;
         private string NVGiao;
         private int MaNVNhan;
-        private DateTime NgayNhan;
+        private string NgayNhan;
         private int MaHang;
         private int SoLuong;
         private double DonGiaNhap;
@@ -23,14 +23,14 @@ namespace Grocery.ThucThe
             MaNCC = 0;
             NVGiao = "";
             MaNVNhan = 0;
-            NgayNhan = DateTime.Now;
+            NgayNhan = "";
             MaHang = 0;
             SoLuong = 0;
             DonGiaNhap = 0;
             ThanhTien = 0;
             GhiChu = "";
         }    
-        public HoaDonNhap(int mahdn, int mancc, string nvgiao, int manvnhan, DateTime ngaynhan, int mahang, int sl, double gianhap, double thanhtien, string ghichu)
+        public HoaDonNhap(int mahdn, int mancc, string nvgiao, int manvnhan, string ngaynhan, int mahang, int sl, double gianhap, double thanhtien, string ghichu)
         {
             this.MaHDN = mahdn;
             this.MaNCC = mancc;
@@ -106,7 +106,7 @@ namespace Grocery.ThucThe
                     MaNVNhan = value;
             }
         }
-        public DateTime ngaynhan
+        public string ngaynhan
         {
             get
             {
@@ -114,6 +114,7 @@ namespace Grocery.ThucThe
             }
             set
             {
+                if (value != "")
                 NgayNhan = value;
             }
         }

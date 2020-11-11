@@ -14,8 +14,9 @@ namespace Grocery.Presenation
             Console.WindowHeight = Console.LargestWindowHeight;
             string[] mn =
             {
-                "F1: Hàng hóa",
-                "F2: Kết thúc",
+                "F1: Hàng hóa.",
+                "F2: Nhân viên.",
+                "F3: Kết thúc.",
                 //"F2: Hàng hóa",
                 //"F4: Nhà cung cấp",
                 //"F5: Nhân viên",
@@ -41,6 +42,17 @@ namespace Grocery.Presenation
                 {
                     case 0:
                         hanghoa.HienChucNang();
+                        break;
+
+                    case 1:
+                        Environment.Exit(0);
+                        break;
+                }
+                FormNhanVien nhanvien = new FormNhanVien();
+                switch (vitri)
+                {
+                    case 0:
+                        nhanvien.HienChucNang();
                         break;
 
                     case 1:

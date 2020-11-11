@@ -53,7 +53,7 @@ namespace Grocery.DataAccessLayer
                 else
                 {
                     tmp = Grocery.Utiility.CongCu.ChuanHoaXau(tmp);
-                    string[] a = tmp.Split("\t");
+                    string[] a = tmp.Split('\t');
                     return int.Parse(a[0]);
                 }
             }
