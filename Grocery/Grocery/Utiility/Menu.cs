@@ -42,7 +42,7 @@ namespace Grocery.Utiility
         public void HienTheoPhimTat(int x, int y, ConsoleColor maunen, ConsoleColor mauchu)
         {
             ChuanHoaMenu();
-            IO.BoxTitle("      CAC CHUC NANG CHINH", x, y, mn.Length * 2 + 5, MaxMuc() + 46);
+            IO.BoxTitle("   *** CÁC CHỨC NĂNG CHÍNH ***", x, y, mn.Length * 2 + 5, MaxMuc() + 46);
             x = x + 5;
             y = y + 3;
             for (int i = 0; i < mn.Length; ++i)
