@@ -2,7 +2,7 @@
 using Grocery.Utiility;
 using System.Text;
 using System.Security.Cryptography.X509Certificates;
-using ComputerStore.Presenation;
+using Grocery.Presenation;
 
 namespace Grocery.Presenation
 {
@@ -16,7 +16,9 @@ namespace Grocery.Presenation
             {
                 " F1: Hàng hóa.",
                 " F2: Nhân viên.",
-                " F3: Kết thúc.",
+                " F3: Nhà cung cấp.",
+                " F4: Hóa đơn nhập",
+                " F5: Kết thúc.",
                 //"F2: Hàng hóa",
                 //"F4: Nhà cung cấp",
                 //"F5: Nhân viên",
@@ -39,6 +41,8 @@ namespace Grocery.Presenation
             {
                 FormHangHoa hanghoa = new FormHangHoa();
                 FormNhanVien nhanvien = new FormNhanVien();
+                FormNhaCC nhacc = new FormNhaCC();
+                FormHoaDonNhap hdn = new FormHoaDonNhap();
                 switch (vitri)
                 {
                     case 0:
@@ -50,6 +54,13 @@ namespace Grocery.Presenation
                         break;
 
                     case 2:
+                        nhacc.HienChucNang();
+                        break;
+                    case 3:
+                        hdn.HienChucNang();
+                        break;
+
+                    case 4:
                         Environment.Exit(0);
                         break;
                 }

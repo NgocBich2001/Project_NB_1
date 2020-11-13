@@ -81,12 +81,15 @@ namespace Grocery.Utiility
                 else if (kt.Key == ConsoleKey.Backspace)
                 {
                     Clear(x, y, s.Length, ConsoleColor.Black);
-                    if (s.Length <= 1) s = "";
-                    else s = s.Substring(0, s.Length - 1);
+                    if (s.Length <= 1) 
+                        s = "";
+                    else
+                        s = s.Substring(0, s.Length - 1);
                     if (s == "") { Writexy(" ", x, y); Console.SetCursorPosition(x, y); }
                     else Writexy(s, x, y);
                 }
                 else if (kt.Key == ConsoleKey.Enter) break;
+
                 else if (kt.Key == ConsoleKey.Escape) Presenation.FormMenuMain.HienThi();
             } while (true);
             return s;

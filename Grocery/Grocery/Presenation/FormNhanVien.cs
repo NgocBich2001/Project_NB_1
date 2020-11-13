@@ -4,9 +4,8 @@ using Grocery.Utiility;
 using Grocery.ThucThe;
 using Grocery.Business;
 using Grocery.Business.Interface;
-using Grocery.Presenation;
 
-namespace ComputerStore.Presenation
+namespace Grocery.Presenation
 {
     //Giao tiếp với người sử dụng để giải quyết vấn đề của bài toán với các yêu cầu được đặt ra trong Interface của Business
     public class FormNhanVien
@@ -24,20 +23,20 @@ namespace ComputerStore.Presenation
                 IO.Writexy("Ngày vào làm việc:",5, 8);
                 IO.Writexy("Pass:", 5, 10);
                 IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 11);
-                IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 12);
+                IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 12); //
                 Hien(1, 16, nhanvien.XemDSNhanVien(), 5, 0);
                 NhanVien nv = new NhanVien();
                 nv.tennv = IO.ReadString(21, 4);
                 nv.ngaysinh = IO.ReadNumber(15, 6);
-                nv.gt = IO.ReadNumber(46, 6);
-                nv.ngayvaolam = IO.ReadNumber(24, 6);
-                nv.pass = IO.ReadNumber(11, 6);
-                Console.SetCursorPosition(54, 8);
+                nv.gt = IO.ReadString(46, 6);
+                nv.ngayvaolam = IO.ReadNumber(24, 8);
+                nv.pass = IO.ReadString(11, 10);
+                Console.SetCursorPosition(54, 12);   //
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
                     HienChucNang();
                 else if (kt.Key == ConsoleKey.X)
-                    Hien(1, 13, nhanvien.XemDSNhanVien(), 5, 1);
+                    Hien(1, 13, nhanvien.XemDSNhanVien(), 3, 1);
                 else if (kt.Key == ConsoleKey.Enter)
                     nhanvien.ThemNhanVien(nv);
             } while (true);
@@ -187,19 +186,19 @@ namespace ComputerStore.Presenation
                 y += 4;
                 for (int i = head; i < final; i++)
                 {
-                    IO.Writexy("│", x, y + d, 14);
-                    IO.Writexy(list[i].manv.ToString(), x + 1, y + d, 14);
-                    IO.Writexy("│", x + 14, y + d);
-                    IO.Writexy(list[i].tennv.ToString(), x + 15, y + d, 17);
-                    IO.Writexy("│", x + 31, y + d);
-                    IO.Writexy(list[i].ngaysinh.ToString(), x + 32, y + d, 16);
-                    IO.Writexy("│", x + 47, y + d);
-                    IO.Writexy(list[i].gt.ToString(), x + 48, y + d, 15);
-                    IO.Writexy("│", x + 47, y + d);
-                    IO.Writexy(list[i].ngayvaolam.ToString(), x + 63, y + d, 15);
-                    IO.Writexy("│", x + 62, y + d);
-                    IO.Writexy(list[i].pass.ToString(), x + 78, y + d, 15);
-                    IO.Writexy("│", x + 77, y + d);
+                    IO.Writexy("│", x, y + d, 15);
+                    IO.Writexy(list[i].manv.ToString(), x + 1, y + d, 15);
+                    IO.Writexy("│", x + 15, y + d);
+                    IO.Writexy(list[i].tennv.ToString(), x + 16, y + d, 18);
+                    IO.Writexy("│", x + 33, y + d);
+                    IO.Writexy(list[i].ngaysinh.ToString(), x + 34, y + d, 16);
+                    IO.Writexy("│", x + 49, y + d);
+                    IO.Writexy(list[i].gt.ToString(), x + 50, y + d, 15);
+                    IO.Writexy("│", x + 64, y + d);
+                    IO.Writexy(list[i].ngayvaolam.ToString(), x + 65, y + d, 20);
+                    IO.Writexy("│", x + 84, y + d);
+                    IO.Writexy(list[i].pass.ToString(), x + 85, y + d, 18);
+                    IO.Writexy("│", x + 102, y + d);
                     if (i < final - 1)
                         IO.Writexy("├──────────────┼─────────────────┼───────────────┼──────────────┼───────────────────┼─────────────────┤", x, y + d + 1);
                     y += 1;
@@ -207,7 +206,7 @@ namespace ComputerStore.Presenation
                 }
                 IO.Writexy("└──────────────┴─────────────────┴───────────────┴──────────────┴───────────────────┴─────────────────┘", x, y + d - 1);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage, x, y + d);
-                IO.Writexy(" Trang " + curpage + "/" + totalpage + "          Nhấn PagegUp để xem trước, PagegDown để xem tiep, Esc để thoát...", x, y + d);
+                IO.Writexy(" Trang " + curpage + "/" + totalpage + "          Nhấn PagegUp để xem trước, PagegDown để xem tiếp, Esc để thoát...", x, y + d);
                 if (type == 0)
                     break;
                 ConsoleKeyInfo kt = Console.ReadKey();
@@ -228,24 +227,6 @@ namespace ComputerStore.Presenation
                 else if (kt.Key == ConsoleKey.Escape)
                     break;
             } while (true);
-        }
-        public void HienChucNang()
-        {
-            Console.WindowHeight = Console.LargestWindowHeight;
-            string[] mn =
-            {
-                " F1:Nhập danh sách nhân viên. ",
-                " F2:Sửa nhân viên. ",
-                " F3:Xóa nhân viên. ",
-                " F4:Hiển thị danh sách nhân viên. ",
-                " F5:Tìm kiếm nhân viên. ",
-                " F6:Quay lại. "
-            };
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.Clear();
-            MenuNV mnnv = new MenuNV(mn);
-            mnnv.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-            Console.ReadKey();
         }
         public class MenuNV : Menu
         {
@@ -278,6 +259,25 @@ namespace ComputerStore.Presenation
                 }
             }
         }
+        public void HienChucNang()
+        {
+            Console.WindowHeight = Console.LargestWindowHeight;
+            string[] mn =
+            {
+                " F1:Nhập danh sách nhân viên. ",
+                " F2:Sửa nhân viên. ",
+                " F3:Xóa nhân viên. ",
+                " F4:Hiển thị danh sách nhân viên. ",
+                " F5:Tìm kiếm nhân viên. ",
+                " F6:Quay lại. "
+            };
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            MenuNV mnnv = new MenuNV(mn);
+            mnnv.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+            Console.ReadKey();
+        }
+        
         public void HienTim()
         {
             Console.WindowHeight = Console.LargestWindowHeight;

@@ -83,7 +83,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                //if (value.ToLower() == "Nam" || value.ToLower() == "Nữ")
+                if (value.ToLower() == "nam" || value.ToLower() == "nữ")
                     GioiTinh = value;
             }
         }    

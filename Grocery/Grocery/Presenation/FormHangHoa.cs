@@ -5,7 +5,7 @@ using Grocery.ThucThe;
 using Grocery.Business;
 using Grocery.Business.Interface;
 
-namespace ComputerStore.Presenation
+namespace Grocery.Presenation
 {
     //Giao tiếp với người sử dụng để giải quyết vấn đề của bài toán với các yêu cầu được đặt ra trong Interface của Business
     public class FormHangHoa
@@ -164,7 +164,7 @@ namespace ComputerStore.Presenation
                 x = xx;
                 y = yy;
                 d = 0;
-                IO.Writexy("                      DANH SÁCH MÁY TÍNH", x, y);
+                IO.Writexy("                      DANH SÁCH HÀNG HÓA", x, y);
                 IO.Writexy("┌─────────────┬────────────────┬───────────────┬──────────────┐", x, y + 1);
                 IO.Writexy("│ Mã hàng hóa │  Tên hàng hóa  │ Số lượng nhập │ Số lượng còn │", x, y + 2);
                 IO.Writexy("├─────────────┼────────────────┼───────────────┼──────────────┤", x, y + 3);
@@ -187,7 +187,7 @@ namespace ComputerStore.Presenation
                 }
                 IO.Writexy("└─────────────┴────────────────┴───────────────┴──────────────┘", x, y + d - 1);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage, x, y + d);
-                IO.Writexy(" Trang " + curpage + "/" + totalpage + "          Nhấn PagegUp để xem trước, PagegDown để xem tiep, Esc để thoát...", x, y + d);
+                IO.Writexy(" Trang " + curpage + "/" + totalpage + "          Nhấn PagegUp để xem trước, PagegDown để xem tiếp, Esc để thoát...", x, y + d);
                 if (type == 0)
                     break;
                 ConsoleKeyInfo kt = Console.ReadKey();
