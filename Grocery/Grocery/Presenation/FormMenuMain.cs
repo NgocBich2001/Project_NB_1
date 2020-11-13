@@ -18,13 +18,8 @@ namespace Grocery.Presenation
                 " F2: Nhân viên.",
                 " F3: Nhà cung cấp.",
                 " F4: Hóa đơn nhập",
-                " F5: Kết thúc.",
-                //"F2: Hàng hóa",
-                //"F4: Nhà cung cấp",
-                //"F5: Nhân viên",
-                //"F6: Hóa đơn nhập",
-                //"F8: Hóa đơn bán",
-                //"F10: Kết thúc"
+                " F5: Hóa đơn bán.",
+                " F6: Kết thúc."
             };
             
             Console.BackgroundColor = ConsoleColor.Black;
@@ -43,6 +38,7 @@ namespace Grocery.Presenation
                 FormNhanVien nhanvien = new FormNhanVien();
                 FormNhaCC nhacc = new FormNhaCC();
                 FormHoaDonNhap hdn = new FormHoaDonNhap();
+                FormHoaDonBan hdb = new FormHoaDonBan();
                 switch (vitri)
                 {
                     case 0:
@@ -59,62 +55,17 @@ namespace Grocery.Presenation
                     case 3:
                         hdn.HienChucNang();
                         break;
-
                     case 4:
+                        hdb.HienChucNang();
+                        break;
+
+                    case 5:
                         Environment.Exit(0);
                         break;
                 }
-                //FormNhanVien nhanvien = new FormNhanVien();
-                //switch (vitri)
-                //{
-                //    case 0:
-                //        nhanvien.HienChucNang();
-                //        break;
-
-                //    case 1:
-                //        Environment.Exit(0);
-                //        break;
-                //}
                 
             }
             
         }
-        //public void HoaDon()
-        //{
-        //    Console.WindowHeight = Console.LargestWindowHeight;
-        //    string[] mn =
-        //    {
-        //        "F1:Hóa đơn nhập.",
-        //        "F2:Hóa đơn bán.",
-        //        "F3:Quay lại."
-        //    };
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Clear();
-        //    MenuHD mnhd = new MenuHD(mn);
-        //    mnhd.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-        //    Console.ReadKey();
-        //} 
-        //public class MenuHD : Menu
-        //{
-        //    public MenuHD(string [] mn):base(mn)
-        //    { }
-        //    public override void ThucHien(int vitri)
-        //    {
-        //        FormHoaDonNhap hdn = new FormHoaDonNhap();
-        //        FormHoaDonBan hdb = new FormHoaDonBan();
-        //        switch(vitri)
-        //        {
-        //            case 0:
-        //                hdn.HienChucNang();
-        //                break;
-        //            case 1:
-        //                hdb.HienChucNang();
-        //                break;
-        //            case 2:
-        //                HienThi();
-        //                break;
-        //        }    
-        //    }
-        //}
     }
 }

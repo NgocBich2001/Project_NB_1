@@ -77,12 +77,12 @@ namespace Grocery.Business
             List<HoaDonBan> list = HDBDA.GetData();
             List<HoaDonBan> KQ = new List<HoaDonBan>();
             //Với giá trị ngầm định ban đầu
-            if (HDB.mahdb == 0 && HDB.manvban == 0 && HDB.mahang == 0 && HDB.soluong==0 && HDB.giaban==0 && HDB.donvi =="" )
+            if (HDB.mahdb == 0)
             {
                 KQ = list;
             }
             //Tìm theo mã
-            if (HDB.mahdb != 0 && HDB.manvban == 0 && HDB.mahang == 0 && HDB.soluong == 0 && HDB.giaban == 0 && HDB.donvi == "")
+            if (HDB.mahdb != 0)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].mahdb == HDB.mahdb)

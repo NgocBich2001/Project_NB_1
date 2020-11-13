@@ -25,7 +25,6 @@ namespace Grocery.Presenation
                 IO.Writexy("Số lượng:",25,10);
                 IO.Writexy("Đơn giá nhập:",40,10);
                 IO.Writexy("Thành tiền:",5,12);
-                IO.Writexy("Ghi chú:",30,12);
                 IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 13);
                 IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 14);
                 Hien(1, 16, hdn.XemDSHoaDonNhap(), 5, 0);
@@ -37,8 +36,8 @@ namespace Grocery.Presenation
                 hoadn.mahang = int.Parse(IO.ReadNumber(13, 10));
                 hoadn.soluong = int.Parse(IO.ReadNumber(35, 10));
                 hoadn.gianhap = double.Parse(IO.ReadNumber(54, 10));
-                hoadn.thanhtien = double.Parse(IO.ReadNumber(17, 12));              
-                hoadn.ghichu = IO.ReadString(39, 12);
+                //hoadn.thanhtien = double.Parse(IO.ReadNumber(17, 12));
+                IO.Writexy(hoadn.thanhtien.ToString(), 17, 12);
                 Console.SetCursorPosition(55, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
@@ -63,7 +62,6 @@ namespace Grocery.Presenation
             IO.Writexy("Số lượng:", 25, 10);
             IO.Writexy("Đơn giá nhập:", 40, 10);
             IO.Writexy("Thành tiền:", 5, 12);
-            IO.Writexy("Ghi chú:", 30, 12);
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 13);
             IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 14);
             Hien(1, 16, hdn.XemDSHoaDonNhap(), 5, 0);
@@ -76,8 +74,7 @@ namespace Grocery.Presenation
             int mahang;
             int soluong;
             double gianhap;
-            double thanhtien;
-            string ghichu;
+            //double thanhtien;
 
             mahdn = int.Parse(IO.ReadNumber(23, 4));
             HoaDonNhap hdnhap = hdn.LayHoaDonNhap(mahdn);
@@ -88,36 +85,33 @@ namespace Grocery.Presenation
             IO.Writexy(hdnhap.mahang.ToString(), 13, 10);
             IO.Writexy(hdnhap.soluong.ToString(), 35, 10);
             IO.Writexy(hdnhap.gianhap.ToString(), 54, 10);
-            IO.Writexy(hdnhap.thanhtien.ToString(), 17, 12);
-            IO.Writexy(hdnhap.ghichu, 39, 12);
+            //IO.Writexy(hdnhap.thanhtien.ToString(), 17, 12);
 
-            mancc = int.Parse(IO.ReadNumber(52, 4));
+            mancc = int.Parse(IO.ReadNumber(58, 4));
             if (mancc != hdnhap.mancc && mancc > 0)
                 hdnhap.mancc = mancc;
-            nvgiao = IO.ReadString(14, 6);
+            nvgiao = IO.ReadString(21, 6);
             if (nvgiao != hdnhap.nvgiao && nvgiao != null)
                 hdnhap.nvgiao = nvgiao;
-            manvnhan = int.Parse(IO.ReadNumber(70, 6));
+            manvnhan = int.Parse(IO.ReadNumber(25, 8));
             if (manvnhan != hdnhap.manvnhan && manvnhan > 0)
                 hdnhap.manvnhan = manvnhan;
-            ngaynhan = IO.ReadString(14, 6);
+            ngaynhan = IO.ReadString(46, 8);
             if (ngaynhan != hdnhap.ngaynhan && ngaynhan != null)
                 hdnhap.ngaynhan = ngaynhan;
-            mahang = int.Parse(IO.ReadNumber(70, 6));
+            mahang = int.Parse(IO.ReadNumber(13, 10));
             if (mahang != hdnhap.mahang && mahang > 0)
                 hdnhap.mahang = mahang;
-            soluong = int.Parse(IO.ReadNumber(70, 6));
+            soluong = int.Parse(IO.ReadNumber(35, 10));
             if (soluong != hdnhap.soluong && soluong > 0)
                 hdnhap.soluong = soluong;
-            gianhap = double.Parse(IO.ReadNumber(70, 6));
+            gianhap = double.Parse(IO.ReadNumber(54, 10));
             if (gianhap != hdnhap.gianhap && gianhap > 0)
                 hdnhap.gianhap = gianhap;
-            thanhtien = double.Parse(IO.ReadNumber(70, 6));
-            if (thanhtien != hdnhap.thanhtien && thanhtien > 0)
-                hdnhap.thanhtien = thanhtien;
-            ghichu = IO.ReadString(14, 6);
-            if (ghichu != hdnhap.ghichu && ghichu != null)
-                hdnhap.ghichu = ghichu;
+            //thanhtien = double.Parse(IO.ReadNumber(17, 12));
+            //if (thanhtien != hdnhap.thanhtien && thanhtien > 0)
+            //    hdnhap.thanhtien = thanhtien;
+            IO.Writexy(hdnhap.thanhtien.ToString(), 17, 12);
 
             Console.SetCursorPosition(58, 8);
             ConsoleKeyInfo kt = Console.ReadKey();
@@ -172,7 +166,7 @@ namespace Grocery.Presenation
                 IO.Writexy("Nhập mã hóa đơn nhập cần tìm:", 5, 4);
                 Hien(1, 8, hdn.XemDSHoaDonNhap(), 5, 0);
                 mahdn = int.Parse(IO.ReadNumber(35, 4));
-                List<HoaDonNhap> list = hdn.TimHoaDonNhap(new HoaDonNhap(mahdn, 0, null, 0, null,0,0,0,0,null));
+                List<HoaDonNhap> list = hdn.TimHoaDonNhap(new HoaDonNhap(mahdn, 0, null, 0, null,0,0,0,0));
                 Hien(1, 8, list, 5, 1);
                 if (mahdn == 0)
                     break;
@@ -195,9 +189,9 @@ namespace Grocery.Presenation
                 y = yy;
                 d = 0;
                 IO.Writexy("                                   DANH SÁCH HÓA ĐƠN NHẬP", x, y);
-                IO.Writexy("┌────────┬─────────┬────────────────┬────────────┬────────────┬───────────┬──────────┬──────────┬─────────────┬─────────┬", x, y + 1);
-                IO.Writexy("│ Mã HDN │ Mã NCC  │ Nhân viên giao │ Mã NV nhận │ Ngày nhận  │ Mã hàng   │ Số lượng │ Giá nhập │ Thành tiền  │ Ghi chú │", x, y + 2);
-                IO.Writexy("├────────┼─────────┼────────────────┼────────────┼────────────┼───────────┼──────────┼──────────┼─────────────┼─────────┼", x, y + 3);
+                IO.Writexy("┌────────┬─────────┬────────────────┬────────────┬────────────┬───────────┬──────────┬──────────┬─────────────┐", x, y + 1);
+                IO.Writexy("│ Mã HDN │ Mã NCC  │ Nhân viên giao │ Mã NV nhận │ Ngày nhận  │ Mã hàng   │ Số lượng │ Giá nhập │ Thành tiền  │", x, y + 2);
+                IO.Writexy("├────────┼─────────┼────────────────┼────────────┼────────────┼───────────┼──────────┼──────────┼─────────────┤", x, y + 3);
                 y += 4;
                 for (int i = head; i < final; i++)
                 {
@@ -219,15 +213,13 @@ namespace Grocery.Presenation
                     IO.Writexy(list[i].gianhap.ToString(), x + 86, y + d, 10);
                     IO.Writexy("│", x + 96, y + d);
                     IO.Writexy(list[i].thanhtien.ToString(), x + 97, y + d, 13);
-                    IO.Writexy("│", x + 110 , y + d);
-                    IO.Writexy(list[i].ghichu.ToString(), x + 111, y + d, 9);
-                    IO.Writexy("│", x + 120, y + d);
+                    IO.Writexy("│", x + 110, y + d);
                     if (i < final - 1)
-                        IO.Writexy("├────────┼─────────┼────────────────┼────────────┼────────────┼───────────┼──────────┼──────────┼─────────────┼─────────┼", x, y + d + 1);
+                        IO.Writexy("├────────┼─────────┼────────────────┼────────────┼────────────┼───────────┼──────────┼──────────┼─────────────┼", x, y + d + 1);
                     y += 1;
                     d += 1;
                 }
-                IO.Writexy("└────────┴─────────┴────────────────┴────────────┴────────────┴───────────┴──────────┴──────────┴─────────────┴─────────┘", x, y + d - 1);
+                IO.Writexy("└────────┴─────────┴────────────────┴────────────┴────────────┴───────────┴──────────┴──────────┴─────────────┘", x, y + d - 1);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage, x, y + d);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage + "          Nhấn PagegUp để xem trước, PagegDown để xem tiếp, Esc để thoát...", x, y + d);
                 if (type == 0)
@@ -274,7 +266,7 @@ namespace Grocery.Presenation
                         hdn.Xem();
                         break;
                     case 4:
-                        hdn.HienTim();
+                        hdn.TimMa();
                         break;
                     case 5:
                         FormMenuMain.HienThi();
@@ -301,39 +293,39 @@ namespace Grocery.Presenation
             Console.ReadKey();
         }
 
-        public void HienTim()
-        {
-            Console.WindowHeight = Console.LargestWindowHeight;
-            string[] mn =
-            {
-                " F1:Tìm kiếm hóa đơn nhập theo mã. ",
-                " F2:Quay lại. "
-            };
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.Clear();
-            MenuTim hdn = new MenuTim(mn);
-            hdn.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-            Console.ReadKey();
-        }
-        public class MenuTim : Menu
-        {
-            public MenuTim(string[] mn) : base(mn)
-            {
-            }
-            public override void ThucHien(int location)
-            {
-                FormHoaDonNhap hdn = new FormHoaDonNhap();
-                switch (location)
-                {
-                    case 0:
-                        hdn.TimMa();
-                        break;
+        //public void HienTim()
+        //{
+        //    Console.WindowHeight = Console.LargestWindowHeight;
+        //    string[] mn =
+        //    {
+        //        " F1:Tìm kiếm hóa đơn nhập theo mã. ",
+        //        " F2:Quay lại. "
+        //    };
+        //    Console.BackgroundColor = ConsoleColor.Black;
+        //    Console.Clear();
+        //    MenuTim hdn = new MenuTim(mn);
+        //    hdn.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
+        //    Console.ReadKey();
+        //}
+        //public class MenuTim : Menu
+        //{
+        //    public MenuTim(string[] mn) : base(mn)
+        //    {
+        //    }
+        //    public override void ThucHien(int location)
+        //    {
+        //        FormHoaDonNhap hdn = new FormHoaDonNhap();
+        //        switch (location)
+        //        {
+        //            case 0:
+        //                hdn.TimMa();
+        //                break;
                    
-                    case 1:
-                        hdn.HienChucNang();
-                        break;
-                }
-            }
-        }
+        //            case 1:
+        //                hdn.HienChucNang();
+        //                break;
+        //        }
+        //    }
+        //}
     }
 }

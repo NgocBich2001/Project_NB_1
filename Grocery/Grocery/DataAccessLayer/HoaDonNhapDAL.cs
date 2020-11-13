@@ -24,7 +24,7 @@ namespace Grocery.DataAccessLayer
                 {
                     s = Grocery.Utiility.CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new HoaDonNhap(int.Parse(a[0]), int.Parse(a[1]), a[2], int.Parse(a[3]), a[4], int.Parse(a[5]), int.Parse(a[6]), double.Parse(a[7]), double.Parse(a[8]), a[9]));
+                    list.Add(new HoaDonNhap(int.Parse(a[0]), int.Parse(a[1]), a[2], int.Parse(a[3]), a[4], int.Parse(a[5]), int.Parse(a[6]), double.Parse(a[7]), double.Parse(a[8])));
 
                 }
                 s = fread5.ReadLine();
@@ -64,7 +64,7 @@ namespace Grocery.DataAccessLayer
             int manhap = mahdn + 1;
             StreamWriter fwrite = File.AppendText(txtfile5);
             fwrite.WriteLine();
-            fwrite.Write(manhap + "\t" + hdn.mancc + "\t" + hdn.nvgiao + "\t" + hdn.manvnhan + "\t" + hdn.ngaynhan + "\t" + hdn.mahang + "\t" + hdn.soluong + "\t" + hdn.gianhap + "\t" + hdn.thanhtien + "\t" + hdn.ghichu);
+            fwrite.Write(manhap + "\t" + hdn.mancc + "\t" + hdn.nvgiao + "\t" + hdn.manvnhan + "\t" + hdn.ngaynhan + "\t" + hdn.mahang + "\t" + hdn.soluong + "\t" + hdn.gianhap + "\t" + hdn.thanhtien);
             fwrite.Close();
         }
         //Cập nhật lại danh sách vào tệp
@@ -72,7 +72,7 @@ namespace Grocery.DataAccessLayer
         {
             StreamWriter fwrite = File.CreateText(txtfile5);
             for (int i = 0; i < list.Count; ++i)
-                fwrite.WriteLine(list[i].mahdn + "\t" + list[i].mancc + "\t" + list[i].nvgiao + "\t" + list[i].manvnhan + "\t" + list[i].ngaynhan + "\t" + list[i].mahang + "\t" + list[i].soluong + "\t" + list[i].gianhap + "\t" + list[i].thanhtien + "\t" + list[i].ghichu); ;
+                fwrite.WriteLine(list[i].mahdn + "\t" + list[i].mancc + "\t" + list[i].nvgiao + "\t" + list[i].manvnhan + "\t" + list[i].ngaynhan + "\t" + list[i].mahang + "\t" + list[i].soluong + "\t" + list[i].gianhap + "\t" + list[i].thanhtien); ;
             fwrite.Close();
         }
     }

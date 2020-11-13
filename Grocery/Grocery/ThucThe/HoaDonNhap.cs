@@ -16,7 +16,6 @@ namespace Grocery.ThucThe
         private int SoLuong;
         private double DonGiaNhap;
         private double ThanhTien;
-        private string GhiChu;
         public HoaDonNhap()
         {
             MaHDN = 0;
@@ -28,9 +27,8 @@ namespace Grocery.ThucThe
             SoLuong = 0;
             DonGiaNhap = 0;
             ThanhTien = 0;
-            GhiChu = "";
         }    
-        public HoaDonNhap(int mahdn, int mancc, string nvgiao, int manvnhan, string ngaynhan, int mahang, int sl, double gianhap, double thanhtien, string ghichu)
+        public HoaDonNhap(int mahdn, int mancc, string nvgiao, int manvnhan, string ngaynhan, int mahang, int sl, double gianhap, double thanhtien)
         {
             this.MaHDN = mahdn;
             this.MaNCC = mancc;
@@ -41,7 +39,6 @@ namespace Grocery.ThucThe
             this.SoLuong = sl;
             this.DonGiaNhap = gianhap;
             this.ThanhTien = thanhtien;
-            this.GhiChu = ghichu;
         }
         
         
@@ -56,7 +53,6 @@ namespace Grocery.ThucThe
             this.SoLuong = hdn.SoLuong;
             this.DonGiaNhap = hdn.DonGiaNhap;
             this.ThanhTien = hdn.ThanhTien;
-            this.GhiChu = hdn.GhiChu;
         }
         public int mahdn
         {
@@ -164,17 +160,6 @@ namespace Grocery.ThucThe
             {
                 if (ThanhTien > 0)
                     ThanhTien = value;
-            }
-        }
-        public string ghichu
-        {
-            get
-            {
-                return GhiChu;
-            }
-            set
-            {
-                    GhiChu = value;
             }
         }
     }

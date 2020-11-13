@@ -19,10 +19,9 @@ namespace Grocery.Business
         }
         public void ThemHoaDonNhap(HoaDonNhap HDN)
         {
-            if (HDN.nvgiao!="" && HDN.ghichu != "")
+            if (HDN.nvgiao!="")
             {
                 HDN.nvgiao = Grocery.Utiility.CongCu.ChuanHoaXau(HDN.nvgiao);
-                HDN.ghichu = Grocery.Utiility.CongCu.ChuanHoaXau(HDN.ghichu);
                 HDNDA.Insert(HDN);
             }
             else
@@ -78,12 +77,12 @@ namespace Grocery.Business
             List<HoaDonNhap> list = HDNDA.GetData();
             List<HoaDonNhap> KQ = new List<HoaDonNhap>();
             //Với giá trị ngầm định ban đầu
-            if (HDN.mahdn == 0 && HDN.mancc == 0 && HDN.nvgiao=="" && HDN.manvnhan==0 && HDN.mahang==0 && HDN.soluong==0 && HDN.gianhap==0 && HDN.ghichu=="")
+            if (HDN.mahdn == 0)
             {
                 KQ = list;
             }
             //Tìm theo mã
-            if (HDN.mahdn != 0 && HDN.mancc == 0 && HDN.nvgiao == "" && HDN.manvnhan == 0 && HDN.mahang == 0 && HDN.soluong == 0 && HDN.gianhap == 0 && HDN.ghichu == "")
+            if (HDN.mahdn != 0)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].mahdn == HDN.mahdn)
