@@ -24,9 +24,37 @@ namespace Grocery.Presenation
                 IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 8);
                 Hien(1, 13, hanghoa.XemDSHangHoa(), 5, 0);
                 HangHoa hh = new HangHoa();
-                hh.tenhang = IO.ReadString(15, 4);
-                hh.slnhapve = int.Parse(IO.ReadNumber(20, 6));
-                hh.slhienco = int.Parse(IO.ReadNumber(69, 6));
+                do
+                {
+                    hh.tenhang = IO.ReadString(15, 4);
+                    if (hh.tenhang == null)
+                    {
+                        IO.Clear(5, 8, 80, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 8);
+                    }
+                } while (hh.tenhang == null);
+                IO.Clear(5, 8, 80, ConsoleColor.Black);
+                IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 8);
+                do
+                {
+                    hh.slnhapve = int.Parse(IO.ReadNumber(20, 6));
+                    if (hh.slnhapve <= 0)
+                    {
+                        IO.Clear(5, 8, 80, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 8);
+                    }
+                } while (hh.slnhapve <= 0);
+                IO.Clear(5, 8, 80, ConsoleColor.Black);
+                IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 8);
+                do
+                {
+                    hh.slhienco = int.Parse(IO.ReadNumber(69, 6));
+                    if (hh.slhienco < 0)
+                    {
+                        IO.Clear(5, 8, 80, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 8);
+                    }
+                } while (hh.slhienco < 0);
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
@@ -40,6 +68,7 @@ namespace Grocery.Presenation
         public void Sua()
         {
             IFHangHoaBLL hanghoa = new HangHoaBLL();
+            HangHoaBLL hhBLL = new HangHoaBLL();
             Console.Clear();
             IO.BoxTitle("                                   CẬP NHẬT THÔNG TIN HÀNG HÓA", 1, 1, 10, 100);
             IO.Writexy("Mã HH:", 3, 4);
@@ -54,10 +83,21 @@ namespace Grocery.Presenation
             string tenhang;
             int sln;
             int slc;
-
-            mahh = int.Parse(IO.ReadNumber(10, 4));
+            do
+            {
+                mahh = int.Parse(IO.ReadNumber(10, 4));
+                if (mahh < 0 || hhBLL.KiemTra(mahh) == false)
+                {
+                    IO.Clear(5, 8, 80, ConsoleColor.Black);
+                    IO.Writexy("Không tồn tại mã hàng này. Vui lòng kiểm tra lại!",5,8);
+                }    
+            } while (mahh < 0 || hhBLL.KiemTra(mahh) == false);
+            IO.Clear(5, 8, 80, ConsoleColor.Black);
+            IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
             HangHoa hh = hanghoa.LayHangHoa(mahh);
             IO.Writexy(hh.tenhang, 65, 4);
+            IO.Clear(5, 8, 80, ConsoleColor.Black);
+            IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
             IO.Writexy(hh.slnhapve.ToString(), 18, 6);
             IO.Writexy(hh.slhienco.ToString(), 77, 6);
 
@@ -86,6 +126,7 @@ namespace Grocery.Presenation
         }
         public void Xoa()
         {
+            HangHoaBLL hhBLL = new HangHoaBLL();
             int mahh = 0;
             do
             {
@@ -95,14 +136,19 @@ namespace Grocery.Presenation
                 IO.BoxTitle("                                        XÓA HÀNG HÓA", 1, 1, 5, 100);
                 IO.Writexy("Nhập mã hàng hóa cần xóa:", 5, 4);
                 Hien(1, 8, hanghoa.XemDSHangHoa(), 5, 0);
-                mahh = int.Parse(IO.ReadNumber(31, 4));
-                if (mahh == 0)
-                    break;
-                else
-                    hanghoa.XoaHangHoa(mahh);
-                Hien(1, 8, hanghoa.XemDSHangHoa(), 5, 1);
+                do
+                {
+                    mahh = int.Parse(IO.ReadNumber(31, 4));
+                    if (mahh < 0 || hhBLL.KiemTra(mahh) == false)
+                    {
+                        IO.Clear(31, 4, 60, ConsoleColor.Black);
+                        IO.Writexy("Không tồn tại mã hàng này. Vui lòng kiểm tra lại!", 5, 8);
+                    }
+                    else
+                        hanghoa.XoaHangHoa(mahh);
+                    Hien(1, 8, hanghoa.XemDSHangHoa(), 5, 1);
+                } while (mahh < 0 || hhBLL.KiemTra(mahh) == false);
             } while (true);
-            HienChucNang();
         }
         public void Xem()
         {
@@ -118,17 +164,27 @@ namespace Grocery.Presenation
             {
                 Console.Clear();
                 IFHangHoaBLL hanghoa = new HangHoaBLL();
+                HangHoaBLL hhBLL = new HangHoaBLL();
                 Console.Clear();
                 IO.BoxTitle("                                      TÌM KIẾM HÀNG HÓA", 1, 1, 5, 100);
-                IO.Writexy("Nhập tên hàng hóa cần tìm:", 3, 4);
+                IO.Writexy("Nhập tên hàng hóa cần tìm:", 5, 4);
                 Hien(1, 8, hanghoa.XemDSHangHoa(), 5, 0);
-                tenhh = IO.ReadString(30, 4);
-                List<HangHoa> list = hanghoa.TimHangHoa(new HangHoa(0, tenhh, 0, 0));
-                Hien(1, 8, list, 5, 1);
-                if (tenhh == "")
-                    break;
+                do
+                {
+                    tenhh = IO.ReadString(33, 4);
+                    if (tenhh ==null || hhBLL.KiemTraTen(tenhh) == false)
+                    {
+                        IO.Clear(33, 4, 60, ConsoleColor.Black);
+                        IO.Writexy("Không tồn tại tên hàng này. Vui lòng kiểm tra lại!", 5, 6);
+                    }
+                    else
+                    {
+                        List<HangHoa> list = hanghoa.TimHangHoa(new HangHoa(0, null, 0, 0));
+                        Hien(1, 8, list, 5, 1);
+                    }
+                } while (tenhh == null || hhBLL.KiemTraTen(tenhh) == false);
+                
             } while (true);
-            HienChucNang();
         }
         public void TimMa()
         {
@@ -137,17 +193,26 @@ namespace Grocery.Presenation
             {
                 Console.Clear();
                 IFHangHoaBLL hanghoa = new HangHoaBLL();
+                HangHoaBLL hhBLL = new HangHoaBLL();
                 Console.Clear();
                 IO.BoxTitle("                                      TÌM KIẾM HÀNG HÓA", 1, 1, 5, 100);
                 IO.Writexy("Nhập mã hàng hóa cần tìm:", 3, 4);
                 Hien(1, 8, hanghoa.XemDSHangHoa(), 5, 0);
-                mahh = int.Parse(IO.ReadNumber(29, 4));
-                List<HangHoa> list = hanghoa.TimHangHoa(new HangHoa(mahh, null, 0, 0));
-                Hien(1, 8, list, 5, 1);
-                if (mahh == 0)
-                    break;
+                do
+                {
+                    mahh = int.Parse(IO.ReadNumber(29, 4));
+                    if (mahh < 0 || hhBLL.KiemTra(mahh) == false)
+                    {
+                        IO.Clear(29, 4, 60, ConsoleColor.Black);
+                        IO.Writexy("Không tồn tại mã hàng này. Vui lòng kiểm tra lại!", 5, 6);
+                    }
+                    else
+                    {
+                        List<HangHoa> list = hanghoa.TimHangHoa(new HangHoa(mahh, null, 0, 0));
+                        Hien(1, 8, list, 5, 1);
+                    }
+                } while (mahh < 0 || hhBLL.KiemTra(mahh) == false);
             } while (true);
-            HienChucNang();
         }
         public void Hien(int xx, int yy, List<HangHoa> list, int n, int type)
         {

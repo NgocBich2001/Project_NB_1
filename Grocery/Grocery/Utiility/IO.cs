@@ -101,7 +101,7 @@ namespace Grocery.Utiility
             int i = x; int j = y; int d = 0;
             while (d < length)
             {
-                if (i == 79) { i = 0; j = j + 1; } else i = i + 1;
+                if (i == 111) { i = 0; j = j + 1; } else i = i + 1;
                 Writexy(" ", i, j, maunen, maunen);
                 d++;
             }

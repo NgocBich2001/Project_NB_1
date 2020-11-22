@@ -21,6 +21,7 @@ namespace Grocery.ThucThe
         }
         public HangHoa(int mahh, string tenhang, int slnhap, int slhienco)
         {
+            this.MaHH = mahh;
             this.TenHang = tenhang;
             this.SLNhapVe = slnhap;
             this.SLHienCo = slhienco;

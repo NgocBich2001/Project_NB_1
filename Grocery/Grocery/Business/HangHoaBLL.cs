@@ -27,6 +27,41 @@ namespace Grocery.Business
             else
                 throw new Exception("Du lieu sai!");
         }
+
+        public bool KiemTra(int mahh)
+        {
+            List<HangHoa> list = HHDA.GetData();
+            Node<HangHoa> NB = list.L;
+            bool kt = false;
+            while (NB != null)
+            {
+                if (NB.Info.mahh == mahh)
+                {
+                    kt = true;
+                    break;
+                }
+                else
+                    NB = NB.Link;
+            }
+            return kt;
+        }
+        public bool KiemTraTen(string tenhh)
+        {
+            List<HangHoa> list = HHDA.GetData();
+            Node<HangHoa> NB = list.L;
+            bool kt = false;
+            while (NB != null)
+            {
+                if (NB.Info.tenhang == tenhh)
+                {
+                    kt = true;
+                    break;
+                }
+                else
+                    NB = NB.Link;
+            }
+            return kt;
+        }
         public void XoaHangHoa(int mahh)
         {
             int i;
@@ -69,7 +104,7 @@ namespace Grocery.Business
                 return list[i];
             }
             else
-                throw new Exception("Khong ton tai ma nay");
+                throw new Exception("Không tồn tại mã này!");
 
         }
         public List<HangHoa> TimHangHoa(HangHoa HH)
@@ -77,12 +112,12 @@ namespace Grocery.Business
             List<HangHoa> list = HHDA.GetData();
             List<HangHoa> KQ = new List<HangHoa>();
             //Với giá trị ngầm định ban đầu
-            if (HH.mahh == 0 && HH.tenhang == "")
+            if (HH.mahh == 0 && HH.tenhang == null)
             {
                 KQ = list;
             }
             //Tìm theo mã
-            if (HH.mahh != 0 && HH.tenhang == "")
+            if (HH.mahh != 0 && HH.tenhang == null)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].mahh == HH.mahh)
@@ -90,6 +125,16 @@ namespace Grocery.Business
                         KQ.Add(new HangHoa(list[i]));
                     }
             }
+            else if (HH.mahh ==0 && HH.tenhang != null)
+            {
+                for (int i=0; i<list.Count;i++)
+                {
+                    if (list[i].tenhang == HH.tenhang)
+                    {
+                        KQ.Add(new HangHoa(list[i]));
+                    }    
+                }    
+            }    
             else KQ = null;
             return KQ;
         }

@@ -26,11 +26,59 @@ namespace Grocery.Presenation
                 IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 12); //
                 Hien(1, 16, nhanvien.XemDSNhanVien(), 5, 0);
                 NhanVien nv = new NhanVien();
-                nv.tennv = IO.ReadString(21, 4);
-                nv.ngaysinh = IO.ReadNumber(15, 6);
-                nv.gt = IO.ReadString(46, 6);
-                nv.ngayvaolam = IO.ReadNumber(24, 8);
-                nv.pass = IO.ReadString(11, 10);
+                do
+                {
+                    nv.tennv = IO.ReadString(21, 4);
+                    if(nv.tennv == null)
+                    {
+                        IO.Clear(5, 12, 80, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 12);
+                    }    
+                } while (nv.tennv == null);
+                IO.Clear(5, 12, 80, ConsoleColor.Black);
+                IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 12);
+                do
+                {
+                    nv.ngaysinh = IO.ReadString(15, 6);
+                    if (nv.ngaysinh == null)
+                    {
+                        IO.Clear(5, 12, 80, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 12);
+                    }    
+                } while (nv.ngaysinh == null);
+                IO.Clear(5, 12, 80, ConsoleColor.Black);
+                IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 12);
+                do
+                {
+                    nv.gt = IO.ReadString(46, 6);
+                    if(nv.gt==null)
+                    {
+                        IO.Clear(5, 12, 80, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 12);
+                    }    
+                } while (nv.gt == null);
+                IO.Clear(5, 12, 80, ConsoleColor.Black);
+                IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 12);
+                do
+                {
+                    nv.ngayvaolam = IO.ReadString(24, 8);
+                    if(nv.ngayvaolam == null)
+                    {
+                        IO.Clear(5, 12, 80, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 12);
+                    }
+                } while (nv.ngayvaolam == null);
+                IO.Clear(5, 12, 80, ConsoleColor.Black);
+                IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 12);
+                do
+                {
+                    nv.pass = IO.ReadString(11, 10);
+                    if (nv.pass == null)
+                    {
+                        IO.Clear(5, 12, 80, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 12);
+                    }
+                } while (nv.pass == null);
                 Console.SetCursorPosition(54, 12);   //
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
@@ -44,17 +92,18 @@ namespace Grocery.Presenation
         public void Sua()
         {
             IFNhanVienBLL nhanvien = new NhanVienBLL();
+            NhanVienBLL NVBLL = new NhanVienBLL();
             Console.Clear();
-            IO.BoxTitle("                                   CẬP NHẬT THÔNG TIN NHÂN VIÊN", 1, 1, 10, 100);
+            IO.BoxTitle("                                   CẬP NHẬT THÔNG TIN NHÂN VIÊN", 1, 1, 15, 100);
             IO.Writexy("Mã nhân viên:", 5, 4);
-            IO.Writexy("Tên nhân viên :", 15, 6);
+            IO.Writexy("Tên nhân viên :", 40, 4);
             IO.Writexy("Ngày sinh:", 5, 6);
             IO.Writexy("Giới tính:", 35, 6);
             IO.Writexy("Ngày vào làm việc: ",5, 8);
             IO.Writexy("Pass: ",5, 10);
-            IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
-            IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
-            Hien(1, 13, nhanvien.XemDSNhanVien(), 5, 0);
+            IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 11);
+            IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 12);
+            Hien(1, 18, nhanvien.XemDSNhanVien(), 5, 0);
 
             int manv;
             string tennv;
@@ -62,14 +111,21 @@ namespace Grocery.Presenation
             string gioitinh;
             string ngaylv;
             string pass;
-
-            manv = int.Parse(IO.ReadNumber(10, 4));
+            do
+            {
+                manv = int.Parse(IO.ReadNumber(20, 4));
+                if (manv < 0 || NVBLL.KiemTra(manv) == false)
+                {
+                    IO.Clear(5, 12, 60, ConsoleColor.Black);
+                    IO.Writexy("Không tồn tại mã hàng này. Vui lòng kiểm tra lại!", 5, 12);
+                }
+            } while (manv < 0 || NVBLL.KiemTra(manv) == false);
             NhanVien nv = nhanvien.LayNhanVien(manv);
-            IO.Writexy(nv.tennv, 65, 4);
+            IO.Writexy(nv.tennv, 56, 4);
             IO.Writexy(nv.ngaysinh.ToString(), 18, 6);
             IO.Writexy(nv.gt, 48, 6);
-            IO.Writexy(nv.ngayvaolam.ToString(), 77, 8);
-            IO.Writexy(nv.pass, 65, 10);
+            IO.Writexy(nv.ngayvaolam.ToString(), 24, 8);
+            IO.Writexy(nv.pass, 11, 10);
             tennv = IO.ReadString(65, 4);
             if (tennv != nv.tennv && tennv != null)
                 nv.tennv = tennv;
@@ -106,18 +162,24 @@ namespace Grocery.Presenation
             {
                 Console.Clear();
                 IFNhanVienBLL nhanvien = new NhanVienBLL();
+                NhanVienBLL NVBLL = new NhanVienBLL();
                 Console.Clear();
                 IO.BoxTitle("                                        XÓA NHÂN VIÊN", 1, 1, 5, 100);
                 IO.Writexy("Nhập mã nhân viên cần xóa:", 5, 4);
                 Hien(1, 8, nhanvien.XemDSNhanVien(), 5, 0);
-                manv = int.Parse(IO.ReadNumber(31, 4));
-                if (manv == 0)
-                    break;
-                else
-                    nhanvien.XoaNhanVien(manv);
-                Hien(1, 8, nhanvien.XemDSNhanVien(), 5, 1);
+                do
+                {
+                    manv = int.Parse(IO.ReadNumber(31, 4));
+                    if (manv < 0 || NVBLL.KiemTra(manv) == false)
+                    {
+                        IO.Clear(31, 4, 60, ConsoleColor.Black);
+                        IO.Writexy("Không tồn tại mã nhân viên này. Vui lòng kiểm tra lại!", 5, 6);
+                    }
+                    else
+                        nhanvien.XoaNhanVien(manv);
+                    Hien(1, 8, nhanvien.XemDSNhanVien(), 5, 1);
+                } while (manv < 0 || NVBLL.KiemTra(manv) == false);
             } while (true);
-            HienChucNang();
         }
         public void Xem()
         {
@@ -133,17 +195,26 @@ namespace Grocery.Presenation
             {
                 Console.Clear();
                 IFNhanVienBLL nhanvien = new NhanVienBLL();
+                NhanVienBLL NVBLL = new NhanVienBLL();
                 Console.Clear();
                 IO.BoxTitle("                                      TÌM KIẾM NHÂN VIÊN", 1, 1, 5, 100);
                 IO.Writexy("Nhập tên nhân viên cần tìm:", 3, 4);
                 Hien(1, 8, nhanvien.XemDSNhanVien(), 5, 0);
-                tennv = IO.ReadString(30, 4);
-                List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(0, tennv, null, null, null, null));
-                Hien(1, 8, list, 5, 1);
-                if (tennv == "")
-                    break;
+                do
+                {
+                    tennv = IO.ReadString(30, 4);
+                    if (tennv == null || NVBLL.KiemTraTen(tennv) == false)
+                    {
+                        IO.Clear(30, 4, 60, ConsoleColor.Black);
+                        IO.Writexy("Không tồn tại tên nhân viên này. Vui lòng kiểm tra lại!", 5, 6);
+                    }
+                    else
+                    {
+                        List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(0, tennv, null, null, null, null));
+                        Hien(1, 8, list, 5, 1);
+                    }    
+                } while (tennv == null || NVBLL.KiemTraTen(tennv) == false);
             } while (true);
-            HienChucNang();
         }
         public void TimMa()
         {
@@ -152,17 +223,26 @@ namespace Grocery.Presenation
             {
                 Console.Clear();
                 IFNhanVienBLL nhanvien = new NhanVienBLL();
+                NhanVienBLL NVBLL = new NhanVienBLL();
                 Console.Clear();
                 IO.BoxTitle("                                      TÌM KIẾM NHÂN VIÊN", 1, 1, 5, 100);
                 IO.Writexy("Nhập mã nhân viên cần tìm:", 3, 4);
                 Hien(1, 8, nhanvien.XemDSNhanVien(), 5, 0);
-                manv = int.Parse(IO.ReadNumber(29, 4));
-                List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(manv, null, null, null, null, null));
-                Hien(1, 8, list, 5, 1);
-                if (manv == 0)
-                    break;
+                do
+                {
+                    manv = int.Parse(IO.ReadNumber(29, 4));
+                    if (manv < 0 || NVBLL.KiemTra(manv) == false)
+                    {
+                        IO.Clear(29, 4, 60, ConsoleColor.Black);
+                        IO.Writexy("Không tồn tại mã nhân viên này. Vui lòng kiểm tra lại!", 5, 6);
+                    }
+                    else
+                    {
+                        List<NhanVien> list = nhanvien.TimNhanVien(new NhanVien(manv, null, null, null, null, null));
+                        Hien(1, 8, list, 5, 1);
+                    }
+                } while (manv < 0 || NVBLL.KiemTra(manv) == false);
             } while (true);
-            HienChucNang();
         }
         public void Hien(int xx, int yy, List<NhanVien> list, int n, int type)
         {

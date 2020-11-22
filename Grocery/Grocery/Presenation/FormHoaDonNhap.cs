@@ -29,13 +29,71 @@ namespace Grocery.Presenation
                 IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 14);
                 Hien(1, 16, hdn.XemDSHoaDonNhap(), 5, 0);
                 HoaDonNhap hoadn = new HoaDonNhap();
-                hoadn.mancc = int.Parse(IO.ReadNumber(22, 4));
-                hoadn.nvgiao = IO.ReadString(21, 6);
-                hoadn.manvnhan = int.Parse(IO.ReadNumber(25, 8));
-                hoadn.ngaynhan = IO.ReadString(52, 8);
-                hoadn.mahang = int.Parse(IO.ReadNumber(13, 10));
-                hoadn.soluong = int.Parse(IO.ReadNumber(35, 10));
-                hoadn.gianhap = double.Parse(IO.ReadNumber(54, 10));
+                do
+                {
+                    hoadn.mancc = int.Parse(IO.ReadNumber(22, 4));
+                    if(hoadn.mancc<0)
+                    {
+                        IO.Clear(5, 14, 111, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!",5,14);
+                    }    
+                } while (hoadn.mancc < 0);
+                IO.Clear(5, 14, 111, ConsoleColor.Black);
+                IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 14);
+                do
+                {
+                    hoadn.nvgiao = IO.ReadString(21, 6);
+                    if (hoadn.nvgiao == null)
+                    {
+                        IO.Clear(5, 14, 111, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 14);
+                    }
+                } while (hoadn.nvgiao == null);
+                do
+                {
+                    hoadn.manvnhan = int.Parse(IO.ReadNumber(25, 8));
+                    if (hoadn.manvnhan < 0)
+                    {
+                        IO.Clear(5, 14, 111, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 14);
+                    }
+                } while (hoadn.manvnhan < 0);
+                do
+                {
+                    hoadn.ngaynhan = IO.ReadString(52, 8);
+                    if (hoadn.ngaynhan == null)
+                    {
+                        IO.Clear(5, 14, 111, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 14);
+                    }
+                } while (hoadn.ngaynhan == null);
+                do
+                {
+                    hoadn.mahang = int.Parse(IO.ReadNumber(13, 10));
+                    if (hoadn.mahang < 0)
+                    {
+                        IO.Clear(5, 14, 111, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 14);
+                    }
+                } while (hoadn.mahang < 0);
+                do
+                {
+                    hoadn.soluong = int.Parse(IO.ReadNumber(35, 10));
+                    if (hoadn.soluong < 0)
+                    {
+                        IO.Clear(5, 14, 111, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 14);
+                    }
+                } while (hoadn.soluong < 0);
+                do
+                {
+                    hoadn.gianhap = double.Parse(IO.ReadNumber(54, 10));
+                    if (hoadn.gianhap < 0)
+                    {
+                        IO.Clear(5, 14, 111, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 14);
+                    }
+                } while (hoadn.gianhap < 0);
                 //hoadn.thanhtien = double.Parse(IO.ReadNumber(17, 12));
                 IO.Writexy(hoadn.thanhtien.ToString(), 17, 12);
                 Console.SetCursorPosition(55, 8);
@@ -51,6 +109,7 @@ namespace Grocery.Presenation
         public void Sua()
         {
             IFHoaDonNhapBLL hdn = new HoaDonNhapBLL();
+            HoaDonNhapBLL HDNBLL = new HoaDonNhapBLL();
             Console.Clear();
             IO.BoxTitle("                                   CẬP NHẬT THÔNG TIN HÓA ĐƠN NHẬP", 1, 1, 15, 100);
             IO.Writexy("Mã hóa đơn nhập:", 5, 4);
@@ -75,8 +134,15 @@ namespace Grocery.Presenation
             int soluong;
             double gianhap;
             //double thanhtien;
-
-            mahdn = int.Parse(IO.ReadNumber(23, 4));
+            do
+            {
+                mahdn = int.Parse(IO.ReadNumber(23, 4));
+                if (mahdn < 0 || HDNBLL.KiemTra(mahdn) == false)
+                {
+                    IO.Clear(5, 14, 80, ConsoleColor.Black);
+                    IO.Writexy("Không tồn tại mã hóa đơn nhập này. Vui lòng kiểm tra lại!", 5, 14);
+                }
+            } while (mahdn < 0 || HDNBLL.KiemTra(mahdn) == false);
             HoaDonNhap hdnhap = hdn.LayHoaDonNhap(mahdn);
             IO.Writexy(hdnhap.mancc.ToString(),58, 4);
             IO.Writexy(hdnhap.nvgiao, 21, 6);
@@ -133,18 +199,24 @@ namespace Grocery.Presenation
             {
                 Console.Clear();
                 IFHoaDonNhapBLL hdn = new HoaDonNhapBLL();
+                HoaDonNhapBLL HDNBLL = new HoaDonNhapBLL();
                 Console.Clear();
                 IO.BoxTitle("                                  XÓA HÓA ĐƠN NHẬP", 1, 1, 5, 100);
                 IO.Writexy("Nhập mã hóa đơn nhập cần xóa:", 5, 4);
                 Hien(1, 8, hdn.XemDSHoaDonNhap(), 5, 0);
-                mahdn = int.Parse(IO.ReadNumber(35, 4));
-                if (mahdn == 0)
-                    break;
-                else
-                    hdn.XoaHoaDonNhap(mahdn);
-                Hien(1, 8, hdn.XemDSHoaDonNhap(), 5, 1);
+                do
+                {
+                    mahdn = int.Parse(IO.ReadNumber(35, 4));
+                    if (mahdn < 0 || HDNBLL.KiemTra(mahdn) == false)
+                    {
+                        IO.Clear(35, 4, 60, ConsoleColor.Black);
+                        IO.Writexy("Không tồn tại mã hóa đơn nhập này. Vui lòng kiểm tra lại!", 5, 6);
+                    }
+                    else
+                        hdn.XoaHoaDonNhap(mahdn);
+                    Hien(1, 8, hdn.XemDSHoaDonNhap(), 5, 1);
+                } while (mahdn < 0 || HDNBLL.KiemTra(mahdn) == false);
             } while (true);
-            HienChucNang();
         }
         public void Xem()
         {
@@ -161,17 +233,26 @@ namespace Grocery.Presenation
             {
                 Console.Clear();
                 IFHoaDonNhapBLL hdn = new HoaDonNhapBLL();
+                HoaDonNhapBLL HDNBLL = new HoaDonNhapBLL();
                 Console.Clear();
                 IO.BoxTitle("                                TÌM KIẾM HÓA ĐƠN NHẬP", 1, 1, 5, 100);
                 IO.Writexy("Nhập mã hóa đơn nhập cần tìm:", 5, 4);
                 Hien(1, 8, hdn.XemDSHoaDonNhap(), 5, 0);
-                mahdn = int.Parse(IO.ReadNumber(35, 4));
-                List<HoaDonNhap> list = hdn.TimHoaDonNhap(new HoaDonNhap(mahdn, 0, null, 0, null,0,0,0,0));
-                Hien(1, 8, list, 5, 1);
-                if (mahdn == 0)
-                    break;
+                do
+                {
+                    mahdn = int.Parse(IO.ReadNumber(35, 4));
+                    if (mahdn < 0 || HDNBLL.KiemTra(mahdn) == false)
+                    {
+                        IO.Clear(35, 4, 60, ConsoleColor.Black);
+                        IO.Writexy("Không tồn tại mã hóa đơn nhập này. Vui lòng kiểm tra lại!", 5, 6);
+                    }
+                    else
+                    {
+                        List<HoaDonNhap> list = hdn.TimHoaDonNhap(new HoaDonNhap(mahdn, 0, null, 0, null, 0, 0, 0, 0));
+                        Hien(1, 8, list, 5, 1);
+                    }    
+                } while (mahdn < 0 || HDNBLL.KiemTra(mahdn) == false);
             } while (true);
-            HienChucNang();
         }
         public void Hien(int xx, int yy, List<HoaDonNhap> list, int n, int type)
         {

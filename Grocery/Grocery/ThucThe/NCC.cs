@@ -9,15 +9,15 @@ namespace Grocery.ThucThe
         private int MaNCC;
         private string TenNCC;
         private string DiaChi;
-        private int SDT;
+        private string SDT;
         public NCC()
         {
             MaNCC = 0;
             TenNCC = "";
             DiaChi = "";
-            SDT = 0;
+            SDT = "";
         }
-        public NCC(int mancc, string tenncc, string diachi, int sdt)
+        public NCC(int mancc, string tenncc, string diachi,string sdt)
         {
             this.MaNCC = mancc;
             this.TenNCC = tenncc;
@@ -67,7 +67,7 @@ namespace Grocery.ThucThe
                     DiaChi = value;
             }    
         }    
-        public int sdt
+        public string sdt
         {
             get
             {
@@ -75,7 +75,7 @@ namespace Grocery.ThucThe
             }
             set
             {
-                if (value > 0)
+                if (value != "")
                     SDT = value;
             }    
         }

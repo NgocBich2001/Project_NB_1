@@ -24,9 +24,37 @@ namespace Grocery.Presenation
                 IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 8);
                 Hien(1, 13, nhacc.XemDSNhaCC(), 5, 0);
                 NCC nc = new NCC();
-                nc.tenncc= IO.ReadString(25, 4);
-                nc.diachi = IO.ReadString(14, 6);
-                nc.sdt = int.Parse(IO.ReadNumber(70, 6));
+                do
+                {
+                    nc.tenncc = IO.ReadString(25, 4);
+                    if (nc.tenncc == null)
+                    {
+                        IO.Clear(5, 8, 80, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin xui lòng nhập lại!", 5, 8);
+                    }
+                } while (nc.tenncc == null);
+                IO.Clear(5, 8, 80, ConsoleColor.Black);
+                IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 8);
+                do
+                {
+                    nc.diachi = IO.ReadString(14, 6);
+                    if (nc.diachi == null)
+                    {
+                        IO.Clear(5, 8, 80, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin xui lòng nhập lại!", 5, 8);
+                    }
+                } while (nc.diachi == null);
+                IO.Clear(5, 8, 80, ConsoleColor.Black);
+                IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 8);
+                do
+                {
+                    nc.sdt = IO.ReadNumber(70, 6);
+                    if (nc.sdt == null)
+                    {
+                        IO.Clear(5, 8, 80, ConsoleColor.Black);
+                        IO.Writexy("Nhập sai. Xin xui lòng nhập lại!", 5, 8);
+                    }
+                } while (nc.sdt == null);
                 Console.SetCursorPosition(55, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
@@ -40,26 +68,34 @@ namespace Grocery.Presenation
         public void Sua()
         {
             IFNhaCCBLL nhacc = new NhaCCBLL();
+            NhaCCBLL NCBLL = new NhaCCBLL();
             Console.Clear();
             IO.BoxTitle("                                   CẬP NHẬT THÔNG TIN NHÀ CUNG CẤP", 1, 1, 10, 100);
             IO.Writexy("Mã nhà cung cấp:", 5, 4);
-            IO.Writexy("Tên nhà cung cấp:", 52, 4);
+            IO.Writexy("Tên nhà cung cấp:", 40, 4);
             IO.Writexy("Địa chỉ:", 5, 6);
-            IO.Writexy("Số điện thoại:", 52, 6);
+            IO.Writexy("Số điện thoại:", 40, 6);
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
             IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
-            Hien(1, 13, nhacc.XemDSNhaCC(), 5, 0);
+            Hien(1, 10, nhacc.XemDSNhaCC(), 5, 0);
 
             int mancc;
             string tenncc;
             string diachi;
-            int sdt;
-
-            mancc = int.Parse(IO.ReadNumber(23, 4));
+            string sdt;
+            do
+            {
+                mancc = int.Parse(IO.ReadNumber(23, 4));
+                if (mancc < 0 || NCBLL.KiemTra(mancc) == false)
+                {
+                    IO.Clear(5, 8, 60, ConsoleColor.Black);
+                    IO.Writexy("Không tồn tại mã nhà cung cấp này. Vui lòng kiểm tra lại!", 5, 8);
+                }
+            } while (mancc < 0 || NCBLL.KiemTra(mancc) == false);
             NCC nc = nhacc.LayNCC(mancc);
-            IO.Writexy(nc.tenncc, 53, 4);
+            IO.Writexy(nc.tenncc, 58, 4);
             IO.Writexy(nc.diachi, 14, 6);
-            IO.Writexy(nc.sdt.ToString(), 70, 6);
+            IO.Writexy(nc.sdt, 58, 6);
 
             tenncc = IO.ReadString(52, 4);
             if (tenncc != nc.tenncc && tenncc != null)
@@ -67,8 +103,8 @@ namespace Grocery.Presenation
             diachi = IO.ReadString(14, 6);
             if (diachi != nc.diachi && diachi != null)
                 nc.diachi = diachi;
-            sdt = int.Parse(IO.ReadNumber(70, 6));
-            if (sdt != nc.sdt && sdt > 0)
+            sdt = IO.ReadNumber(70, 6);
+            if (sdt != nc.sdt && sdt == null)
                  nc.sdt = sdt;
 
             Console.SetCursorPosition(58, 8);
@@ -91,18 +127,24 @@ namespace Grocery.Presenation
             {
                 Console.Clear();
                 IFNhaCCBLL nhacc = new NhaCCBLL();
+                NhaCCBLL NCBLL = new NhaCCBLL();
                 Console.Clear();
                 IO.BoxTitle("                                  XÓA NHÀ CUNG CẤP", 1, 1, 5, 100);
                 IO.Writexy("Nhập mã nhà cung cấp cần xóa:", 5, 4);
                 Hien(1, 8, nhacc.XemDSNhaCC(), 5, 0);
-                mancc = int.Parse(IO.ReadNumber(35, 4));
-                if (mancc == 0)
-                    break;
-                else
-                    nhacc.XoaNhaCC(mancc);
-                Hien(1, 8, nhacc.XemDSNhaCC(), 5, 1);
+                do
+                {
+                    mancc = int.Parse(IO.ReadNumber(35, 4));
+                    if (mancc < 0 || NCBLL.KiemTra(mancc) == false)
+                    {
+                        IO.Clear(35, 4, 60, ConsoleColor.Black);
+                        IO.Writexy("Không tồn tại mã nahf cung cấp này. Vui lòng kiểm tra lại!", 5, 6);
+                    }
+                    else
+                        nhacc.XoaNhaCC(mancc);
+                    Hien(1, 8, nhacc.XemDSNhaCC(), 5, 1);
+                } while (mancc < 0 || NCBLL.KiemTra(mancc) == false);     
             } while (true);
-            HienChucNang();
         }
         public void Xem()
         {
@@ -118,17 +160,26 @@ namespace Grocery.Presenation
             {
                 Console.Clear();
                 IFNhaCCBLL nhacc = new NhaCCBLL();
+                NhaCCBLL NCBLL = new NhaCCBLL();
                 Console.Clear();
                 IO.BoxTitle("                                      TÌM KIẾM NHÀ CUNG CẤP", 1, 1, 5, 100);
                 IO.Writexy("Nhập tên nhà cung cấp cần tìm:", 5, 4);
                 Hien(1, 8, nhacc.XemDSNhaCC(), 5, 0);
-                tenncc = IO.ReadString(35, 4);
-                List<NCC> list = nhacc.TimNhaCC(new NCC(0, tenncc, null, 0));
-                Hien(1, 8, list, 5, 1);
-                if (tenncc == "")
-                    break;
+                do
+                {
+                    tenncc = IO.ReadString(35, 4);
+                    if (tenncc == null || NCBLL.KiemTraTen(tenncc) == false)
+                    {
+                        IO.Clear(35, 4, 60, ConsoleColor.Black);
+                        IO.Writexy("Không tồn tại tên nhà cung cấp này. Vui lòng kiểm tra lại!", 5, 6);
+                    }
+                    else
+                    {
+                        List<NCC> list = nhacc.TimNhaCC(new NCC(0, tenncc, null, null));
+                        Hien(1, 8, list, 5, 1);
+                    }    
+                } while (tenncc == null || NCBLL.KiemTraTen(tenncc) == false);
             } while (true);
-            HienChucNang();
         }
         public void TimMa()
         {
@@ -137,17 +188,26 @@ namespace Grocery.Presenation
             {
                 Console.Clear();
                 IFNhaCCBLL nhacc = new NhaCCBLL();
+                NhaCCBLL NCBLL = new NhaCCBLL();
                 Console.Clear();
                 IO.BoxTitle("                                TÌM KIẾM NHÀ CUNG CẤP", 1, 1, 5, 100);
                 IO.Writexy("Nhập mã nhà cung cấp cần tìm:", 5, 4);
                 Hien(1, 8, nhacc.XemDSNhaCC(), 5, 0);
-                mancc = int.Parse(IO.ReadNumber(35, 4));
-                List<NCC> list = nhacc.TimNhaCC(new NCC(mancc, null, null, 0));
-                Hien(1, 8, list, 5, 1);
-                if (mancc == 0)
-                    break;
+                do
+                {
+                    mancc = int.Parse(IO.ReadNumber(35, 4));
+                    if (mancc < 0 || NCBLL.KiemTra(mancc) == false)
+                    {
+                        IO.Clear(35, 4, 60, ConsoleColor.Black);
+                        IO.Writexy("Không tồn tại mã nhà cung cấp này. Vui lòng kiểm tra lại!", 5, 6);
+                    }
+                    else
+                    {
+                        List<NCC> list = nhacc.TimNhaCC(new NCC(mancc, null, null, null));
+                        Hien(1, 8, list, 5, 1);
+                    }    
+                } while (mancc < 0 || NCBLL.KiemTra(mancc) == false);
             } while (true);
-            HienChucNang();
         }
         public void Hien(int xx, int yy, List<NCC> list, int n, int type)
         {

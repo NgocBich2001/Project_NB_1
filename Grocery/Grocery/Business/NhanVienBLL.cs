@@ -29,6 +29,40 @@ namespace Grocery.Business
             else
                 throw new Exception("Du lieu sai!");
         }
+        public bool KiemTra(int manv)
+        {
+            List<NhanVien> list = NVDA.GetData();
+            Node<NhanVien> NB = list.L;
+            bool kt = false;
+            while (NB != null)
+            {
+                if (NB.Info.manv == manv)
+                {
+                    kt = true;
+                    break;
+                }
+                else
+                    NB = NB.Link;
+            }
+            return kt;
+        }
+        public bool KiemTraTen(string tennv)
+        {
+            List<NhanVien> list = NVDA.GetData();
+            Node<NhanVien> NB = list.L;
+            bool kt = false;
+            while (NB != null)
+            {
+                if (NB.Info.tennv == tennv)
+                {
+                    kt = true;
+                    break;
+                }
+                else
+                    NB = NB.Link;
+            }
+            return kt;
+        }
         public void XoaNhanVien(int manv)
         {
             int i;
@@ -91,6 +125,16 @@ namespace Grocery.Business
                     {
                         KQ.Add(new NhanVien(list[i]));
                     }
+            }
+            else if (NV.manv == 0 && NV.tennv != null)
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i].tennv == NV.tennv)
+                    {
+                        KQ.Add(new NhanVien(list[i]));
+                    }
+                }
             }
             else KQ = null;
             return KQ;

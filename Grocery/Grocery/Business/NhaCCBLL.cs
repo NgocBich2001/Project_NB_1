@@ -21,12 +21,47 @@ namespace Grocery.Business
         {
             if (nc.tenncc != "" && nc.diachi != "")
             {
-                nc.tenncc = Grocery.Utiility.CongCu.ChuanHoaXau(nc.tenncc);
-                nc.diachi = Grocery.Utiility.CongCu.ChuanHoaXau(nc.diachi);
+                nc.tenncc = CongCu.ChuanHoaXau(nc.tenncc);
+                nc.diachi = CongCu.ChuanHoaXau(nc.diachi);
+                nc.sdt = CongCu.CatXau(nc.sdt);
                 NCCDA.Insert(nc);
             }
             else
                 throw new Exception("Du lieu sai!");
+        }
+        public bool KiemTra(int mancc)
+        {
+            List<NCC> list = NCCDA.GetData();
+            Node<NCC> NB = list.L;
+            bool kt = false;
+            while (NB != null)
+            {
+                if (NB.Info.mancc == mancc)
+                {
+                    kt = true;
+                    break;
+                }
+                else
+                    NB = NB.Link;
+            }
+            return kt;
+        }
+        public bool KiemTraTen(string tenncc)
+        {
+            List<NCC> list = NCCDA.GetData();
+            Node<NCC> NB = list.L;
+            bool kt = false;
+            while (NB != null)
+            {
+                if (NB.Info.tenncc == tenncc)
+                {
+                    kt = true;
+                    break;
+                }
+                else
+                    NB = NB.Link;
+            }
+            return kt;
         }
         public void XoaNhaCC(int mancc)
         {
@@ -78,18 +113,28 @@ namespace Grocery.Business
             List<NCC> list = NCCDA.GetData();
             List<NCC> KQ = new List<NCC>();
             //Với giá trị ngầm định ban đầu
-            if (nc.mancc == 0 && nc.tenncc == null && nc.diachi == null && nc.sdt==0)
+            if (nc.mancc == 0 && nc.tenncc == null && nc.diachi == null && nc.sdt==null)
             {
                 KQ = list;
             }
             //Tìm theo mã
-            if (nc.mancc != 0 && nc.tenncc == null && nc.diachi == null && nc.sdt==0)
+            if (nc.mancc != 0 && nc.tenncc == null && nc.diachi == null && nc.sdt==null)
             {
                 for (int i = 0; i < list.Count; ++i)
                     if (list[i].mancc == nc.mancc)
                     {
                         KQ.Add(new NCC(list[i]));
                     }
+            }
+            else if (nc.mancc == 0 && nc.tenncc != null)
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i].tenncc == nc.tenncc)
+                    {
+                        KQ.Add(new NCC(list[i]));
+                    }
+                }
             }
             else KQ = null;
             return KQ;

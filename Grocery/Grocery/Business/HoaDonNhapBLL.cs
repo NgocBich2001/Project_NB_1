@@ -27,6 +27,23 @@ namespace Grocery.Business
             else
                 throw new Exception("Du lieu sai!");
         }
+        public bool KiemTra(int mahdn)
+        {
+            List<HoaDonNhap> list = HDNDA.GetData();
+            Node<HoaDonNhap> NB = list.L;
+            bool kt = false;
+            while (NB != null)
+            {
+                if (NB.Info.mahdn == mahdn)
+                {
+                    kt = true;
+                    break;
+                }
+                else
+                    NB = NB.Link;
+            }
+            return kt;
+        }
         public void XoaHoaDonNhap(int mahdn)
         {
             int i;
