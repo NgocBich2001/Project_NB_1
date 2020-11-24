@@ -11,16 +11,14 @@ namespace Grocery
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.Unicode;
-            /*LogIn lg = new LogIn();
-            bool ok = lg.HienThi(10, 5, "1", "1");
+            DangNhap lg = new DangNhap();
+            bool ok = lg.HienThi(10, 5, "14", "5");
             if (ok)
             {
-                  FormMenuMain.HienThi();
+                FormMenuMain.HienThi();
             }
             else
-                Environment.Exit(0);*/
-
-            FormMenuMain.HienThi();
+                Environment.Exit(0);
         }
             
     }

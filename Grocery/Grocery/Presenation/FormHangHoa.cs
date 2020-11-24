@@ -276,89 +276,93 @@ namespace Grocery.Presenation
         }
         public void HienChucNang()
         {
-            Console.WindowHeight = Console.LargestWindowHeight;
-            string[] mn =
-            {
-                " F1:Nhập danh sách hàng hóa. ",
-                " F2:Sửa hàng hóa. ",
-                " F3:Xóa hàng hóa. ",
-                " F4:Hiển thị danh sách hàng hóa. ",
-                " F5:Tìm kiếm hàng hóa. ",
-                " F6:Quay lại. "
-            };
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.Clear();
-            MenuHH mnhh = new MenuHH(mn);
-            mnhh.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-            Console.ReadKey();
-        }
-        public class MenuHH : Menu
-        {
-            public MenuHH(string[] mn) : base(mn)
+            do
             {
-            }
-            public override void ThucHien(int location)
-            {
+
+                Console.Clear();
+
+                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 20, 56);
+                IO.Writexy("*       1. Nhập hàng hóa.                  *", 12, 5);
+                IO.Writexy("*                                          *", 12, 6);
+                IO.Writexy("*       2. Sửa hàng hóa.                   *", 12, 7);
+                IO.Writexy("*                                          *", 12, 8);
+                IO.Writexy("*       3. Xóa hàng hóa.                   *", 12, 9);
+                IO.Writexy("*                                          *", 12, 10);
+                IO.Writexy("*       4. Xem danh sách hàng hóa.         *", 12, 11);
+                IO.Writexy("*                                          *", 12, 12);
+                IO.Writexy("*       5. Tìm kiếm hàng hóa.              *", 12, 13);
+                IO.Writexy("*                                          *", 12, 14);
+                IO.Writexy("*       6. Quay lại.                       *", 12, 15);
+                IO.Writexy("*                                          *", 12, 16);
+                IO.Writexy("*    Hãy chọn một chức năng để thực hiện!  *", 12, 17);
+                IO.Writexy("********************************************", 12, 19);
+
                 FormHangHoa hanghoa = new FormHangHoa();
-                switch (location)
+                ConsoleKeyInfo kt = Console.ReadKey();
+                switch (kt.KeyChar)
+
                 {
-                    case 0:
+                    case '1':
                         hanghoa.Nhap();
                         break;
-                    case 1:
+
+                    case '2':
                         hanghoa.Sua();
                         break;
-                    case 2:
+
+                    case '3':
                         hanghoa.Xoa();
                         break;
-                    case 3:
+                    case '4':
                         hanghoa.Xem();
                         break;
-                    case 4:
+                    case '5':
                         hanghoa.HienTim();
                         break;
-                    case 5:
-                        Grocery.Presenation.FormMenuMain.HienThi();
+
+                    case '6':
+                        Environment.Exit(0);
                         break;
                 }
-            }
+            } while (true);
         }
+        
         public void HienTim()
         {
-            Console.WindowHeight = Console.LargestWindowHeight;
-            string[] mn =
-            {
-                " F1:Tìm kiếm hàng hóa theo mã. ",
-                " F2:Tìm kiếm hàng hóa theo tên. ",
-                " F3:Quay lại. "
-            };
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.Clear();
-            MenuTim mnhh = new MenuTim(mn);
-            mnhh.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-            Console.ReadKey();
-        }
-        public class MenuTim : Menu
-        {
-            public MenuTim(string[] mn) : base(mn)
+            do
             {
-            }
-            public override void ThucHien(int location)
-            {
+
+                Console.Clear();
+
+                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 12, 56);
+                IO.Writexy("*       1. Tìm kiếm hàng hóa theo mã.      *", 12, 5);
+                IO.Writexy("*       2. Tìm kiếm hàng hóa theo tên.     *", 12, 6);
+                IO.Writexy("*       3. Thoát.                          *", 12, 7);
+                IO.Writexy("*                                          *", 12, 8);
+                IO.Writexy("*    Hãy chọn một chức năng để thực hiện!  *", 12, 9);
+                IO.Writexy("********************************************", 12, 10);
+
                 FormHangHoa hanghoa = new FormHangHoa();
-                switch (location)
+                ConsoleKeyInfo kt = Console.ReadKey();
+                switch (kt.KeyChar)
+
                 {
-                    case 0:
+                    case '1':
                         hanghoa.TimMa();
                         break;
-                    case 1:
+
+                    case '2':
                         hanghoa.TimTen();
                         break;
-                    case 2:
-                        hanghoa.HienChucNang();
+
+                    case '3':
+                        Environment.Exit(0);
                         break;
                 }
-            }
+            } while (true);
         }
+        
     }
 }

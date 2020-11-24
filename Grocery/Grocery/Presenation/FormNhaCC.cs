@@ -269,92 +269,94 @@ namespace Grocery.Presenation
                     break;
             } while (true);
         }
-        public class MenuNCC : Menu
-        {
-            public MenuNCC(string[] mn) : base(mn)
-            {
-            }
-            public override void ThucHien(int location)
-            {
-                FormNhaCC nhacc = new FormNhaCC();
-                switch (location)
-                {
-                    case 0:
-                        nhacc.Nhap();
-                        break;
-                    case 1:
-                        nhacc.Sua();
-                        break;
-                    case 2:
-                        nhacc.Xoa();
-                        break;
-                    case 3:
-                        nhacc.Xem();
-                        break;
-                    case 4:
-                        nhacc.HienTim();
-                        break;
-                    case 5:
-                        FormMenuMain.HienThi();
-                        break;
-                }
-            }
-        }
         public void HienChucNang()
         {
-            Console.WindowHeight = Console.LargestWindowHeight;
-            string[] mn =
-            {
-                " F1:Nhập danh sách nhà cung cấp. ",
-                " F2:Sửa nhà cung cấp. ",
-                " F3:Xóa nhà cung cấp. ",
-                " F4:Hiển thị danh sách nhà cung cấp. ",
-                " F5:Tìm kiếm nhà cung cấp. ",
-                " F6:Quay lại. "
-            };
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.Clear();
-            MenuNCC ncc = new MenuNCC(mn);
-            ncc.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-            Console.ReadKey();
-        }
-       
-        public void HienTim()
-        {
-            Console.WindowHeight = Console.LargestWindowHeight;
-            string[] mn =
+            do
             {
-                " F1:Tìm kiếm nhà cung cấp theo mã. ",
-                " F2:Tìm kiếm nhà cung cấp theo tên. ",
-                " F3:Quay lại. "
-            };
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.Clear();
-            MenuTim ncc = new MenuTim(mn);
-            ncc.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-            Console.ReadKey();
-        }
-        public class MenuTim : Menu
-        {
-            public MenuTim(string[] mn) : base(mn)
-            {
-            }
-            public override void ThucHien(int location)
-            {
-                FormNhaCC nhacc = new FormNhaCC();
-                switch (location)
+
+                Console.Clear();
+
+                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 20, 56);
+                IO.Writexy("*       1. Nhập nhà cung cấp.              *", 12, 5);
+                IO.Writexy("*                                          *", 12, 6);
+                IO.Writexy("*       2. Sửa nhà cung cấp.               *", 12, 7);
+                IO.Writexy("*                                          *", 12, 8);
+                IO.Writexy("*       3. Xóa nhà cung cấp.               *", 12, 9);
+                IO.Writexy("*                                          *", 12, 10);
+                IO.Writexy("*       4. Xem danh sách nhà cung cấp.     *", 12, 11);
+                IO.Writexy("*                                          *", 12, 12);
+                IO.Writexy("*       5. Tìm kiếm nhà cung cấp.          *", 12, 13);
+                IO.Writexy("*                                          *", 12, 14);
+                IO.Writexy("*       6. Quay lại.                       *", 12, 15);
+                IO.Writexy("*                                          *", 12, 16);
+                IO.Writexy("*    Hãy chọn một chức năng để thực hiện!  *", 12, 17);
+                IO.Writexy("********************************************", 12, 19);
+
+                FormNhaCC NCC = new FormNhaCC();
+                ConsoleKeyInfo kt = Console.ReadKey();
+                switch (kt.KeyChar)
+
                 {
-                    case 0:
-                        nhacc.TimMa();
+                    case '1':
+                        NCC.Nhap();
                         break;
-                    case 1:
-                        nhacc.TimTen();
+
+                    case '2':
+                        NCC.Sua();
                         break;
-                    case 2:
-                        nhacc.HienChucNang();
+
+                    case '3':
+                        NCC.Xoa();
+                        break;
+                    case '4':
+                        NCC.Xem();
+                        break;
+                    case '5':
+                        NCC.HienTim();
+                        break;
+
+                    case '6':
+                        Environment.Exit(0);
                         break;
                 }
-            }
+            } while (true);
+        }
+
+        public void HienTim()
+        {
+            Console.BackgroundColor = ConsoleColor.Black;
+            do
+            {
+
+                Console.Clear();
+
+                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 12, 56);
+                IO.Writexy("*     1. Tìm kiếm nhà cung cấp theo mã.    *", 12, 5);
+                IO.Writexy("*     2. Tìm kiếm nhà cung cấp theo tên.   *", 12, 6);
+                IO.Writexy("*     3. Thoát.                            *", 12, 7);
+                IO.Writexy("*                                          *", 12, 8);
+                IO.Writexy("*    Hãy chọn một chức năng để thực hiện!  *", 12, 9);
+                IO.Writexy("********************************************", 12, 10);
+
+                FormNhaCC NCC = new FormNhaCC();
+                ConsoleKeyInfo kt = Console.ReadKey();
+                switch (kt.KeyChar)
+
+                {
+                    case '1':
+                        NCC.TimMa();
+                        break;
+
+                    case '2':
+                        NCC.TimTen();
+                        break;
+
+                    case '3':
+                        Environment.Exit(0);
+                        break;
+                }
+            } while (true);
         }
     }
 }

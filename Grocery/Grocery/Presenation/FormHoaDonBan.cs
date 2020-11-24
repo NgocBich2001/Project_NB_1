@@ -315,89 +315,60 @@ namespace Grocery.Presenation
                     break;
             } while (true);
         }
-        public class MenuHoaDonBan : Menu
-        {
-            public MenuHoaDonBan(string[] mn) : base(mn)
-            {
-            }
-            public override void ThucHien(int location)
-            {
-                FormHoaDonBan hdb = new FormHoaDonBan();
-                switch (location)
-                {
-                    case 0:
-                        hdb.Nhap();
-                        break;
-                    case 1:
-                        hdb.Sua();
-                        break;
-                    case 2:
-                        hdb.Xoa();
-                        break;
-                    case 3:
-                        hdb.Xem();
-                        break;
-                    case 4:
-                        hdb.TimMa();
-                        break;
-                    case 5:
-                        FormMenuMain.HienThi();
-                        break;
-                }
-            }
-        }
         public void HienChucNang()
         {
-            Console.WindowHeight = Console.LargestWindowHeight;
-            string[] mn =
-            {
-                " F1:Nhập danh sách hóa đơn bán. ",
-                " F2:Sửa hóa đơn bán. ",
-                " F3:Xóa hóa đơn bán. ",
-                " F4:Hiển thị danh sách hóa đơn bán. ",
-                " F5:Tìm kiếm hóa đơn bán. ",
-                " F6:Quay lại. "
-            };
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.Clear();
-            MenuHoaDonBan hdb = new MenuHoaDonBan(mn);
-            hdb.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-            Console.ReadKey();
+            do
+            {
+
+                Console.Clear();
+
+                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 20, 56);
+                IO.Writexy("*       1. Nhập hóa đơn bán.               *", 12, 5);
+                IO.Writexy("*                                          *", 12, 6);
+                IO.Writexy("*       2. Sửa hóa đơn bán.                *", 12, 7);
+                IO.Writexy("*                                          *", 12, 8);
+                IO.Writexy("*       3. Xóa hóa đơn bán.                *", 12, 9);
+                IO.Writexy("*                                          *", 12, 10);
+                IO.Writexy("*       4. Xem danh sách hóa đơn bán.      *", 12, 11);
+                IO.Writexy("*                                          *", 12, 12);
+                IO.Writexy("*       5. Tìm kiếm hóa đơn bán.           *", 12, 13);
+                IO.Writexy("*                                          *", 12, 14);
+                IO.Writexy("*       6. Quay lại.                       *", 12, 15);
+                IO.Writexy("*                                          *", 12, 16);
+                IO.Writexy("*    Hãy chọn một chức năng để thực hiện!  *", 12, 17);
+                IO.Writexy("********************************************", 12, 19);
+
+                FormHoaDonBan HDB = new FormHoaDonBan();
+                ConsoleKeyInfo kt = Console.ReadKey();
+                switch (kt.KeyChar)
+
+                {
+                    case '1':
+                        HDB.Nhap();
+                        break;
+
+                    case '2':
+                        HDB.Sua();
+                        break;
+
+                    case '3':
+                        HDB.Xoa();
+                        break;
+
+                    case '4':
+                        HDB.Xem();
+                        break;
+
+                    case '5':
+                        HDB.TimMa();
+                        break;
+
+                    case '6':
+                        Environment.Exit(0);
+                        break;
+                }
+            } while (true);
         }
-
-        //public void HienTim()
-        //{
-        //    Console.WindowHeight = Console.LargestWindowHeight;
-        //    string[] mn =
-        //    {
-        //        " F1:Tìm kiếm hóa đơn bán theo mã. ",
-        //        " F2:Quay lại. "
-        //    };
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Clear();
-        //    MenuTim hdn = new MenuTim(mn);
-        //    hdn.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-        //    Console.ReadKey();
-        //}
-        //public class MenuTim : Menu
-        //{
-        //    public MenuTim(string[] mn) : base(mn)
-        //    {
-        //    }
-        //    public override void ThucHien(int location)
-        //    {
-        //        FormHoaDonNhap hdn = new FormHoaDonNhap();
-        //        switch (location)
-        //        {
-        //            case 0:
-        //                hdn.TimMa();
-        //                break;
-
-        //            case 1:
-        //                hdn.HienChucNang();
-        //                break;
-        //        }
-        //    }
-        //}
     }
 }

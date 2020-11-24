@@ -324,89 +324,60 @@ namespace Grocery.Presenation
                     break;
             } while (true);
         }
-        public class MenuHoaDonNhap : Menu
-        {
-            public MenuHoaDonNhap(string[] mn) : base(mn)
-            {
-            }
-            public override void ThucHien(int location)
-            {
-                FormHoaDonNhap hdn = new FormHoaDonNhap();
-                switch (location)
-                {
-                    case 0:
-                        hdn.Nhap();
-                        break;
-                    case 1:
-                        hdn.Sua();
-                        break;
-                    case 2:
-                        hdn.Xoa();
-                        break;
-                    case 3:
-                        hdn.Xem();
-                        break;
-                    case 4:
-                        hdn.TimMa();
-                        break;
-                    case 5:
-                        FormMenuMain.HienThi();
-                        break;
-                }
-            }
-        }
         public void HienChucNang()
         {
-            Console.WindowHeight = Console.LargestWindowHeight;
-            string[] mn =
-            {
-                " F1:Nhập danh sách hóa đơn nhập. ",
-                " F2:Sửa hóa đơn nhập. ",
-                " F3:Xóa hóa đơn nhập. ",
-                " F4:Hiển thị danh sách hóa đơn nhập. ",
-                " F5:Tìm kiếm hóa đơn nhập. ",
-                " F6:Quay lại. "
-            };
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.Clear();
-            MenuHoaDonNhap hdn = new MenuHoaDonNhap(mn);
-            hdn.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-            Console.ReadKey();
-        }
+            do
+            {
 
-        //public void HienTim()
-        //{
-        //    Console.WindowHeight = Console.LargestWindowHeight;
-        //    string[] mn =
-        //    {
-        //        " F1:Tìm kiếm hóa đơn nhập theo mã. ",
-        //        " F2:Quay lại. "
-        //    };
-        //    Console.BackgroundColor = ConsoleColor.Black;
-        //    Console.Clear();
-        //    MenuTim hdn = new MenuTim(mn);
-        //    hdn.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-        //    Console.ReadKey();
-        //}
-        //public class MenuTim : Menu
-        //{
-        //    public MenuTim(string[] mn) : base(mn)
-        //    {
-        //    }
-        //    public override void ThucHien(int location)
-        //    {
-        //        FormHoaDonNhap hdn = new FormHoaDonNhap();
-        //        switch (location)
-        //        {
-        //            case 0:
-        //                hdn.TimMa();
-        //                break;
-                   
-        //            case 1:
-        //                hdn.HienChucNang();
-        //                break;
-        //        }
-        //    }
-        //}
+                Console.Clear();
+
+                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 20, 56);
+                IO.Writexy("*       1. Nhập hóa đơn nhập.              *", 12, 5);
+                IO.Writexy("*                                          *", 12, 6);
+                IO.Writexy("*       2. Sửa hóa đơn nhập.               *", 12, 7);
+                IO.Writexy("*                                          *", 12, 8);
+                IO.Writexy("*       3. Xóa hóa đơn nhập.               *", 12, 9);
+                IO.Writexy("*                                          *", 12, 10);
+                IO.Writexy("*       4. Xem danh sách hóa đơn nhập.     *", 12, 11);
+                IO.Writexy("*                                          *", 12, 12);
+                IO.Writexy("*       5. Tìm kiếm hóa đơn nhập.          *", 12, 13);
+                IO.Writexy("*                                          *", 12, 14);
+                IO.Writexy("*       6. Quay lại.                       *", 12, 15);
+                IO.Writexy("*                                          *", 12, 16);
+                IO.Writexy("*    Hãy chọn một chức năng để thực hiện!  *", 12, 17);
+                IO.Writexy("********************************************", 12, 19);
+
+                FormHoaDonNhap HDN = new FormHoaDonNhap();
+                ConsoleKeyInfo kt = Console.ReadKey();
+                switch (kt.KeyChar)
+
+                {
+                    case '1':
+                        HDN.Nhap();
+                        break;
+
+                    case '2':
+                        HDN.Sua();
+                        break;
+
+                    case '3':
+                        HDN.Xoa();
+                        break; 
+
+                    case '4':
+                        HDN.Xem();
+                        break;
+
+                    case '5':
+                        HDN.TimMa();
+                        break;
+
+                    case '6':
+                        Environment.Exit(0);
+                        break;
+                }
+            } while (true);
+        }
     }
 }

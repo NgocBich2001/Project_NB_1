@@ -10,7 +10,7 @@ namespace Grocery.Utiility
     {
         public static string ReadPassword(int x, int y)
         {
-            Console.SetCursorPosition(x, y);
+            Console.SetCursorPosition(x, y);//Khởi tạo vị trí của con trỏ.
             string s = null;
             ConsoleKeyInfo kt;
             do
@@ -24,13 +24,23 @@ namespace Grocery.Utiility
                 else if (kt.Key == ConsoleKey.Backspace)
                 {
                     Clear(x, y, s.Length, ConsoleColor.Black);
-                    if (s.Length <= 1) s = "";
-                    else s = s.Substring(0, s.Length - 1);
-                    if (s == "") { Writexy(" ", x, y); Console.SetCursorPosition(x, y); }
+                    if (s.Length <= 1) 
+                        s = "";
+                    else 
+                        s = s.Substring(0, s.Length - 1);//Lấy 1 chuỗi con.
+                    if (s == "") 
+                    { 
+                        Writexy(" ", x, y); 
+                        Console.SetCursorPosition(x, y); 
+                    }
                     else
                     {
                         int i = 0;
-                        while (i < s.Length) { Writexy("*", x + i, y); i = i + 1; }
+                        while (i < s.Length)
+                        { 
+                            Writexy("*", x + i, y);
+                            i = i + 1; 
+                        }
 
                     }
                 }
@@ -98,10 +108,18 @@ namespace Grocery.Utiility
         {
             ConsoleColor mn = Console.BackgroundColor;
             ConsoleColor mc = Console.ForegroundColor;
-            int i = x; int j = y; int d = 0;
+            int i = x;
+            int j = y;
+            int d = 0;
             while (d < length)
             {
-                if (i == 111) { i = 0; j = j + 1; } else i = i + 1;
+                if (i == 111) 
+                {
+                    i = 0;
+                    j = j + 1;
+                } 
+                else 
+                    i = i + 1;
                 Writexy(" ", i, j, maunen, maunen);
                 d++;
             }
@@ -135,22 +153,29 @@ namespace Grocery.Utiility
         {
 
             Writexy("┌", x, y);
-            for (int i = 1; i <= chieurong - 2; ++i) Writexy("─", x + i, y);
+            for (int i = 1; i <= chieurong - 2; ++i) 
+                Writexy("─", x + i, y);
             Writexy("┐", x + (chieurong - 1), y);
 
-            Writexy("│", x, y + 1); Writexy(title, x + 2, y + 1); Writexy("│", x + (chieurong - 1), y + 1);
+            Writexy("│", x, y + 1);
+            Writexy(title, x + 2, y + 1); 
+            Writexy("│", x + (chieurong - 1), y + 1);
 
             Writexy("├", x, y + 2);
-            for (int i = 1; i <= chieurong - 2; ++i) Writexy("─", x + i, y + 2);
+            for (int i = 1; i <= chieurong - 2; ++i)
+                Writexy("─", x + i, y + 2);
             Writexy("┤", x + (chieurong - 1), y + 2);
 
 
 
-            for (int i = 3; i <= chieucao - 2; ++i) Writexy("│", x, y + i);
-            for (int i = 3; i <= chieucao - 2; ++i) Writexy("│", x + (chieurong - 1), y + i);
+            for (int i = 3; i <= chieucao - 2; ++i)
+                Writexy("│", x, y + i);
+            for (int i = 3; i <= chieucao - 2; ++i)
+                Writexy("│", x + (chieurong - 1), y + i);
 
             Writexy("└", x, y + (chieucao - 1));
-            for (int i = 1; i < chieurong - 1; ++i) Writexy("─", x + i, y + (chieucao - 1));
+            for (int i = 1; i < chieurong - 1; ++i)
+                Writexy("─", x + i, y + (chieucao - 1));
             Writexy("┘", x + (chieurong - 1), y + (chieucao - 1));
         }
         

@@ -308,92 +308,96 @@ namespace Grocery.Presenation
                     break;
             } while (true);
         }
-        public class MenuNV : Menu
-        {
-            public MenuNV(string[] mn) : base(mn)
-            {
-            }
-            public override void ThucHien(int location)
-            {
-                FormNhanVien nhanvien = new FormNhanVien();
-                switch (location)
-                {
-                    case 0:
-                        nhanvien.Nhap();
-                        break;
-                    case 1:
-                        nhanvien.Sua();
-                        break;
-                    case 2:
-                        nhanvien.Xoa();
-                        break;
-                    case 3:
-                        nhanvien.Xem();
-                        break;
-                    case 4:
-                        nhanvien.HienTim();
-                        break;
-                    case 5:
-                        FormMenuMain.HienThi();
-                        break;
-                }
-            }
-        }
         public void HienChucNang()
         {
-            Console.WindowHeight = Console.LargestWindowHeight;
-            string[] mn =
-            {
-                " F1:Nhập danh sách nhân viên. ",
-                " F2:Sửa nhân viên. ",
-                " F3:Xóa nhân viên. ",
-                " F4:Hiển thị danh sách nhân viên. ",
-                " F5:Tìm kiếm nhân viên. ",
-                " F6:Quay lại. "
-            };
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.Clear();
-            MenuNV mnnv = new MenuNV(mn);
-            mnnv.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-            Console.ReadKey();
-        }
-        
-        public void HienTim()
-        {
-            Console.WindowHeight = Console.LargestWindowHeight;
-            string[] mn =
+            do
             {
-                " F1:Tìm kiếm nhân viên theo mã. ",
-                " F2:Tìm kiếm nhân viên theo tên. ",
-                " F3:Quay lại. "
-            };
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.Clear();
-            MenuTim mnnv = new MenuTim(mn);
-            mnnv.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-            Console.ReadKey();
-        }
-        public class MenuTim : Menu
-        {
-            public MenuTim(string[] mn) : base(mn)
-            {
-            }
-            public override void ThucHien(int location)
-            {
-                FormNhanVien nhanvien = new FormNhanVien();
-                switch (location)
+
+                Console.Clear();
+
+                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 20, 56);
+                IO.Writexy("*       1. Thêm nhân viên.                 *", 12, 5);
+                IO.Writexy("*                                          *", 12, 6);
+                IO.Writexy("*       2. Sửa nhân viên.                  *", 12, 7);
+                IO.Writexy("*                                          *", 12, 8);
+                IO.Writexy("*       3. Xóa nhân viên.                  *", 12, 9);
+                IO.Writexy("*                                          *", 12, 10);
+                IO.Writexy("*       4. Xem danh sách nhân viên.        *", 12, 11);
+                IO.Writexy("*                                          *", 12, 12);
+                IO.Writexy("*       5. Tìm kiếm nhân viên.             *", 12, 13);
+                IO.Writexy("*                                          *", 12, 14);
+                IO.Writexy("*       6. Quay lại.                       *", 12, 15);
+                IO.Writexy("*                                          *", 12, 16);
+                IO.Writexy("*    Hãy chọn một chức năng để thực hiện!  *", 12, 17);
+                IO.Writexy("********************************************", 12, 19);
+
+                FormNhanVien NV = new FormNhanVien();
+                ConsoleKeyInfo kt = Console.ReadKey();
+                switch (kt.KeyChar)
+
                 {
-                    case 0:
-                        nhanvien.TimMa();
+                    case '1':
+                        NV.Nhap();
                         break;
-                    case 1:
-                        nhanvien.TimTen();
+
+                    case '2':
+                        NV.Sua();
                         break;
-                    case 2:
-                        nhanvien.HienChucNang();
+
+                    case '3':
+                        NV.Xoa();
+                        break;
+
+                    case '4':
+                        NV.Xem();
+                        break;
+
+                    case '5':
+                        NV.HienTim();
+                        break;
+
+                    case '6':
+                        Environment.Exit(0);
                         break;
                 }
-            }
+            } while (true);
+        }
+
+        public void HienTim()
+        {
+            Console.BackgroundColor = ConsoleColor.Black;
+            do
+            {
+
+                Console.Clear();
+
+                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 12, 56);
+                IO.Writexy("*     1. Tìm kiếm nhân viên theo mã.       *", 12, 5);
+                IO.Writexy("*     2. Tìm kiếm nhân viên theo tên.      *", 12, 6);
+                IO.Writexy("*     3. Thoát.                            *", 12, 7);
+                IO.Writexy("*                                          *", 12, 8);
+                IO.Writexy("*    Hãy chọn một chức năng để thực hiện!  *", 12, 9);
+                IO.Writexy("********************************************", 12, 10);
+
+                FormNhanVien NV = new FormNhanVien();
+                ConsoleKeyInfo kt = Console.ReadKey();
+                switch (kt.KeyChar)
+
+                {
+                    case '1':
+                        NV.TimMa();
+                        break;
+
+                    case '2':
+                        NV.TimTen();
+                        break;
+
+                    case '3':
+                        Environment.Exit(0);
+                        break;
+                }
+            } while (true);
         }
     }
 }

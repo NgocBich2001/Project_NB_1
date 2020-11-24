@@ -9,63 +9,63 @@ namespace Grocery.Presenation
     
     public class FormMenuMain
     {
+        
         public static void HienThi()
         {
-            Console.WindowHeight = Console.LargestWindowHeight;
-            string[] mn =
-            {
-                " F1: Hàng hóa.",
-                " F2: Nhân viên.",
-                " F3: Nhà cung cấp.",
-                " F4: Hóa đơn nhập",
-                " F5: Hóa đơn bán.",
-                " F6: Kết thúc."
-            };
-            
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.Clear();
-            MenuGrocery mnc = new MenuGrocery(mn);
-            mnc.HienTheoPhimTat(15, 6, ConsoleColor.Black, ConsoleColor.White);
-            Console.ReadKey();
-        }
-        public class MenuGrocery : Menu
-        {
-            public MenuGrocery(string[] mn) : base(mn)
-            { }
-            public override void ThucHien(int vitri)
+            do
             {
+                
+                Console.Clear();
+                
+                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 20, 56);
+                IO.Writexy("*       1. Hàng hóa.                       *", 12, 5);
+                IO.Writexy("*                                          *",12, 6);
+                IO.Writexy("*       2. Nhà cung cấp.                   *",  12,  7);
+                IO.Writexy("*                                          *", 12, 8);
+                IO.Writexy("*       3. Nhân viên.                      *",  12, 9);
+                IO.Writexy("*                                          *", 12,  10);
+                IO.Writexy("*       4. Hóa đơn nhập.                   *", 12,  11);
+                IO.Writexy("*                                          * ", 12,  12);
+                IO.Writexy("*       5. Hóa đơn bán.                    *",  12, 13);
+                IO.Writexy("*                                          * ",  12,  14);
+                IO.Writexy("*       6. Thoát.                          *",  12,  15);
+                IO.Writexy("*                                          *",  12,  16);
+                IO.Writexy("*    Hãy chọn một chức năng để thực hiện!  *",  12,  17);
+                IO.Writexy("********************************************", 12, 19);
+
                 FormHangHoa hanghoa = new FormHangHoa();
                 FormNhanVien nhanvien = new FormNhanVien();
                 FormNhaCC nhacc = new FormNhaCC();
                 FormHoaDonNhap hdn = new FormHoaDonNhap();
                 FormHoaDonBan hdb = new FormHoaDonBan();
-                switch (vitri)
+                ConsoleKeyInfo kt = Console.ReadKey();
+                switch (kt.KeyChar)
+                
                 {
-                    case 0:
+                    case '1':
                         hanghoa.HienChucNang();
                         break;
-                        
-                    case 1:
+
+                    case '2':
                         nhanvien.HienChucNang();
                         break;
 
-                    case 2:
+                    case '3':
                         nhacc.HienChucNang();
                         break;
-                    case 3:
+                    case '4':
                         hdn.HienChucNang();
                         break;
-                    case 4:
+                    case '5':
                         hdb.HienChucNang();
                         break;
 
-                    case 5:
+                    case '6':
                         Environment.Exit(0);
                         break;
                 }
-                
-            }
-            
+            } while (true);
         }
     }
 }
