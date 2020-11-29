@@ -121,7 +121,7 @@ namespace Grocery.Presenation
                 }
             } while (manv < 0 || NVBLL.KiemTra(manv) == false);
             NhanVien nv = nhanvien.LayNhanVien(manv);
-            IO.Writexy(nv.tennv, 56, 4);
+            IO.Writexy(nv.tennv, 55, 4);
             IO.Writexy(nv.ngaysinh.ToString(), 18, 6);
             IO.Writexy(nv.gt, 48, 6);
             IO.Writexy(nv.ngayvaolam.ToString(), 24, 8);
@@ -177,6 +177,7 @@ namespace Grocery.Presenation
                     }
                     else
                         nhanvien.XoaNhanVien(manv);
+                    //Console.Clear();
                     Hien(1, 8, nhanvien.XemDSNhanVien(), 5, 1);
                 } while (manv < 0 || NVBLL.KiemTra(manv) == false);
             } while (true);
@@ -316,7 +317,7 @@ namespace Grocery.Presenation
 
                 Console.Clear();
 
-                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 20, 56);
+                IO.BoxTitle("   *** CÁC CHỨC NĂNG CỦA NHÂN VIÊN ***         ", 5, 1, 20, 56);
                 IO.Writexy("*       1. Thêm nhân viên.                 *", 12, 5);
                 IO.Writexy("*                                          *", 12, 6);
                 IO.Writexy("*       2. Sửa nhân viên.                  *", 12, 7);

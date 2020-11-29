@@ -94,7 +94,6 @@ namespace Grocery.Presenation
                         IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 14);
                     }
                 } while (hoadn.gianhap < 0);
-                //hoadn.thanhtien = double.Parse(IO.ReadNumber(17, 12));
                 IO.Writexy(hoadn.thanhtien.ToString(), 17, 12);
                 Console.SetCursorPosition(55, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
@@ -151,7 +150,6 @@ namespace Grocery.Presenation
             IO.Writexy(hdnhap.mahang.ToString(), 13, 10);
             IO.Writexy(hdnhap.soluong.ToString(), 35, 10);
             IO.Writexy(hdnhap.gianhap.ToString(), 54, 10);
-            //IO.Writexy(hdnhap.thanhtien.ToString(), 17, 12);
 
             mancc = int.Parse(IO.ReadNumber(58, 4));
             if (mancc != hdnhap.mancc && mancc > 0)
@@ -174,9 +172,6 @@ namespace Grocery.Presenation
             gianhap = double.Parse(IO.ReadNumber(54, 10));
             if (gianhap != hdnhap.gianhap && gianhap > 0)
                 hdnhap.gianhap = gianhap;
-            //thanhtien = double.Parse(IO.ReadNumber(17, 12));
-            //if (thanhtien != hdnhap.thanhtien && thanhtien > 0)
-            //    hdnhap.thanhtien = thanhtien;
             IO.Writexy(hdnhap.thanhtien.ToString(), 17, 12);
 
             Console.SetCursorPosition(58, 8);
@@ -184,11 +179,11 @@ namespace Grocery.Presenation
             if (kt.Key == ConsoleKey.Escape)
                 HienChucNang();
             else if (kt.Key == ConsoleKey.X)
-                Hien(1, 13, hdn.XemDSHoaDonNhap(), 5, 1);
+                Hien(1, 16, hdn.XemDSHoaDonNhap(), 5, 1);
             else if (kt.Key == ConsoleKey.Enter)
             {
                 hdn.SuaHoaDonNhap(hdnhap);
-                Hien(1, 13, hdn.XemDSHoaDonNhap(), 5, 1);
+                Hien(1, 16, hdn.XemDSHoaDonNhap(), 5, 1);
             }
             HienChucNang();
         }
@@ -214,6 +209,7 @@ namespace Grocery.Presenation
                     }
                     else
                         hdn.XoaHoaDonNhap(mahdn);
+                    Console.Clear();
                     Hien(1, 8, hdn.XemDSHoaDonNhap(), 5, 1);
                 } while (mahdn < 0 || HDNBLL.KiemTra(mahdn) == false);
             } while (true);
@@ -332,7 +328,7 @@ namespace Grocery.Presenation
 
                 Console.Clear();
 
-                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 20, 56);
+                IO.BoxTitle("  *** CÁC CHỨC NĂNG CỦA HÓA ĐƠN NHẬP ***         ", 5, 1, 20, 56);
                 IO.Writexy("*       1. Nhập hóa đơn nhập.              *", 12, 5);
                 IO.Writexy("*                                          *", 12, 6);
                 IO.Writexy("*       2. Sửa hóa đơn nhập.               *", 12, 7);

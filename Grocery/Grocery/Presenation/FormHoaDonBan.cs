@@ -323,7 +323,7 @@ namespace Grocery.Presenation
 
                 Console.Clear();
 
-                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 20, 56);
+                IO.BoxTitle("   *** CÁC CHỨC NĂNG CỦA HÓA ĐƠN BÁN ***         ", 5, 1, 20, 56);
                 IO.Writexy("*       1. Nhập hóa đơn bán.               *", 12, 5);
                 IO.Writexy("*                                          *", 12, 6);
                 IO.Writexy("*       2. Sửa hóa đơn bán.                *", 12, 7);

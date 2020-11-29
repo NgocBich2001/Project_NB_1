@@ -48,11 +48,11 @@ namespace Grocery.Presenation
                         break;
 
                     case '2':
-                        nhanvien.HienChucNang();
+                        nhacc.HienChucNang();
                         break;
 
                     case '3':
-                        nhacc.HienChucNang();
+                        nhanvien.HienChucNang();
                         break;
                     case '4':
                         hdn.HienChucNang();
