@@ -70,14 +70,14 @@ namespace Grocery.Presenation
             IFNhaCCBLL nhacc = new NhaCCBLL();
             NhaCCBLL NCBLL = new NhaCCBLL();
             Console.Clear();
-            IO.BoxTitle("                                   CẬP NHẬT THÔNG TIN NHÀ CUNG CẤP", 1, 1, 10, 100);
+            IO.BoxTitle("                                   SỬA THÔNG TIN NHÀ CUNG CẤP", 1, 1, 10, 100);
             IO.Writexy("Mã nhà cung cấp:", 5, 4);
             IO.Writexy("Tên nhà cung cấp:", 40, 4);
             IO.Writexy("Địa chỉ:", 5, 6);
             IO.Writexy("Số điện thoại:", 40, 6);
             IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
             IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
-            Hien(1, 10, nhacc.XemDSNhaCC(), 5, 0);
+            Hien(1, 12, nhacc.XemDSNhaCC(), 5, 0);
 
             int mancc;
             string tenncc;
@@ -95,15 +95,15 @@ namespace Grocery.Presenation
             NCC nc = nhacc.LayNCC(mancc);
             IO.Writexy(nc.tenncc, 58, 4);
             IO.Writexy(nc.diachi, 14, 6);
-            IO.Writexy(nc.sdt, 58, 6);
+            IO.Writexy(nc.sdt, 55, 6);
 
-            tenncc = IO.ReadString(52, 4);
+            tenncc = IO.ReadString(58, 4);
             if (tenncc != nc.tenncc && tenncc != null)
                 nc.tenncc = tenncc;
             diachi = IO.ReadString(14, 6);
             if (diachi != nc.diachi && diachi != null)
                 nc.diachi = diachi;
-            sdt = IO.ReadNumber(70, 6);
+            sdt = IO.ReadNumber(55, 6);
             if (sdt != nc.sdt && sdt == null)
                  nc.sdt = sdt;
 
@@ -142,6 +142,7 @@ namespace Grocery.Presenation
                     }
                     else
                         nhacc.XoaNhaCC(mancc);
+                    Console.Clear();
                     Hien(1, 8, nhacc.XemDSNhaCC(), 5, 1);
                 } while (mancc < 0 || NCBLL.KiemTra(mancc) == false);     
             } while (true);
@@ -162,7 +163,7 @@ namespace Grocery.Presenation
                 IFNhaCCBLL nhacc = new NhaCCBLL();
                 NhaCCBLL NCBLL = new NhaCCBLL();
                 Console.Clear();
-                IO.BoxTitle("                                      TÌM KIẾM NHÀ CUNG CẤP", 1, 1, 5, 100);
+                IO.BoxTitle("                               TÌM KIẾM NHÀ CUNG CẤP THEO TÊN", 1, 1, 5, 100);
                 IO.Writexy("Nhập tên nhà cung cấp cần tìm:", 5, 4);
                 Hien(1, 8, nhacc.XemDSNhaCC(), 5, 0);
                 do
@@ -190,7 +191,7 @@ namespace Grocery.Presenation
                 IFNhaCCBLL nhacc = new NhaCCBLL();
                 NhaCCBLL NCBLL = new NhaCCBLL();
                 Console.Clear();
-                IO.BoxTitle("                                TÌM KIẾM NHÀ CUNG CẤP", 1, 1, 5, 100);
+                IO.BoxTitle("                          TÌM KIẾM NHÀ CUNG CẤP THEO MÃ", 1, 1, 5, 100);
                 IO.Writexy("Nhập mã nhà cung cấp cần tìm:", 5, 4);
                 Hien(1, 8, nhacc.XemDSNhaCC(), 5, 0);
                 do
@@ -218,7 +219,7 @@ namespace Grocery.Presenation
             int x, y, d;
             do
             {
-                IO.Clear(xx, yy, 1500, ConsoleColor.Black);
+                IO.Clear(xx, yy, 1800, ConsoleColor.Black);
                 head = (curpage - 1) * n;
                 final = curpage * n < list.Count ? curpage * n : list.Count;
                 x = xx;
@@ -278,7 +279,7 @@ namespace Grocery.Presenation
                 Console.Clear();
 
                 IO.BoxTitle("   *** CÁC CHỨC NĂNG CỦA NHÀ CUNG CẤP ***         ", 5, 1, 20, 56);
-                IO.Writexy("*       1. Nhập nhà cung cấp.              *", 12, 5);
+                IO.Writexy("*       1. Thêm nhà cung cấp.              *", 12, 5);
                 IO.Writexy("*                                          *", 12, 6);
                 IO.Writexy("*       2. Sửa nhà cung cấp.               *", 12, 7);
                 IO.Writexy("*                                          *", 12, 8);
@@ -331,7 +332,7 @@ namespace Grocery.Presenation
 
                 Console.Clear();
 
-                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 12, 56);
+                IO.BoxTitle("        *** TÌM KIẾM NHÀ CUNG CẤP***         ", 5, 1, 12, 56);
                 IO.Writexy("*     1. Tìm kiếm nhà cung cấp theo mã.    *", 12, 5);
                 IO.Writexy("*     2. Tìm kiếm nhà cung cấp theo tên.   *", 12, 6);
                 IO.Writexy("*     3. Thoát.                            *", 12, 7);

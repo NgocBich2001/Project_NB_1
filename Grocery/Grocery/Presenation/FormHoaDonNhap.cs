@@ -110,7 +110,7 @@ namespace Grocery.Presenation
             IFHoaDonNhapBLL hdn = new HoaDonNhapBLL();
             HoaDonNhapBLL HDNBLL = new HoaDonNhapBLL();
             Console.Clear();
-            IO.BoxTitle("                                   CẬP NHẬT THÔNG TIN HÓA ĐƠN NHẬP", 1, 1, 15, 100);
+            IO.BoxTitle("                                   SỬA THÔNG TIN HÓA ĐƠN NHẬP", 1, 1, 15, 100);
             IO.Writexy("Mã hóa đơn nhập:", 5, 4);
             IO.Writexy("Mã nhà cung cấp:", 40, 4);
             IO.Writexy("Nhân viên giao:", 5, 6);
@@ -259,7 +259,7 @@ namespace Grocery.Presenation
             int x, y, d;
             do
             {
-                IO.Clear(xx, yy, 1500, ConsoleColor.Black);
+                IO.Clear(xx, yy, 1800, ConsoleColor.Black);
                 head = (curpage - 1) * n;
                 final = curpage * n < list.Count ? curpage * n : list.Count;
                 x = xx;
@@ -329,7 +329,7 @@ namespace Grocery.Presenation
                 Console.Clear();
 
                 IO.BoxTitle("  *** CÁC CHỨC NĂNG CỦA HÓA ĐƠN NHẬP ***         ", 5, 1, 20, 56);
-                IO.Writexy("*       1. Nhập hóa đơn nhập.              *", 12, 5);
+                IO.Writexy("*       1. Thêm hóa đơn nhập.              *", 12, 5);
                 IO.Writexy("*                                          *", 12, 6);
                 IO.Writexy("*       2. Sửa hóa đơn nhập.               *", 12, 7);
                 IO.Writexy("*                                          *", 12, 8);

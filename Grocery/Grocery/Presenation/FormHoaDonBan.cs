@@ -109,7 +109,7 @@ namespace Grocery.Presenation
             IFHoaDonBanBLL hdb = new HoaDonBanBLL();
             HoaDonBanBLL HDBBLL = new HoaDonBanBLL();
             Console.Clear();
-            IO.BoxTitle("                                   CẬP NHẬT THÔNG TIN HÓA ĐƠN BÁN", 1, 1, 15, 100);
+            IO.BoxTitle("                                   SỬA THÔNG TIN HÓA ĐƠN BÁN", 1, 1, 15, 100);
             IO.Writexy("Mã hóa đơn bán:", 5, 4);
             IO.Writexy("Mã nhân viên bán:", 5, 6);
             IO.Writexy("Ngày bán:", 40, 6);
@@ -207,6 +207,7 @@ namespace Grocery.Presenation
                     }
                     else
                         hdb.XoaHoaDonBan(mahdb);
+                    Console.Clear();
                     Hien(1, 8, hdb.XemDSHoaDonBan(), 5, 1);
                 } while (mahdb < 0 || HDBBLL.KiemTra(mahdb) == false);
             } while (true);
@@ -256,7 +257,7 @@ namespace Grocery.Presenation
             int x, y, d;
             do
             {
-                IO.Clear(xx, yy, 1500, ConsoleColor.Black);
+                IO.Clear(xx, yy, 1800, ConsoleColor.Black);
                 head = (curpage - 1) * n;
                 final = curpage * n < list.Count ? curpage * n : list.Count;
                 x = xx;
@@ -324,7 +325,7 @@ namespace Grocery.Presenation
                 Console.Clear();
 
                 IO.BoxTitle("   *** CÁC CHỨC NĂNG CỦA HÓA ĐƠN BÁN ***         ", 5, 1, 20, 56);
-                IO.Writexy("*       1. Nhập hóa đơn bán.               *", 12, 5);
+                IO.Writexy("*       1. Thêm hóa đơn bán.               *", 12, 5);
                 IO.Writexy("*                                          *", 12, 6);
                 IO.Writexy("*       2. Sửa hóa đơn bán.                *", 12, 7);
                 IO.Writexy("*                                          *", 12, 8);

@@ -44,13 +44,12 @@ namespace Grocery.Utiility
         }
         public bool HienThi(int x, int y, string user, string password)
         {
-            IO.BoxTitle("    ***ĐĂNG NHẬP***", x, y, 15, 60);
+            IO.BoxTitle("    ***ĐĂNG NHẬP***", x, y, 15, 70);
             IO.Writexy("User: ", x + 3, y + 5);
             IO.Writexy("Password: ", x + 3, y + 8);
             IO.Writexy("Đăng nhập!", x + 40, y + 10);
             IO.Writexy("Ngầm định(User: 14- Password: 5)", x + 2, y + 12, ConsoleColor.Black, ConsoleColor.White);
-            Console.ReadKey();
-            IO.Writexy("                               ", x + 2, y + 12, ConsoleColor.Black, ConsoleColor.White);
+            IO.Writexy("                               ", x + 2, y + 13, ConsoleColor.Black, ConsoleColor.White);
             do
             {
                 this.User = IO.ReadString(x + 9, y + 5);

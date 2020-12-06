@@ -94,7 +94,7 @@ namespace Grocery.Presenation
             IFNhanVienBLL nhanvien = new NhanVienBLL();
             NhanVienBLL NVBLL = new NhanVienBLL();
             Console.Clear();
-            IO.BoxTitle("                                   CẬP NHẬT THÔNG TIN NHÂN VIÊN", 1, 1, 15, 100);
+            IO.BoxTitle("                                   SỬA THÔNG TIN NHÂN VIÊN", 1, 1, 15, 100);
             IO.Writexy("Mã nhân viên:", 5, 4);
             IO.Writexy("Tên nhân viên :", 40, 4);
             IO.Writexy("Ngày sinh:", 5, 6);
@@ -177,7 +177,7 @@ namespace Grocery.Presenation
                     }
                     else
                         nhanvien.XoaNhanVien(manv);
-                    //Console.Clear();
+                    Console.Clear();
                     Hien(1, 8, nhanvien.XemDSNhanVien(), 5, 1);
                 } while (manv < 0 || NVBLL.KiemTra(manv) == false);
             } while (true);
@@ -198,7 +198,7 @@ namespace Grocery.Presenation
                 IFNhanVienBLL nhanvien = new NhanVienBLL();
                 NhanVienBLL NVBLL = new NhanVienBLL();
                 Console.Clear();
-                IO.BoxTitle("                                      TÌM KIẾM NHÂN VIÊN", 1, 1, 5, 100);
+                IO.BoxTitle("                              TÌM KIẾM NHÂN VIÊN THEO TÊN", 1, 1, 5, 100);
                 IO.Writexy("Nhập tên nhân viên cần tìm:", 3, 4);
                 Hien(1, 8, nhanvien.XemDSNhanVien(), 5, 0);
                 do
@@ -226,7 +226,7 @@ namespace Grocery.Presenation
                 IFNhanVienBLL nhanvien = new NhanVienBLL();
                 NhanVienBLL NVBLL = new NhanVienBLL();
                 Console.Clear();
-                IO.BoxTitle("                                      TÌM KIẾM NHÂN VIÊN", 1, 1, 5, 100);
+                IO.BoxTitle("                             TÌM KIẾM NHÂN VIÊN THEO MÃ", 1, 1, 5, 100);
                 IO.Writexy("Nhập mã nhân viên cần tìm:", 3, 4);
                 Hien(1, 8, nhanvien.XemDSNhanVien(), 5, 0);
                 do
@@ -254,7 +254,7 @@ namespace Grocery.Presenation
             int x, y, d;
             do
             {
-                IO.Clear(xx, yy, 1500, ConsoleColor.Black);
+                IO.Clear(xx, yy, 1800, ConsoleColor.Black);
                 head = (curpage - 1) * n;
                 final = curpage * n < list.Count ? curpage * n : list.Count;
                 x = xx;
@@ -373,7 +373,7 @@ namespace Grocery.Presenation
 
                 Console.Clear();
 
-                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 12, 56);
+                IO.BoxTitle("       *** TÌM KIẾM NHÂN VIÊN ***         ", 5, 1, 12, 56);
                 IO.Writexy("*     1. Tìm kiếm nhân viên theo mã.       *", 12, 5);
                 IO.Writexy("*     2. Tìm kiếm nhân viên theo tên.      *", 12, 6);
                 IO.Writexy("*     3. Thoát.                            *", 12, 7);

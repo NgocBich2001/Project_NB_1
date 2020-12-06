@@ -10,7 +10,7 @@ namespace Grocery.Presenation
     //Giao tiếp với người sử dụng để giải quyết vấn đề của bài toán với các yêu cầu được đặt ra trong Interface của Business
     public class FormHangHoa
     {
-        public void Nhap()
+        public void Nhap()//Tạo giao diện Nhap.
         {
             do
             {
@@ -58,11 +58,11 @@ namespace Grocery.Presenation
                 Console.SetCursorPosition(54, 8);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
-                    HienChucNang();
+                    HienChucNang();//Quay về màn hình chính.
                 else if (kt.Key == ConsoleKey.X)
-                    Hien(1, 13, hanghoa.XemDSHangHoa(), 5, 1);
+                    Hien(1, 13, hanghoa.XemDSHangHoa(), 5, 1);//Hiện danh sách.
                 else if (kt.Key == ConsoleKey.Enter)
-                    hanghoa.ThemHangHoa(hh);
+                    hanghoa.ThemHangHoa(hh);// Sau khi nhập xong chuyển đối tượng hh sang hanghoa của tầng business.
             } while (true);
         }
         public void Sua()
@@ -70,7 +70,7 @@ namespace Grocery.Presenation
             IFHangHoaBLL hanghoa = new HangHoaBLL();
             HangHoaBLL hhBLL = new HangHoaBLL();
             Console.Clear();
-            IO.BoxTitle("                                   CẬP NHẬT THÔNG TIN HÀNG HÓA", 1, 1, 10, 100);
+            IO.BoxTitle("                                   SỬA THÔNG TIN HÀNG HÓA", 1, 1, 10, 100);
             IO.Writexy("Mã HH:", 3, 4);
             IO.Writexy("Tên hàng:", 55, 4);
             IO.Writexy("Số lượng nhập:", 3, 6);
@@ -146,6 +146,7 @@ namespace Grocery.Presenation
                     }
                     else
                         hanghoa.XoaHangHoa(mahh);
+                    Console.Clear();
                     Hien(1, 8, hanghoa.XemDSHangHoa(), 5, 1);
                 } while (mahh < 0 || hhBLL.KiemTra(mahh) == false);
             } while (true);
@@ -166,7 +167,7 @@ namespace Grocery.Presenation
                 IFHangHoaBLL hanghoa = new HangHoaBLL();
                 HangHoaBLL hhBLL = new HangHoaBLL();
                 Console.Clear();
-                IO.BoxTitle("                                      TÌM KIẾM HÀNG HÓA", 1, 1, 5, 100);
+                IO.BoxTitle("                               TÌM KIẾM HÀNG HÓA THEO TÊN", 1, 1, 5, 100);
                 IO.Writexy("Nhập tên hàng hóa cần tìm:", 5, 4);
                 Hien(1, 8, hanghoa.XemDSHangHoa(), 5, 0);
                 do
@@ -195,7 +196,7 @@ namespace Grocery.Presenation
                 IFHangHoaBLL hanghoa = new HangHoaBLL();
                 HangHoaBLL hhBLL = new HangHoaBLL();
                 Console.Clear();
-                IO.BoxTitle("                                      TÌM KIẾM HÀNG HÓA", 1, 1, 5, 100);
+                IO.BoxTitle("                               TÌM KIẾM HÀNG HÓA THEO MÃ", 1, 1, 5, 100);
                 IO.Writexy("Nhập mã hàng hóa cần tìm:", 3, 4);
                 Hien(1, 8, hanghoa.XemDSHangHoa(), 5, 0);
                 do
@@ -223,7 +224,7 @@ namespace Grocery.Presenation
             int x, y, d;
             do
             {
-                IO.Clear(xx, yy, 1500, ConsoleColor.Black);
+                IO.Clear(xx, yy, 1800, ConsoleColor.Black);
                 head = (curpage - 1) * n;
                 final = curpage * n < list.Count ? curpage * n : list.Count;
                 x = xx;
@@ -283,7 +284,7 @@ namespace Grocery.Presenation
                 Console.Clear();
 
                 IO.BoxTitle("     *** CÁC CHỨC NĂNG CỦA HÀNG HÓA ***         ", 5, 1, 20, 56);
-                IO.Writexy("*       1. Nhập hàng hóa.                  *", 12, 5);
+                IO.Writexy("*       1. Thêm hàng hóa.                  *", 12, 5);
                 IO.Writexy("*                                          *", 12, 6);
                 IO.Writexy("*       2. Sửa hàng hóa.                   *", 12, 7);
                 IO.Writexy("*                                          *", 12, 8);
@@ -336,7 +337,7 @@ namespace Grocery.Presenation
 
                 Console.Clear();
 
-                IO.BoxTitle("             *** CÁC CHỨC NĂNG ***         ", 5, 1, 12, 56);
+                IO.BoxTitle("           *** TÌM KIẾM HÀNG HÓA ***         ", 5, 1, 12, 56);
                 IO.Writexy("*       1. Tìm kiếm hàng hóa theo mã.      *", 12, 5);
                 IO.Writexy("*       2. Tìm kiếm hàng hóa theo tên.     *", 12, 6);
                 IO.Writexy("*       3. Thoát.                          *", 12, 7);
