@@ -132,7 +132,6 @@ namespace Grocery.Presenation
             int mahang;
             int soluong;
             double gianhap;
-            //double thanhtien;
             do
             {
                 mahdn = int.Parse(IO.ReadNumber(23, 4));

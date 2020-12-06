@@ -93,8 +93,8 @@ namespace Grocery.Presenation
                         IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 11);
                     }
                 } while (hoadb.donvi == null);
-                hoadb.thanhtien = double.Parse(IO.ReadNumber(17, 8));
-                Console.SetCursorPosition(55, 8);
+                IO.Writexy(hoadb.thanhtien.ToString(), 17, 8);
+                Console.SetCursorPosition(55, 11);
                 ConsoleKeyInfo kt = Console.ReadKey();
                 if (kt.Key == ConsoleKey.Escape)
                     HienChucNang();
@@ -129,7 +129,6 @@ namespace Grocery.Presenation
             int soluong;
             double giaban;
             string donvi;
-            double thanhtien;
 
             do
             {
@@ -147,7 +146,6 @@ namespace Grocery.Presenation
             IO.Writexy(hdban.soluong.ToString(), 40, 8);
             IO.Writexy(hdban.giaban.ToString(), 59, 8);
             IO.Writexy(hdban.donvi, 83, 8);
-            IO.Writexy(hdban.thanhtien.ToString(), 17, 10);
 
             manv = int.Parse(IO.ReadNumber(24, 6));
             if (manv != hdban.manvban && manv > 0)
@@ -167,10 +165,7 @@ namespace Grocery.Presenation
             donvi = IO.ReadString(83, 8);
             if (donvi != hdban.donvi && donvi != null)
                 hdban.donvi = donvi;
-            thanhtien = double.Parse(IO.ReadNumber(17, 10));
-            if (thanhtien != hdban.thanhtien && thanhtien > 0)
-                hdban.thanhtien = thanhtien;
-            
+            IO.Writexy(hdban.thanhtien.ToString(), 17, 12);
 
             Console.SetCursorPosition(58, 8);
             ConsoleKeyInfo kt = Console.ReadKey();
