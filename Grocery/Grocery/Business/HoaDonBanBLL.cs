@@ -5,6 +5,7 @@ using Grocery.Utiility;
 using Grocery.DataAccessLayer;
 using Grocery.DataAccessLayer.Interface;
 using Grocery.Business.Interface;
+using System.Collections.Generic;
 
 namespace Grocery.Business
 {
@@ -29,6 +30,17 @@ namespace Grocery.Business
         }
         public bool KiemTra(int mahdb)
         {
+            bool kt = false;
+            foreach (HoaDonBan hdb in HDBDA.GetData())
+                if (hdb.mahdb == mahdb)
+                {
+                    kt = true;
+                    break;
+                }
+            return kt;
+        }
+        /*public bool KiemTra(int mahdb)
+        {
             List<HoaDonBan> list = HDBDA.GetData();
             Node<HoaDonBan> NB = list.L;
             bool kt = false;
@@ -43,7 +55,7 @@ namespace Grocery.Business
                     NB = NB.Link;
             }
             return kt;
-        }
+        }*/
         public void XoaHoaDonBan(int mahdb)
         {
             int i;
@@ -69,7 +81,7 @@ namespace Grocery.Business
             if (i < list.Count)
             {
                 list.RemoveAt(i);
-                list.Add(HDB, i);
+                list.Add(HDB);
                 HDBDA.Update(list);
             }
             else

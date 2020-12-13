@@ -5,6 +5,7 @@ using Grocery.Utiility;
 using Grocery.DataAccessLayer;
 using Grocery.DataAccessLayer.Interface;
 using Grocery.Business.Interface;
+using System.Collections.Generic;
 
 namespace Grocery.Business
 {
@@ -29,7 +30,29 @@ namespace Grocery.Business
             else
                 throw new Exception("Du lieu sai!");
         }
+        public bool KiemTraTen(string tenncc)
+        {
+            bool kt = false;
+            foreach (NCC ncc in NCCDA.GetData())
+                if (ncc.tenncc == tenncc)
+                {
+                    kt = true;
+                    break;
+                }
+            return kt;
+        }
         public bool KiemTra(int mancc)
+        {
+            bool kt = false;
+            foreach (NCC ncc in NCCDA.GetData())
+                if (ncc.mancc == mancc)
+                {
+                    kt = true;
+                    break;
+                }
+            return kt;
+        }
+        /*public bool KiemTra(int mancc)
         {
             List<NCC> list = NCCDA.GetData();
             Node<NCC> NB = list.L;
@@ -45,8 +68,8 @@ namespace Grocery.Business
                     NB = NB.Link;
             }
             return kt;
-        }
-        public bool KiemTraTen(string tenncc)
+        }*/
+        /*public bool KiemTraTen(string tenncc)
         {
             List<NCC> list = NCCDA.GetData();
             Node<NCC> NB = list.L;
@@ -62,7 +85,7 @@ namespace Grocery.Business
                     NB = NB.Link;
             }
             return kt;
-        }
+        }*/
         public void XoaNhaCC(int mancc)
         {
             int i;
@@ -88,7 +111,7 @@ namespace Grocery.Business
             if (i < list.Count)
             {
                 list.RemoveAt(i);
-                list.Add(nc, i);
+                list.Add(nc);
                 NCCDA.Update(list);
             }
             else

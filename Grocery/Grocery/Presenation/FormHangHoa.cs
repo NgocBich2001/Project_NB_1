@@ -4,6 +4,7 @@ using Grocery.Utiility;
 using Grocery.ThucThe;
 using Grocery.Business;
 using Grocery.Business.Interface;
+using System.Collections.Generic;
 
 namespace Grocery.Presenation
 {
@@ -15,6 +16,7 @@ namespace Grocery.Presenation
             do
             {
                 IFHangHoaBLL hanghoa = new HangHoaBLL();
+                HangHoa hh = new HangHoa();
                 Console.Clear();
                 IO.BoxTitle("                                    NHẬP THÔNG TIN HÀNG HÓA", 1, 1, 10, 100);
                 IO.Writexy("Tên hàng:", 5, 4);
@@ -23,7 +25,7 @@ namespace Grocery.Presenation
                 IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 7);
                 IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 8);
                 Hien(1, 13, hanghoa.XemDSHangHoa(), 5, 0);
-                HangHoa hh = new HangHoa();
+                
                 do
                 {
                     hh.tenhang = IO.ReadString(15, 4);
@@ -96,10 +98,11 @@ namespace Grocery.Presenation
             IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
             HangHoa hh = hanghoa.LayHangHoa(mahh);
             IO.Writexy(hh.tenhang, 65, 4);
-            IO.Clear(5, 8, 80, ConsoleColor.Black);
-            IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
             IO.Writexy(hh.slnhapve.ToString(), 18, 6);
             IO.Writexy(hh.slhienco.ToString(), 77, 6);
+            IO.Clear(5, 8, 80, ConsoleColor.Black);
+            IO.Writexy("Enter để cập nhật, Esc để thoát, X để xem chi tiết...", 5, 8);
+            
 
             tenhang = IO.ReadString(65, 4);
             if (tenhang != hh.tenhang && tenhang != null)

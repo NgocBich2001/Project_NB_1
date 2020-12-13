@@ -5,6 +5,7 @@ using Grocery.Utiility;
 using Grocery.DataAccessLayer;
 using Grocery.DataAccessLayer.Interface;
 using Grocery.Business.Interface;
+using System.Collections.Generic;
 
 namespace Grocery.Business
 {
@@ -29,7 +30,29 @@ namespace Grocery.Business
             else
                 throw new Exception("Du lieu sai!");
         }
+        public bool KiemTraTen(string tennv)
+        {
+            bool kt = false;
+            foreach (NhanVien nv in NVDA.GetData())
+                if (nv.tennv == tennv)
+                {
+                    kt = true;
+                    break;
+                }
+            return kt;
+        }
         public bool KiemTra(int manv)
+        {
+            bool kt = false;
+            foreach (NhanVien nv in NVDA.GetData())
+                if (nv.manv == manv)
+                {
+                    kt = true;
+                    break;
+                }
+            return kt;
+        }
+        /*public bool KiemTra(int manv)
         {
             List<NhanVien> list = NVDA.GetData();
             Node<NhanVien> NB = list.L;
@@ -45,8 +68,8 @@ namespace Grocery.Business
                     NB = NB.Link;
             }
             return kt;
-        }
-        public bool KiemTraTen(string tennv)
+        }*/
+        /*public bool KiemTraTen(string tennv)
         {
             List<NhanVien> list = NVDA.GetData();
             Node<NhanVien> NB = list.L;
@@ -62,7 +85,7 @@ namespace Grocery.Business
                     NB = NB.Link;
             }
             return kt;
-        }
+        }*/
         public void XoaNhanVien(int manv)
         {
             int i;
@@ -88,7 +111,7 @@ namespace Grocery.Business
             if (i < list.Count)
             {
                 list.RemoveAt(i);
-                list.Add(nv, i);
+                list.Add(nv);
                 NVDA.Update(list);
             }
             else

@@ -4,6 +4,7 @@ using Grocery.Utiility;
 using Grocery.ThucThe;
 using Grocery.Business;
 using Grocery.Business.Interface;
+using System.Collections.Generic;
 
 namespace Grocery.Presenation
 {
@@ -115,7 +116,7 @@ namespace Grocery.Presenation
             IO.Writexy("Mã nhà cung cấp:", 40, 4);
             IO.Writexy("Nhân viên giao:", 5, 6);
             IO.Writexy("Mã nhân viên nhận:", 5, 8);
-            IO.Writexy("Ngày nhận: ", 25, 8);
+            IO.Writexy("Ngày nhận: ", 40, 8);
             IO.Writexy("Mã hàng:", 5, 10);
             IO.Writexy("Số lượng:", 25, 10);
             IO.Writexy("Đơn giá nhập:", 40, 10);
@@ -145,7 +146,7 @@ namespace Grocery.Presenation
             IO.Writexy(hdnhap.mancc.ToString(),58, 4);
             IO.Writexy(hdnhap.nvgiao, 21, 6);
             IO.Writexy(hdnhap.manvnhan.ToString(), 25, 8);
-            IO.Writexy(hdnhap.ngaynhan, 46, 8);
+            IO.Writexy(hdnhap.ngaynhan, 50, 8);
             IO.Writexy(hdnhap.mahang.ToString(), 13, 10);
             IO.Writexy(hdnhap.soluong.ToString(), 35, 10);
             IO.Writexy(hdnhap.gianhap.ToString(), 54, 10);
@@ -159,7 +160,7 @@ namespace Grocery.Presenation
             manvnhan = int.Parse(IO.ReadNumber(25, 8));
             if (manvnhan != hdnhap.manvnhan && manvnhan > 0)
                 hdnhap.manvnhan = manvnhan;
-            ngaynhan = IO.ReadString(46, 8);
+            ngaynhan = IO.ReadString(50, 8);
             if (ngaynhan != hdnhap.ngaynhan && ngaynhan != null)
                 hdnhap.ngaynhan = ngaynhan;
             mahang = int.Parse(IO.ReadNumber(13, 10));
