@@ -39,23 +39,7 @@ namespace Grocery.Business
                 }
             return kt;
         }
-        /*public bool KiemTra(int mahdb)
-        {
-            List<HoaDonBan> list = HDBDA.GetData();
-            Node<HoaDonBan> NB = list.L;
-            bool kt = false;
-            while (NB != null)
-            {
-                if (NB.Info.mahdb == mahdb)
-                {
-                    kt = true;
-                    break;
-                }
-                else
-                    NB = NB.Link;
-            }
-            return kt;
-        }*/
+        
         public void XoaHoaDonBan(int mahdb)
         {
             int i;
@@ -119,7 +103,8 @@ namespace Grocery.Business
                         KQ.Add(new HoaDonBan(list[i]));
                     }
             }
-            else KQ = null;
+            else 
+                KQ = null;
             return KQ;
         }
     }

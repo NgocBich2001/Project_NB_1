@@ -52,40 +52,7 @@ namespace Grocery.Business
                 }
             return kt;
         }
-        /*public bool KiemTra(int mancc)
-        {
-            List<NCC> list = NCCDA.GetData();
-            Node<NCC> NB = list.L;
-            bool kt = false;
-            while (NB != null)
-            {
-                if (NB.Info.mancc == mancc)
-                {
-                    kt = true;
-                    break;
-                }
-                else
-                    NB = NB.Link;
-            }
-            return kt;
-        }*/
-        /*public bool KiemTraTen(string tenncc)
-        {
-            List<NCC> list = NCCDA.GetData();
-            Node<NCC> NB = list.L;
-            bool kt = false;
-            while (NB != null)
-            {
-                if (NB.Info.tenncc == tenncc)
-                {
-                    kt = true;
-                    break;
-                }
-                else
-                    NB = NB.Link;
-            }
-            return kt;
-        }*/
+        
         public void XoaNhaCC(int mancc)
         {
             int i;
@@ -159,7 +126,8 @@ namespace Grocery.Business
                     }
                 }
             }
-            else KQ = null;
+            else 
+                KQ = null;
             return KQ;
         }
     }

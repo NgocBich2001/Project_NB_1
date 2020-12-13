@@ -39,23 +39,7 @@ namespace Grocery.Business
                 }
             return kt;
         }
-        /*public bool KiemTra(int mahdn)
-        {
-            List<HoaDonNhap> list = HDNDA.GetData();
-            Node<HoaDonNhap> NB = list.L;
-            bool kt = false;
-            while (NB != null)
-            {
-                if (NB.Info.mahdn == mahdn)
-                {
-                    kt = true;
-                    break;
-                }
-                else
-                    NB = NB.Link;
-            }
-            return kt;
-        }*/
+        
         public void XoaHoaDonNhap(int mahdn)
         {
             int i;
@@ -119,7 +103,8 @@ namespace Grocery.Business
                         KQ.Add(new HoaDonNhap(list[i]));
                     }
             }
-            else KQ = null;
+            else 
+                KQ = null;
             return KQ;
         }
     }

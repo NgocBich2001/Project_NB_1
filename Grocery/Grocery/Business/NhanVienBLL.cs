@@ -52,40 +52,7 @@ namespace Grocery.Business
                 }
             return kt;
         }
-        /*public bool KiemTra(int manv)
-        {
-            List<NhanVien> list = NVDA.GetData();
-            Node<NhanVien> NB = list.L;
-            bool kt = false;
-            while (NB != null)
-            {
-                if (NB.Info.manv == manv)
-                {
-                    kt = true;
-                    break;
-                }
-                else
-                    NB = NB.Link;
-            }
-            return kt;
-        }*/
-        /*public bool KiemTraTen(string tennv)
-        {
-            List<NhanVien> list = NVDA.GetData();
-            Node<NhanVien> NB = list.L;
-            bool kt = false;
-            while (NB != null)
-            {
-                if (NB.Info.tennv == tennv)
-                {
-                    kt = true;
-                    break;
-                }
-                else
-                    NB = NB.Link;
-            }
-            return kt;
-        }*/
+        
         public void XoaNhanVien(int manv)
         {
             int i;
@@ -159,7 +126,8 @@ namespace Grocery.Business
                     }
                 }
             }
-            else KQ = null;
+            else 
+                KQ = null;
             return KQ;
         }
     }
