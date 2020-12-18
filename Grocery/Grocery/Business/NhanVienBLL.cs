@@ -55,34 +55,17 @@ namespace Grocery.Business
         
         public void XoaNhanVien(int manv)
         {
-            int i;
-            List<NhanVien> list = NVDA.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].manv == manv)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                NVDA.Update(list);
-            }
+            if (KiemTra(manv) == true)
+                NVDA.Delete(manv);
             else
-                throw new Exception("Không tồn tại mã này!");
+                throw new Exception("Không tồn tại mã này.");
         }
         public void SuaNhanVien(NhanVien nv)
         {
-            int i;
-            List<NhanVien> list = NVDA.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].manv == nv.manv)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                list.Add(nv);
-                NVDA.Update(list);
-            }
+            if (KiemTra(nv.manv) == true)
+                NVDA.Update(nv);
             else
-                throw new Exception("Không tồn tại mã này!");
+                throw new Exception("Không tồn tại mã này.");
         }
         public NhanVien LayNhanVien(int manv)
         {

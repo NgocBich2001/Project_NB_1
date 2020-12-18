@@ -69,12 +69,28 @@ namespace Grocery.DataAccessLayer
             fwrite.Close();
         }
         //Cập nhật lại danh sách vào tệp
-        public void Update(List<HoaDonNhap> list)
+        public void Update(HoaDonNhap hdn)
         {
+            List<HoaDonNhap> list = GetData();
+            for (int i = 0; i < list.Count; ++i)
+                if (list[i].mahdn == hdn.mahdn)
+                {
+                    list[i] = hdn;
+                    break;
+                }
             StreamWriter fwrite = File.CreateText(txtfile5);
             for (int i = 0; i < list.Count; ++i)
                 fwrite.WriteLine(list[i].mahdn + "\t" + list[i].mancc + "\t" + list[i].nvgiao + "\t" + list[i].manvnhan + "\t" + list[i].ngaynhan + "\t" + list[i].mahang + "\t" + list[i].soluong + "\t" + list[i].gianhap + "\t" + list[i].thanhtien); ;
             fwrite.Close();
+        }
+        public void Delete(int mahdn)
+        {
+            List<HoaDonNhap> list = GetData();
+            StreamWriter file = File.CreateText(txtfile5);
+            foreach (HoaDonNhap hdn in list)
+                if (hdn.mahdn != mahdn)
+                    file.WriteLine(hdn.mahdn + "\t" + hdn.mancc + "\t" + hdn.nvgiao + "\t" + hdn.manvnhan + "\t" + hdn.ngaynhan + "\t" + hdn.mahang + "\t" + hdn.soluong + "\t" + hdn.gianhap + "\t" + hdn.thanhtien);
+            file.Close();
         }
     }
 }

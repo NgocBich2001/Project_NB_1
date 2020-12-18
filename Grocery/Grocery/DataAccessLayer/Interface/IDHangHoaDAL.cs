@@ -11,6 +11,7 @@ namespace Grocery.DataAccessLayer.Interface
     {
         List<HangHoa> GetData();
         void Insert(HangHoa hh);
-        void Update(List<HangHoa> list);
+        void Update(HangHoa hh);
+        void Delete(int mahh);
     }
 }

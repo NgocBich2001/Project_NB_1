@@ -69,12 +69,28 @@ namespace Grocery.DataAccessLayer
             fwrite.Close();
         }
         //Cập nhật lại danh sách vào tệp
-        public void Update(List<NCC> list)
+        public void Update(NCC nc)
         {
+            List<NCC> list = GetData();
+            for (int i = 0; i < list.Count; ++i)
+                if (list[i].mancc == nc.mancc)
+                {
+                    list[i] = nc;
+                    break;
+                }
             StreamWriter fwrite = File.CreateText(txtfile2);
             for (int i = 0; i < list.Count; ++i)
                 fwrite.WriteLine(list[i].mancc + "\t" + list[i].tenncc + "\t" + list[i].diachi + "\t" + list[i].sdt);
             fwrite.Close();
         }
+        public void Delete(int  manc)
+        {
+            List<NCC> list = GetData();
+            StreamWriter file = File.CreateText(txtfile2);
+            foreach(NCC nc in list)
+                if (nc.mancc != mancc)
+                    file.WriteLine(nc.mancc + "\t" + nc.tenncc + "\t" + nc.diachi + "\t" + nc.sdt);
+                file.Close();   
+        }    
     }
 }

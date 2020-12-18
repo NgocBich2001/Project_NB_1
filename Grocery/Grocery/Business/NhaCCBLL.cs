@@ -55,34 +55,17 @@ namespace Grocery.Business
         
         public void XoaNhaCC(int mancc)
         {
-            int i;
-            List<NCC> list = NCCDA.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].mancc == mancc)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                NCCDA.Update(list);
-            }
+            if (KiemTra(mancc) == true)
+                NCCDA.Delete(mancc);
             else
-                throw new Exception("Không tồn tại mã này!");
+                throw new Exception("Không tồn tại mã này.");
         }
         public void SuaNhaCC(NCC nc)
         {
-            int i;
-            List<NCC> list = NCCDA.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].mancc == nc.mancc)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                list.Add(nc);
-                NCCDA.Update(list);
-            }
+            if (KiemTra(nc.mancc) == true)
+                NCCDA.Update(nc);
             else
-                throw new Exception("Không tồn tại mã này!");
+                throw new Exception("Không tồn tại mã này.");
         }
         public NCC LayNCC(int mancc)
         {

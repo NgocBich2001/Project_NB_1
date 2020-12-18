@@ -70,12 +70,29 @@ namespace Grocery.DataAccessLayer
             fwrite.Close();
         }
         //Cập nhật lại danh sách vào tệp
-        public void Update(List<HangHoa> list)
+        public void Update(HangHoa HH)
         {
+            List<HangHoa> list = GetData();
+            for (int i = 0; i < list.Count; ++i)
+                if (list[i].mahh == HH.mahh)
+                {
+                    list[i] = HH;
+                    break;
+                }
             StreamWriter fwrite = File.CreateText(txtfile1);
             for (int i = 0; i < list.Count; ++i)
                 fwrite.WriteLine(list[i].mahh + "\t" + list[i].tenhang + "\t" + list[i].slnhapve + "\t" + list[i].slhienco);
             fwrite.Close();
         }
+        public void Delete(int mahh)
+        {
+            List<HangHoa> list = GetData();
+            StreamWriter file = File.CreateText(txtfile1);
+            foreach (HangHoa hh in list)
+                if (hh.mahh != mahh)
+                    file.WriteLine(hh.mahh + "\t" + hh.tenhang + "\t" + hh.slnhapve + "\t" + hh.slhienco);
+            file.Close();
+        }
+
     }
 }

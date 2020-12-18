@@ -42,34 +42,17 @@ namespace Grocery.Business
         
         public void XoaHoaDonBan(int mahdb)
         {
-            int i;
-            List<HoaDonBan> list = HDBDA.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].mahdb == mahdb)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                HDBDA.Update(list);
-            }
+            if (KiemTra(mahdb) == true)
+                HDBDA.Delete(mahdb);
             else
-                throw new Exception("Không tồn tại mã này!");
+                throw new Exception("Không tồn tại mã này.");
         }
         public void SuaHoaDonBan(HoaDonBan HDB)
         {
-            int i;
-            List<HoaDonBan> list = HDBDA.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].mahdb == HDB.mahdb)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                list.Add(HDB);
-                HDBDA.Update(list);
-            }
+            if (KiemTra(HDB.mahdb) == true)
+                HDBDA.Update(HDB);
             else
-                throw new Exception("Không tồn tại mã này!");
+                throw new Exception("Không tồn tại mã này.");
         }
         public HoaDonBan LayHoaDonBan(int mahdb)
         {

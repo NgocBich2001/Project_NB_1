@@ -52,48 +52,30 @@ namespace Grocery.Business
         }
         public void XoaHangHoa(int mahh)
         {
-            int i;
-            List<HangHoa> list = HHDA.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].mahh == mahh)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                HHDA.Update(list);
-            }
+            if (KiemTra(mahh) == true)
+                HHDA.Delete(mahh);
             else
-                throw new Exception("Không tồn tại mã này!");
+                throw new Exception("Không tồn tại mã này.");
         }
         public void SuaHangHoa(HangHoa HH)
         {
-            int i;
-            List<HangHoa> list = HHDA.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].mahh == HH.mahh)
-                    break;
-            if (i < list.Count)
-            {
-                list.RemoveAt(i);
-                list.Add(HH);
-                HHDA.Update(list);
-            }
+            if (KiemTra(HH.mahh) == true)
+                HHDA.Update(HH);
             else
-                throw new Exception("Không tồn tại mã này!");
+                throw new Exception("Không tồn tại mã này.");
         }
         public HangHoa LayHangHoa(int mahh)
         {
             int i;
             List<HangHoa> list = HHDA.GetData();
             for (i = 0; i < list.Count; ++i)
-                if (list[i].mahh == mahh) 
-                    break;
+                if (list[i].mahh == mahh) break;
             if (i < list.Count)
             {
                 return list[i];
             }
             else
-                throw new Exception("Không tồn tại mã này!");
+                throw new Exception("Khong ton tai ma nay");
 
         }
         public List<HangHoa> TimHangHoa(HangHoa HH)

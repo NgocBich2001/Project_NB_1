@@ -70,12 +70,28 @@ namespace Grocery.DataAccessLayer
             fwrite.Close();
         }
         //Cập nhật lại danh sách vào tệp
-        public void Update(List<NhanVien> list)
+        public void Update(NhanVien nv)
         {
+            List<NhanVien> list = GetData();
+            for (int i = 0; i < list.Count; ++i)
+                if (list[i].manv == nv.manv)
+                {
+                    list[i] = nv;
+                    break;
+                }
             StreamWriter fwrite = File.CreateText(txtfile3);
             for (int i = 0; i < list.Count; ++i)
                 fwrite.WriteLine(list[i].manv + "\t" + list[i].tennv + "\t" + list[i].ngaysinh + "\t" + list[i].gt +"\t" + list[i].ngayvaolam + "\t" + list[i].pass);
             fwrite.Close();
+        }
+        public void Delete(int manv)
+        {
+            List<NhanVien> list = GetData();
+            StreamWriter file = File.CreateText(txtfile3);
+            foreach (NhanVien nv in list)
+                if (nv.manv != manv)
+                    file.WriteLine(nv.manv + "\t" + nv.tennv + "\t" + nv.ngaysinh + "\t" + nv.gt + "\t" + nv.ngayvaolam + "\t" + nv.pass);
+            file.Close();
         }
     }
 }

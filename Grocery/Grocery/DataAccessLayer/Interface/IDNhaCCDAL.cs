@@ -11,6 +11,7 @@ namespace Grocery.DataAccessLayer.Interface
     {
         List<NCC> GetData();
         void Insert(NCC nc);
-        void Update(List<NCC> list);
+        void Update(NCC nc);
+        void Delete(int mancc);
     }
 }

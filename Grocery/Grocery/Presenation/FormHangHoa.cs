@@ -183,7 +183,7 @@ namespace Grocery.Presenation
                     }
                     else
                     {
-                        List<HangHoa> list = hanghoa.TimHangHoa(new HangHoa(0, null, 0, 0));
+                        List<HangHoa> list = hanghoa.TimHangHoa(new HangHoa(0, tenhh, 0, 0));
                         Hien(1, 8, list, 5, 1);
                     }
                 } while (tenhh == null || hhBLL.KiemTraTen(tenhh) == false);

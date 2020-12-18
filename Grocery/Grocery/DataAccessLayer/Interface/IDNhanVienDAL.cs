@@ -11,6 +11,7 @@ namespace Grocery.DataAccessLayer.Interface
     {
         List<NhanVien> GetData();
         void Insert(NhanVien nv);
-        void Update(List<NhanVien> list);
+        void Update(NhanVien nv);
+        void Delete(int manv);
     }
 }

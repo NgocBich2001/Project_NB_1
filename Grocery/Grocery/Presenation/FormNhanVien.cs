@@ -25,7 +25,7 @@ namespace Grocery.Presenation
                 IO.Writexy("Pass:", 5, 10);
                 IO.Writexy("--------------------------------------------------------------------------------------------------", 2, 11);
                 IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 12); //
-                Hien(1, 16, nhanvien.XemDSNhanVien(), 5, 0);
+                Hien(1, 18, nhanvien.XemDSNhanVien(), 5, 0);
                 NhanVien nv = new NhanVien();
                 do
                 {
@@ -123,23 +123,23 @@ namespace Grocery.Presenation
             } while (manv < 0 || NVBLL.KiemTra(manv) == false);
             NhanVien nv = nhanvien.LayNhanVien(manv);
             IO.Writexy(nv.tennv, 55, 4);
-            IO.Writexy(nv.ngaysinh.ToString(), 18, 6);
+            IO.Writexy(nv.ngaysinh, 18, 6);
             IO.Writexy(nv.gt, 48, 6);
-            IO.Writexy(nv.ngayvaolam.ToString(), 24, 8);
+            IO.Writexy(nv.ngayvaolam, 24, 8);
             IO.Writexy(nv.pass, 11, 10);
-            tennv = IO.ReadString(65, 4);
+            tennv = IO.ReadString(55, 4);
             if (tennv != nv.tennv && tennv != null)
                 nv.tennv = tennv;
-            ngaysinh = IO.ReadNumber(18, 6);
+            ngaysinh = IO.ReadString(18, 6);
             if (ngaysinh != nv.ngaysinh && ngaysinh != null)
                 nv.ngaysinh = ngaysinh;
-            gioitinh = IO.ReadNumber(48, 6);
+            gioitinh = IO.ReadString(48, 6);
             if (gioitinh != nv.gt && gioitinh != null)
                 nv.gt= gioitinh;
-            ngaylv = IO.ReadNumber(77, 8);
+            ngaylv = IO.ReadString(24, 8);
             if (ngaylv != nv.ngayvaolam && ngaylv != null)
                 nv.ngayvaolam = ngaylv;
-            pass = IO.ReadNumber(65, 10);
+            pass = IO.ReadString(11, 10);
             if (pass != nv.pass && pass != null)
                 nv.pass = pass;
 
@@ -148,11 +148,11 @@ namespace Grocery.Presenation
             if (kt.Key == ConsoleKey.Escape)
                 HienChucNang();
             else if (kt.Key == ConsoleKey.X)
-                Hien(1, 13, nhanvien.XemDSNhanVien(), 5, 1);
+                Hien(1, 18, nhanvien.XemDSNhanVien(), 5, 1);
             else if (kt.Key == ConsoleKey.Enter)
             {
                 nhanvien.SuaNhanVien(nv);
-                Hien(1, 13, nhanvien.XemDSNhanVien(), 5, 1);
+                Hien(1, 18, nhanvien.XemDSNhanVien(), 5, 1);
             }
             HienChucNang();
         }
