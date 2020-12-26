@@ -360,7 +360,7 @@ namespace Grocery.Presenation
                         break;
 
                     case '6':
-                        Environment.Exit(0);
+                        FormMenuMain.HienThi();
                         break;
                 }
             } while (true);
@@ -377,7 +377,7 @@ namespace Grocery.Presenation
                 IO.BoxTitle("       *** TÌM KIẾM NHÂN VIÊN ***         ", 5, 1, 12, 56);
                 IO.Writexy("*     1. Tìm kiếm nhân viên theo mã.       *", 12, 5);
                 IO.Writexy("*     2. Tìm kiếm nhân viên theo tên.      *", 12, 6);
-                IO.Writexy("*     3. Thoát.                            *", 12, 7);
+                IO.Writexy("*     3. Quay lại.                         *", 12, 7);
                 IO.Writexy("*                                          *", 12, 8);
                 IO.Writexy("*    Hãy chọn một chức năng để thực hiện!  *", 12, 9);
                 IO.Writexy("********************************************", 12, 10);
@@ -396,7 +396,7 @@ namespace Grocery.Presenation
                         break;
 
                     case '3':
-                        Environment.Exit(0);
+                        HienChucNang();
                         break;
                 }
             } while (true);

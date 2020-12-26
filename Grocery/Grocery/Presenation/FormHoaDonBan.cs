@@ -362,7 +362,7 @@ namespace Grocery.Presenation
                         break;
 
                     case '6':
-                        Environment.Exit(0);
+                        FormMenuMain.HienThi();
                         break;
                 }
             } while (true);

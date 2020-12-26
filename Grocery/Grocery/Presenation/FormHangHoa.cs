@@ -5,6 +5,7 @@ using Grocery.ThucThe;
 using Grocery.Business;
 using Grocery.Business.Interface;
 using System.Collections.Generic;
+using Grocery.Presenation;
 
 namespace Grocery.Presenation
 {
@@ -326,12 +327,12 @@ namespace Grocery.Presenation
                         break;
 
                     case '6':
-                        Environment.Exit(0);
+                        FormMenuMain.HienThi();
                         break;
                 }
             } while (true);
         }
-        
+
         public void HienTim()
         {
             Console.BackgroundColor = ConsoleColor.Black;
@@ -343,7 +344,7 @@ namespace Grocery.Presenation
                 IO.BoxTitle("           *** TÌM KIẾM HÀNG HÓA ***         ", 5, 1, 12, 56);
                 IO.Writexy("*       1. Tìm kiếm hàng hóa theo mã.      *", 12, 5);
                 IO.Writexy("*       2. Tìm kiếm hàng hóa theo tên.     *", 12, 6);
-                IO.Writexy("*       3. Thoát.                          *", 12, 7);
+                IO.Writexy("*       3. Quay lại.                       *", 12, 7);
                 IO.Writexy("*                                          *", 12, 8);
                 IO.Writexy("*    Hãy chọn một chức năng để thực hiện!  *", 12, 9);
                 IO.Writexy("********************************************", 12, 10);
@@ -362,11 +363,11 @@ namespace Grocery.Presenation
                         break;
 
                     case '3':
-                        Environment.Exit(0);
+                        HienChucNang();
                         break;
                 }
             } while (true);
         }
-        
+
     }
 }
