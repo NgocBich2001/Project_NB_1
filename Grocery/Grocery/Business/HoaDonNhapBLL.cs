@@ -39,7 +39,24 @@ namespace Grocery.Business
                 }
             return kt;
         }
-        
+        public HoaDonNhap ReturnKey(int mancc, string nvgiao, int manvnhan, string ngaynhap)
+        {
+            HoaDonNhap HDN = null;
+            foreach (HoaDonNhap hdn in HDNDA.GetData())
+            {
+                if (hdn.mancc==mancc && hdn.nvgiao==nvgiao && hdn.manvnhan==manvnhan && hdn.ngaynhan==ngaynhap)
+                {
+                    HDN = new HoaDonNhap(hdn);
+                    break;
+                }    
+            }
+            return HDN;
+        }    
+        public double TinhTong(int macthdn)
+        {
+            HoaDonNhapDAL hdnDAL = new HoaDonNhapDAL();
+            return hdnDAL.TongTien(macthdn);
+        }
         public void XoaHoaDonNhap(int mahdn)
         {
             if (KiemTra(mahdn) == true)

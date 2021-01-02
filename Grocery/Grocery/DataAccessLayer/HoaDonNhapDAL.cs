@@ -12,7 +12,9 @@ namespace Grocery.DataAccessLayer
     class HoaDonNhapDAL : IDHoaDonNhapDAL
     {
         //Xác định đường dẫn của tệp dữ liệu HOADONNHAP.txt
+        
         private string txtfile5 = @"E:\GITHUB\Project_NB_1\Grocery\Grocery\Data\HOADONNHAP.txt";
+        private string txtfile = @"E:\GITHUB\Project_NB_1\Grocery\Grocery\Data\CHITIETHOADONNHAP.txt";
         //Lấy toàn bộ dữ liệu có trong file HOADONNHAP.txt đưa vào một danh sách
         public List<HoaDonNhap> GetData()
         {
@@ -25,7 +27,7 @@ namespace Grocery.DataAccessLayer
                 {
                     s = Grocery.Utiility.CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new HoaDonNhap(int.Parse(a[0]), int.Parse(a[1]), a[2], int.Parse(a[3]), a[4], int.Parse(a[5]), int.Parse(a[6]), double.Parse(a[7]), double.Parse(a[8])));
+                    list.Add(new HoaDonNhap(int.Parse(a[0]), int.Parse(a[1]), a[2], int.Parse(a[3]), a[4], double.Parse(a[5])));
 
                 }
                 s = fread5.ReadLine();
@@ -64,8 +66,7 @@ namespace Grocery.DataAccessLayer
         {
             int manhap = mahdn + 1;
             StreamWriter fwrite = File.AppendText(txtfile5);
-            fwrite.WriteLine();
-            fwrite.Write(manhap + "\t" + hdn.mancc + "\t" + hdn.nvgiao + "\t" + hdn.manvnhan + "\t" + hdn.ngaynhan + "\t" + hdn.mahang + "\t" + hdn.soluong + "\t" + hdn.gianhap + "\t" + hdn.thanhtien);
+            fwrite.WriteLine(manhap + "\t" + hdn.mancc + "\t" + hdn.nvgiao + "\t" + hdn.manvnhan + "\t" + hdn.ngaynhan + "\t" + hdn.tongtien);
             fwrite.Close();
         }
         //Cập nhật lại danh sách vào tệp
@@ -80,7 +81,7 @@ namespace Grocery.DataAccessLayer
                 }
             StreamWriter fwrite = File.CreateText(txtfile5);
             for (int i = 0; i < list.Count; ++i)
-                fwrite.WriteLine(list[i].mahdn + "\t" + list[i].mancc + "\t" + list[i].nvgiao + "\t" + list[i].manvnhan + "\t" + list[i].ngaynhan + "\t" + list[i].mahang + "\t" + list[i].soluong + "\t" + list[i].gianhap + "\t" + list[i].thanhtien); ;
+                fwrite.WriteLine(list[i].mahdn + "\t" + list[i].mancc + "\t" + list[i].nvgiao + "\t" + list[i].manvnhan + "\t" + list[i].ngaynhan + "\t" + list[i].tongtien); 
             fwrite.Close();
         }
         public void Delete(int mahdn)
@@ -89,8 +90,37 @@ namespace Grocery.DataAccessLayer
             StreamWriter file = File.CreateText(txtfile5);
             foreach (HoaDonNhap hdn in list)
                 if (hdn.mahdn != mahdn)
-                    file.WriteLine(hdn.mahdn + "\t" + hdn.mancc + "\t" + hdn.nvgiao + "\t" + hdn.manvnhan + "\t" + hdn.ngaynhan + "\t" + hdn.mahang + "\t" + hdn.soluong + "\t" + hdn.gianhap + "\t" + hdn.thanhtien);
+                    file.WriteLine(hdn.mahdn + "\t" + hdn.mancc + "\t" + hdn.nvgiao + "\t" + hdn.manvnhan + "\t" + hdn.ngaynhan + "\t" + hdn.tongtien);
             file.Close();
+        }
+        public double TongTien(int mahdn)
+        {
+            StreamReader sr = new StreamReader(txtfile5);
+            
+            string s;
+            double TongTien = 0;
+
+            while ((s = sr.ReadLine()) != null)
+            {
+                String[] tmp = s.Split('\t');
+                if (tmp[0] == mahdn.ToString())
+                {
+                    StreamReader sr1 = new StreamReader(txtfile);
+                    string s1;
+                    while ((s1 = sr1.ReadLine()) != null)
+                    {
+                        string[] tmp1 = s1.Split('\t');
+                        if (tmp1[0] == tmp[0])
+                        {
+                            double tt = double.Parse(tmp1[6]);
+                            TongTien += tt;
+                        }
+                    }
+                    sr1.Close();
+                }
+            }
+            sr.Close();
+            return TongTien;
         }
     }
 }

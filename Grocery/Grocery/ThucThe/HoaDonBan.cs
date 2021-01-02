@@ -9,32 +9,20 @@ namespace Grocery.ThucThe
         private int MaHDB;
         private int MaNVBan;
         private string NgayBan;
-        private int MaHang;
-        private int SoLuong;
-        private double GiaBan;
-        private string DonViTinh;
-        private double ThanhTien;
+        private double TongTien;
         public HoaDonBan()
         {
             MaHDB = 0;
             MaNVBan = 0;
             NgayBan = "";
-            MaHang = 0;
-            SoLuong = 0;
-            GiaBan = 0;
-            DonViTinh = "";
-            ThanhTien = 0;
+            TongTien = 0;
         }
-        public HoaDonBan(int mahdb, int manvban, string ngayban,int mh, int soluong, double giaban, string donvi, double thanhtien)
+        public HoaDonBan(int mahdb, int manvban, string ngayban, double tongtien)
         {
             this.MaHDB = mahdb;
             this.MaNVBan = manvban;
             this.NgayBan = ngayban;
-            this.MaHang = mh;
-            this.SoLuong = soluong;
-            this.GiaBan = giaban;
-            this.DonViTinh = donvi;
-            this.ThanhTien = thanhtien;
+            this.TongTien = tongtien;
         }
         //Hàm sao chép
         public HoaDonBan(HoaDonBan hdb)
@@ -42,11 +30,7 @@ namespace Grocery.ThucThe
             this.MaHDB = hdb.mahdb;
             this.MaNVBan = hdb.manvban;
             this.NgayBan = hdb.ngayban;
-            this.MaHang = hdb.mahang;
-            this.SoLuong = hdb.soluong;
-            this.GiaBan = hdb.giaban;
-            this.DonViTinh = hdb.donvi;
-            this.ThanhTien = hdb.thanhtien;
+            this.TongTien = hdb.tongtien;
         }
         public int mahdb
         {
@@ -84,64 +68,17 @@ namespace Grocery.ThucThe
                 NgayBan = value;
             }
         }
-        public int mahang
+        
+        public double tongtien
         {
             get
             {
-                return MaHang;
+                return TongTien;
             }
             set
             {
                 if (value > 0)
-                    MaHang = value;
-            }   
-        }
-        public int soluong
-        {
-            get
-            {
-                return SoLuong;
-            }
-            set
-            {
-                if (value > 0)
-                    SoLuong = value;
-            }
-        } 
-        public double giaban
-        {
-            get
-            {
-                return GiaBan;
-            }
-            set
-            {
-                if (value > 0)
-                    GiaBan = value;
-            }    
-        }
-        public string donvi
-        {
-            get
-            {
-                return DonViTinh;
-            }
-            set
-            {
-                if (value != "")
-                    DonViTinh = value;
-            }
-        }    
-        public double thanhtien
-        {
-            get
-            {
-                return soluong * giaban;
-            }
-            set
-            {
-                if (value > 0)
-                    ThanhTien = value;
+                    TongTien = value;
             }
         }
     }

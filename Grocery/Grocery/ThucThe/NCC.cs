@@ -26,10 +26,10 @@ namespace Grocery.ThucThe
         }
         public NCC(NCC nc)
         {
-            this.MaNCC = nc.MaNCC;
-            this.TenNCC = nc.TenNCC;
-            this.DiaChi = nc.DiaChi;
-            this.SDT = nc.SDT;
+            this.MaNCC = nc.mancc;
+            this.TenNCC = nc.tenncc;
+            this.DiaChi = nc.diachi;
+            this.SDT = nc.sdt;
         }
         public int mancc
         {

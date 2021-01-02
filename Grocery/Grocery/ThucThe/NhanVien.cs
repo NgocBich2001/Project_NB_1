@@ -32,12 +32,12 @@ namespace Grocery.ThucThe
         }
         public NhanVien(NhanVien nv)
         {
-            this.MaNV = nv.MaNV;
-            this.TenNV = nv.TenNV;
-            this.NgaySinh = nv.NgaySinh;
-            this.GioiTinh = nv.GioiTinh;
-            this.NgayVaoLV = nv.NgayVaoLV;
-            this.Pass = nv.Pass;
+            this.MaNV = nv.manv;
+            this.TenNV = nv.tennv;
+            this.NgaySinh = nv.ngaysinh;
+            this.GioiTinh = nv.gt;
+            this.NgayVaoLV = nv.ngayvaolam;
+            this.Pass = nv.pass;
         }
         public int manv
         {

@@ -20,9 +20,9 @@ namespace Grocery.Business
         }
         public void ThemHoaDonBan(HoaDonBan HDB)
         {
-            if (HDB.donvi != "")
+            if (HDB.ngayban != "")
             {
-                HDB.donvi = Grocery.Utiility.CongCu.ChuanHoaXau(HDB.donvi);
+                HDB.ngayban = Grocery.Utiility.CongCu.ChuanHoaXau(HDB.ngayban);
                 HDBDA.Insert(HDB);
             }
             else
@@ -39,7 +39,24 @@ namespace Grocery.Business
                 }
             return kt;
         }
-        
+        public HoaDonBan ReturnKey(int manvb, string ngayban)
+        {
+            HoaDonBan HDB = null;
+            foreach (HoaDonBan hdb in HDBDA.GetData())
+            {
+                if (hdb.manvban == manvb && hdb.ngayban==ngayban)
+                {
+                    HDB = new HoaDonBan(hdb);
+                    break;
+                }
+            }
+            return HDB;
+        }
+        public double TinhTong(int macthdb)
+        {
+            HoaDonBanDAL hdbDAL = new HoaDonBanDAL();
+            return hdbDAL.TongTien(macthdb);
+        }
         public void XoaHoaDonBan(int mahdb)
         {
             if (KiemTra(mahdb) == true)
@@ -49,6 +66,7 @@ namespace Grocery.Business
         }
         public void SuaHoaDonBan(HoaDonBan HDB)
         {
+
             if (KiemTra(HDB.mahdb) == true)
                 HDBDA.Update(HDB);
             else
@@ -86,7 +104,7 @@ namespace Grocery.Business
                         KQ.Add(new HoaDonBan(list[i]));
                     }
             }
-            else 
+            else
                 KQ = null;
             return KQ;
         }

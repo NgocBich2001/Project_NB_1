@@ -26,7 +26,7 @@ namespace Grocery.DataAccessLayer
                 {
                     s = Grocery.Utiility.CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new HangHoa(int.Parse(a[0]), a[1], int.Parse(a[2]), int.Parse(a[3])));
+                    list.Add(new HangHoa(int.Parse(a[0]), a[1], int.Parse(a[2]), int.Parse(a[3]), int.Parse(a[4])));
 
                 }
                 s = fread1.ReadLine();
@@ -35,38 +35,12 @@ namespace Grocery.DataAccessLayer
             fread1.Close();
             return list;
         }
-        //Lấy mã nhân viên cấp của bản ghi cuối cùng phục vụ cho đánh mã tự động
-        public int mahh
-        {
-            get
-            {
-                StreamReader fread1 = File.OpenText(txtfile1);
-                string s = fread1.ReadLine();
-                string tmp = "";
-                while (s != null)
-                {
-                    if (s != "")
-                        tmp = s;
-                    s = fread1.ReadLine();
-                }
-                fread1.Close();
-                if (tmp == "")
-                    return 0;
-                else
-                {
-                    tmp = Grocery.Utiility.CongCu.ChuanHoaXau(tmp);
-                    string[] a = tmp.Split("\t");
-                    return int.Parse(a[0]);
-                }
-            }
-        }
+        
         //Chèn một bản ghi nhân viên vào tệp
         public void Insert(HangHoa HH)
         {
-            int mah = mahh + 1;
             StreamWriter fwrite = File.AppendText(txtfile1);
-            fwrite.WriteLine();
-            fwrite.Write(mah + "\t" + HH.tenhang + "\t" + HH.slnhapve + "\t" + HH.slhienco);
+            fwrite.WriteLine(HH.mahh + "\t" + HH.tenhang + "\t" + HH.mancc+ "\t" + HH.slnhapve + "\t" + HH.slhienco);
             fwrite.Close();
         }
         //Cập nhật lại danh sách vào tệp
@@ -81,7 +55,7 @@ namespace Grocery.DataAccessLayer
                 }
             StreamWriter fwrite = File.CreateText(txtfile1);
             for (int i = 0; i < list.Count; ++i)
-                fwrite.WriteLine(list[i].mahh + "\t" + list[i].tenhang + "\t" + list[i].slnhapve + "\t" + list[i].slhienco);
+                fwrite.WriteLine(list[i].mahh + "\t" + list[i].tenhang + "\t" + list[i].mancc+ "\t" + list[i].slnhapve + "\t" + list[i].slhienco);
             fwrite.Close();
         }
         public void Delete(int mahh)
@@ -90,9 +64,38 @@ namespace Grocery.DataAccessLayer
             StreamWriter file = File.CreateText(txtfile1);
             foreach (HangHoa hh in list)
                 if (hh.mahh != mahh)
-                    file.WriteLine(hh.mahh + "\t" + hh.tenhang + "\t" + hh.slnhapve + "\t" + hh.slhienco);
+                    file.WriteLine(hh.mahh + "\t" + hh.tenhang + "\t" + hh.mancc + "\t" + hh.slnhapve + "\t" + hh.slhienco);
             file.Close();
         }
-
+        public void UpdateTru(HangHoa hh, int sl)
+        {
+            List<HangHoa> list = GetData();
+            for (int i = 0; i < list.Count; ++i)
+                if (list[i].mahh == hh.mahh)
+                {
+                    list[i] = hh;
+                    list[i].slhienco -= sl;
+                    break;
+                }
+            StreamWriter sw = File.CreateText(txtfile1);
+            for (int i = 0; i < list.Count; ++i)
+                sw.WriteLine(list[i].mahh + "\t" + list[i].tenhang + "\t" + list[i].mancc + "\t" + list[i].slnhapve + "\t" + list[i].slhienco);
+            sw.Close();
+        }
+        public void UpdateCong(HangHoa hh, int sl)
+        {
+            List<HangHoa> list = GetData();
+            for (int i = 0; i < list.Count; ++i)
+                if (list[i].mahh == hh.mahh)
+                {
+                    list[i] = hh;
+                    list[i].slhienco += sl;
+                    break;
+                }
+            StreamWriter sw = File.CreateText(txtfile1);
+            for (int i = 0; i < list.Count; ++i)
+                sw.WriteLine(list[i].mahh + "\t" + list[i].tenhang + "\t" + list[i].mancc + "\t" + list[i].slnhapve + "\t" + list[i].slhienco);
+            sw.Close();
+        }
     }
 }

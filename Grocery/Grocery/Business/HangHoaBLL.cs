@@ -13,6 +13,7 @@ namespace Grocery.Business
     public class HangHoaBLL : IFHangHoaBLL
     {
         private IDHangHoaDAL HHDA = new HangHoaDAL();
+        private IDCTHoaDonNhapDAL CTHDNDA = new CTHoaDonNhapDAL();
         //Thực thi các yêu cầu
         public List<HangHoa> XemDSHangHoa()
         {
@@ -33,6 +34,39 @@ namespace Grocery.Business
             bool kt = false;
             foreach (HangHoa hh in HHDA.GetData())
                 if (hh.mahh == mahh)
+                {
+                    kt = true;
+                    break;
+                }
+            return kt;
+        }
+        public bool KiemTraMa(int mahh)
+        {
+            bool kt = false;
+            foreach (HangHoa hh in HHDA.GetData())
+                if (hh.mahh == mahh)
+                {
+                    kt = true;
+                    break;
+                }
+            return kt;
+        }
+        public bool KiemTraTenHH(int mahh, string tenhang)
+        {
+            bool kt = false;
+            foreach (CTHoaDonNhap hh in CTHDNDA.GetData())
+                if (hh.mahang == mahh && hh.tenhang==tenhang)
+                {
+                    kt = true;
+                    break;
+                }
+            return kt;
+        }
+        public bool KiemTraSLN(int mahh, string tenhang, int SL)
+        {
+            bool kt = false;
+            foreach (CTHoaDonNhap hh in CTHDNDA.GetData())
+                if (hh.mahang == mahh && hh.tenhang == tenhang && hh.soluong==SL)
                 {
                     kt = true;
                     break;
@@ -66,17 +100,32 @@ namespace Grocery.Business
         }
         public HangHoa LayHangHoa(int mahh)
         {
-            int i;
-            List<HangHoa> list = HHDA.GetData();
-            for (i = 0; i < list.Count; ++i)
-                if (list[i].mahh == mahh) break;
-            if (i < list.Count)
+            HangHoa hanghoa = null;
+            foreach (HangHoa hh in HHDA.GetData())
             {
-                return list[i];
+                if (hh.mahh == mahh)
+                {
+                    hanghoa = new HangHoa(hh);
+                    break;
+                }
             }
+            return hanghoa;
+        }
+        public void CongSL(HangHoa hh, int sl)
+        {
+            HangHoaDAL hhdal = new HangHoaDAL();
+            if (KiemTra(hh.mahh) == true)
+                hhdal.UpdateCong(hh, sl);
             else
-                throw new Exception("Khong ton tai ma nay");
-
+                throw new Exception("Không tồn tại mã này!");
+        }
+        public void TruSL(HangHoa hh, int sl)
+        {
+            HangHoaDAL hhdal = new HangHoaDAL();
+            if (KiemTra(hh.mahh) == true)
+                hhdal.UpdateTru(hh, sl);
+            else
+                throw new Exception("Không tồn tại mã này!");
         }
         public List<HangHoa> TimHangHoa(HangHoa HH)
         {

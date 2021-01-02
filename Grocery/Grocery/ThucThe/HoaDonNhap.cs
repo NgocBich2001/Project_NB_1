@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
+//using Grocery.Business.Interface;
+using Grocery.Business;
 
 namespace Grocery.ThucThe
 {
@@ -12,10 +14,8 @@ namespace Grocery.ThucThe
         private string NVGiao;
         private int MaNVNhan;
         private string NgayNhan;
-        private int MaHang;
-        private int SoLuong;
-        private double DonGiaNhap;
-        private double ThanhTien;
+        private double TongTien;
+        
         public HoaDonNhap()
         {
             MaHDN = 0;
@@ -23,36 +23,27 @@ namespace Grocery.ThucThe
             NVGiao = "";
             MaNVNhan = 0;
             NgayNhan = "";
-            MaHang = 0;
-            SoLuong = 0;
-            DonGiaNhap = 0;
-            ThanhTien = 0;
+            TongTien = 0;
         }    
-        public HoaDonNhap(int mahdn, int mancc, string nvgiao, int manvnhan, string ngaynhan, int mahang, int sl, double gianhap, double thanhtien)
+        public HoaDonNhap(int mahdn, int mancc, string nvgiao, int manvnhan, string ngaynhan, double tongtien)
         {
             this.MaHDN = mahdn;
             this.MaNCC = mancc;
             this.NVGiao = nvgiao;
             this.MaNVNhan = manvnhan;
             this.NgayNhan = ngaynhan;
-            this.MaHang = mahang;
-            this.SoLuong = sl;
-            this.DonGiaNhap = gianhap;
-            this.ThanhTien = thanhtien;
+            this.TongTien = tongtien;
         }
         
         
         public HoaDonNhap(HoaDonNhap hdn)
         {
-            this.MaHDN = hdn.MaHDN;
-            this.MaNCC = hdn.MaNCC;
-            this.NVGiao = hdn.NVGiao;
-            this.MaNVNhan = hdn.MaNVNhan;
-            this.NgayNhan = hdn.NgayNhan;
-            this.MaHang = hdn.MaHang;
-            this.SoLuong = hdn.SoLuong;
-            this.DonGiaNhap = hdn.DonGiaNhap;
-            this.ThanhTien = hdn.ThanhTien;
+            this.MaHDN = hdn.mahdn;
+            this.MaNCC = hdn.mancc;
+            this.NVGiao = hdn.nvgiao;
+            this.MaNVNhan = hdn.manvnhan;
+            this.NgayNhan = hdn.ngaynhan;
+            this.TongTien = hdn.tongtien;
         }
         public int mahdn
         {
@@ -114,52 +105,17 @@ namespace Grocery.ThucThe
                 NgayNhan = value;
             }
         }
-        public int mahang
+        
+        public double  tongtien
         {
             get
             {
-                return MaHang;
+                return TongTien;
             }
             set
             {
                 if (value > 0)
-                    MaHang = value;
-            }
-        }
-        public int soluong
-        {
-            get
-            {
-                return SoLuong;
-            }
-            set
-            {
-                if (value > 0)
-                    SoLuong = value;
-            }
-        }  
-        public double gianhap
-        {
-            get
-            {
-                return DonGiaNhap;
-            }
-            set
-            {
-                if (value > 0)
-                    DonGiaNhap = value;
-            }
-        }
-        public double thanhtien
-        {
-            get
-            {
-                return soluong * gianhap;
-            }
-            set
-            {
-                if (ThanhTien > 0)
-                    ThanhTien = value;
+                    TongTien = value;
             }
         }
     }
