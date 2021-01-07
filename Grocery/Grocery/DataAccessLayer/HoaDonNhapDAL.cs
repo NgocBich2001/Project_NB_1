@@ -112,7 +112,7 @@ namespace Grocery.DataAccessLayer
                         string[] tmp1 = s1.Split('\t');
                         if (tmp1[0] == tmp[0])
                         {
-                            double tt = double.Parse(tmp1[6]);
+                            double tt = double.Parse(tmp1[9]);
                             TongTien += tt;
                         }
                     }

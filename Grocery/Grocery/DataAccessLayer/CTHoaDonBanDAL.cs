@@ -13,7 +13,6 @@ namespace Grocery.DataAccessLayer
     {
         //Xác định đường dẫn của tệp dữ liệu HOADONNHAP.txt
         private string txtfile5 = @"E:\GITHUB\Project_NB_1\Grocery\Grocery\Data\CHITIETHOADONBAN.txt";
-        //private string txtfile = @"E:\GITHUB\Project_NB_1\Grocery\Grocery\Data\HOADONNHAP.txt";
 
         //Lấy toàn bộ dữ liệu có trong file HOADONNHAP.txt đưa vào một danh sách
         public List<CTHoaDonBan> GetData()
@@ -37,28 +36,13 @@ namespace Grocery.DataAccessLayer
             return list;
         }
 
-        ////Chèn một bản ghi hóa đơn nhập vào tệp
         public void Insert(CTHoaDonBan cthdb)
         {
             StreamWriter fwrite = File.AppendText(txtfile5);
             fwrite.WriteLine(cthdb.mahdb + "\t" + cthdb.mahang + "\t" + cthdb.soluong + "\t" + cthdb.donvi + "\t" + cthdb.giaban + "\t" + cthdb.thanhtien);
             fwrite.Close();
         }
-        //Cập nhật lại danh sách vào tệp
-        //public void Update(CTHoaDonNhap cthdn)
-        //{
-        //    List<CTHoaDonNhap> list = GetData();
-        //    for (int i = 0; i < list.Count; ++i)
-        //        if (list[i].mahdn == cthdn.mahdn)
-        //        {
-        //            list[i] = cthdn;
-        //            break;
-        //        }
-        //    StreamWriter fwrite = File.CreateText(txtfile5);
-        //    for (int i = 0; i < list.Count; ++i)
-        //        fwrite.WriteLine(list[i].mahdn + "\t" + list[i].mahang + "\t" + list[i].tenhang + "\t" + list[i].soluong + "\t" + list[i].donvi + "\t" + list[i].gianhap + "\t" + list[i].thanhtien); 
-        //    fwrite.Close();
-        //}
+        
         public void Delete(int mahdb)
         {
             List<CTHoaDonBan> list = GetData();

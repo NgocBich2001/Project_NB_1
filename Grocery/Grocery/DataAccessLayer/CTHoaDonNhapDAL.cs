@@ -27,7 +27,7 @@ namespace Grocery.DataAccessLayer
                 {
                     s = Grocery.Utiility.CongCu.CatXau(s);
                     string[] a = s.Split('\t');
-                    list.Add(new CTHoaDonNhap(int.Parse(a[0]), int.Parse(a[1]), a[2], int.Parse(a[3]), a[4], double.Parse(a[5]), double.Parse(a[6])));
+                    list.Add(new CTHoaDonNhap(int.Parse(a[0]), int.Parse(a[1]), a[2], int.Parse(a[3]), a[4], a[5], int.Parse(a[6]), a[7], double.Parse(a[8]), double.Parse(a[9])));
 
                 }
                 s = fread5.ReadLine();
@@ -41,31 +41,17 @@ namespace Grocery.DataAccessLayer
         public void Insert(CTHoaDonNhap cthdn)
         {
             StreamWriter fwrite = File.AppendText(txtfile5);
-            fwrite.WriteLine(cthdn.mahdn+ "\t" + cthdn.mahang + "\t" + cthdn.tenhang + "\t" + cthdn.soluong + "\t" + cthdn.donvi + "\t" + cthdn.gianhap + "\t" + cthdn.thanhtien);
+            fwrite.WriteLine(cthdn.mahdn+ "\t" + cthdn.mahang + "\t" + cthdn.tenhang + "\t" + cthdn.đot + "\t" + cthdn.NSX + "\t" + cthdn.HSD + "\t" + cthdn.soluong + "\t" + cthdn.donvi + "\t" + cthdn.gianhap + "\t" + cthdn.thanhtien);
             fwrite.Close();
         }
-        //Cập nhật lại danh sách vào tệp
-        //public void Update(CTHoaDonNhap cthdn)
-        //{
-        //    List<CTHoaDonNhap> list = GetData();
-        //    for (int i = 0; i < list.Count; ++i)
-        //        if (list[i].mahdn == cthdn.mahdn)
-        //        {
-        //            list[i] = cthdn;
-        //            break;
-        //        }
-        //    StreamWriter fwrite = File.CreateText(txtfile5);
-        //    for (int i = 0; i < list.Count; ++i)
-        //        fwrite.WriteLine(list[i].mahdn + "\t" + list[i].mahang + "\t" + list[i].tenhang + "\t" + list[i].soluong + "\t" + list[i].donvi + "\t" + list[i].gianhap + "\t" + list[i].thanhtien); 
-        //    fwrite.Close();
-        //}
+       
         public void Delete(int mahdn)
         {
             List<CTHoaDonNhap> list = GetData();
             StreamWriter file = File.CreateText(txtfile5);
             foreach (CTHoaDonNhap cthdn in list)
                 if (cthdn.mahdn != mahdn)
-                    file.WriteLine(cthdn.mahdn + "\t" + cthdn.mahang + "\t" + cthdn.tenhang + "\t" + cthdn.soluong + "\t" + cthdn.donvi + "\t" + cthdn.gianhap + "\t" + cthdn.thanhtien);
+                    file.WriteLine(cthdn.mahdn + "\t" + cthdn.mahang + "\t" + cthdn.tenhang + "\t" + cthdn.đot + "\t" + cthdn.NSX + "\t" + cthdn.HSD + "\t" + cthdn.soluong + "\t" + cthdn.donvi + "\t" + cthdn.gianhap + "\t" + cthdn.thanhtien);
             file.Close();
         }
 

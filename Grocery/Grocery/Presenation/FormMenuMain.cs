@@ -8,42 +8,7 @@ namespace Grocery.Presenation
     
     public class FormMenuMain
     {
-        public void HienChucNang_TKLoiNhuan()
-        {
-            do
-            {
-                Console.Clear();
-                IO.BoxTitle("          **** CÁC CHỨC NĂNG ***", 1, 1, 13, 56);
-                IO.Writexy("   *  1. Thống kê lợi nhuận theo ngày.    *", 12, 5);
-                IO.Writexy("   *  2. Thống kê lợi nhuận theo tháng.   *", 12, 6);
-                IO.Writexy("   *  3. Thống kê lợi nhuận theo năm.     *", 12, 7);
-                IO.Writexy("   *  4. Quay lại.                        *", 12, 8);
-                IO.Writexy("   ****************************************", 12, 9);
-
-                FormThongKe tk = new FormThongKe();
-
-                ConsoleKeyInfo kt = Console.ReadKey();
-                switch (kt.KeyChar)
-                {
-                    case '1':
-                        tk.TK_LoiNhuanNgay();
-                        Console.ReadKey();
-                        break;
-                    //case '2':
-                    //    tk.TK_ThangNhap();
-                    //    Console.ReadKey();
-                    //    break;
-
-                    case '3':
-                        tk.TK_LoiNhuanNam();
-                        Console.ReadKey();
-                        break;
-                    case '4':
-                        HienChucNang_TK();
-                        break;
-                }
-            } while (true);
-        }
+        
         public void HienChucNang_TKNhap()
         {
             do
@@ -124,9 +89,8 @@ namespace Grocery.Presenation
                 IO.BoxTitle("         *** CÁC CHỨC NĂNG ***", 1, 1, 13, 56);
                 IO.Writexy("  *      1. Thống kê khoản thu       *", 12, 5);
                 IO.Writexy("  *      2. Thống kê khoản chi       *", 12, 6);
-                IO.Writexy("  *      3. Thống kê lợi nhuận       *", 12, 7);
-                IO.Writexy("  *      4. Quay lại                 *", 12, 8);
-                IO.Writexy("  ************************************", 12, 9);
+                IO.Writexy("  *      3. Quay lại                 *", 12, 7);
+                IO.Writexy("  ************************************", 12, 8);
 
                 FormThongKe tk = new FormThongKe();
 
@@ -139,11 +103,7 @@ namespace Grocery.Presenation
                     case '2':
                         HienChucNang_TKNhap();
                         break;
-
                     case '3':
-                        HienChucNang_TKLoiNhuan();
-                        break;
-                    case '4':
                         HienThi();
                         break;
                 }

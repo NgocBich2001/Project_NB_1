@@ -61,7 +61,7 @@ namespace Grocery.DataAccessLayer
                 }
             }
         }
-        //Chèn một bản ghi hóa đơn nhập vào tệp
+        //Chèn một bản ghi hóa đơn bán vào tệp
         public void Insert(HoaDonBan hdb)
         {
             int maban = mahdb + 1;

@@ -43,7 +43,7 @@ namespace Grocery.Presenation
                 String[] tmp = s.Split('\t');
                 if (tmp[2] == ngay)
                 { 
-                    double tongban = double.Parse(tmp[7]);
+                    double tongban = double.Parse(tmp[3]);
                     tongthu += tongban;
                 }
             }
@@ -86,7 +86,7 @@ namespace Grocery.Presenation
                 String[] d = tmp[2].Split('/');
                 if ((d[0] + "/" + d[1]) == thang)
                 {
-                    double tongban = double.Parse(tmp[7]);
+                    double tongban = double.Parse(tmp[3]);
                     tongthu += tongban;
                 }
             }
@@ -129,7 +129,7 @@ namespace Grocery.Presenation
                 String[] d = tmp[2].Split('/');
                 if (d[0] == nam)
                 {
-                    double tongban = double.Parse(tmp[7]);
+                    double tongban = double.Parse(tmp[3]);
                     tongthu += tongban;
                 }
             }
@@ -171,7 +171,7 @@ namespace Grocery.Presenation
                 String[] tmp = s.Split('\t');
                 if (tmp[4] == ngay)
                 {                   
-                    double tongnhap = double.Parse(tmp[8]);                  
+                    double tongnhap = double.Parse(tmp[5]);                  
                     tongchi += tongnhap;
                 }
             }
@@ -214,7 +214,7 @@ namespace Grocery.Presenation
                 String[] d = tmp[4].Split('/');
                 if ((d[0] + "/" + d[1]) == thang)
                 {
-                    double tongnhap = double.Parse(tmp[8]);
+                    double tongnhap = double.Parse(tmp[5]);
                     tongchi += tongnhap;
                 }
             }
@@ -257,7 +257,7 @@ namespace Grocery.Presenation
                 String[] d = tmp[4].Split('/');
                 if (d[0] == nam)
                 {
-                    double tongnhap = double.Parse(tmp[8]);
+                    double tongnhap = double.Parse(tmp[5]);
                     tongchi += tongnhap;
                 }
             }
@@ -268,111 +268,6 @@ namespace Grocery.Presenation
             IO.Clear(5, 5, 60, ConsoleColor.Black);
             IO.Writexy("Nhấn Enter để thoát!", 5, 5);
             Console.SetCursorPosition(29, 4);
-        }
-        public void TK_LoiNhuanNgay()
-        {
-            string ngay = "";
-            string s;
-            string n;
-            double loinhuan = 0;
-
-            Console.Clear();
-            IO.BoxTitle("                                        THỐNG KÊ LỢI NHUẬN THEO NGÀY", 1, 1, 10, 112);
-            IO.Writexy("Nhập ngày cần thống kê:", 5, 4);
-            IO.Writexy("--------------------------------------------------------------------------------------", 3, 7);
-            IO.Writexy("Nhập ngày thống kê định dạng 'yyyy/mm/dd'!", 5, 8);
-
-            do
-            {
-                Console.SetCursorPosition(30, 4);
-                ngay = Console.ReadLine();
-                if (ngay == "")
-                {
-                    IO.Clear(5, 5, 60, ConsoleColor.Black);
-                    IO.Writexy("Nhập lại ngày bạn cần thống kê!", 5, 5, ConsoleColor.Black, ConsoleColor.White);
-                    IO.Clear(29, 4, 60, ConsoleColor.Black);
-                }
-            } while (ngay == "");
-            StreamReader fb = new StreamReader(txtfileb);
-            StreamReader fn = new StreamReader(txtfilen);
-
-            while ((s = fb.ReadLine()) != null && (n = fn.ReadLine()) != null)
-            {
-                String[] tmp = s.Split('\t');
-                String[] tmp1 = n.Split('\t');
-                if (tmp[2] == ngay)
-                {
-                    int sl = int.Parse(tmp[4]);
-                    double money = double.Parse(tmp[5]);
-                    double gia = double.Parse(tmp1[7]);
-                    if (tmp[3] == tmp1[5])
-                    {
-                        loinhuan = ((sl * money) - (sl * gia));
-                    }
-                }
-            }
-            IO.Writexy("Lợi nhuận là:", 5, 6);
-            IO.Writexy(loinhuan.ToString(), 18, 6);
-            fn.Close();
-
-            IO.Clear(5, 5, 60, ConsoleColor.Black);
-            IO.Writexy("Nhấn Enter để thoát!", 5, 5);
-            Console.SetCursorPosition(29, 4);
-        }
-        public void TK_LoiNhuanNam()
-        {
-            string nam = "";
-            string s;
-            string n;
-            double loinhuandon = 0;
-            double loinhuan = 0;
-
-            Console.Clear();
-            IO.BoxTitle("                                        THỐNG KÊ LỢI NHUẬN THEO NĂM", 1, 1, 10, 112);
-            IO.Writexy("Nhập năm cần thống kê:", 5, 4);
-            IO.Writexy("--------------------------------------------------------------------------------------", 3, 7);
-            IO.Writexy("Nhập năm thống kê định dạng 'yyyy/mm/dd'!", 5, 8);
-
-            do
-            {
-                Console.SetCursorPosition(30, 4);
-                nam = Console.ReadLine();
-                if (nam == "")
-                {
-                    IO.Clear(5, 5, 60, ConsoleColor.Black);
-                    IO.Writexy("Nhập lại năm bạn cần thống kê!", 5, 5, ConsoleColor.Black, ConsoleColor.White);
-                    IO.Clear(29, 4, 60, ConsoleColor.Black);
-                }
-            } while (nam == "");
-            StreamReader fb = new StreamReader(txtfileb);
-            StreamReader fn = new StreamReader(txtfilen);
-
-            while ((s = fb.ReadLine()) != null && (n = fn.ReadLine()) != null)
-            {
-                String[] tmp = s.Split('\t');
-                String[] d = tmp[2].Split('/');
-                String[] tmp1 = n.Split('\t');
-
-                if (d[0] == nam)
-                {
-                    int sl = int.Parse(tmp[4]);
-                    double money = double.Parse(tmp[5]);
-                    double gia = double.Parse(tmp1[7]);
-                    if (tmp[3] == tmp1[5])
-                    {
-                        loinhuandon = ((sl * money) - (sl * gia));
-                    }
-                    loinhuan += loinhuandon;
-                }
-            }
-            IO.Writexy("Lợi nhuận là:", 5, 6);
-            IO.Writexy(loinhuan.ToString(), 18, 6);
-            fn.Close();
-
-            IO.Clear(5, 5, 60, ConsoleColor.Black);
-            IO.Writexy("Nhấn Enter để thoát!", 5, 5);
-            Console.SetCursorPosition(29, 4);
-        }
-      
+        }    
     }
 }

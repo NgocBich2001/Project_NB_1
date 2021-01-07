@@ -27,6 +27,8 @@ namespace Grocery.Presenation
                 HoaDonBan HDB;
                 CTHoaDonBan cthdb = new CTHoaDonBan();
                 IFCTHoaDonBanBLL icthdn = new CTHoaDonBanBLL();
+                FormHoaDonNhap fhdn = new FormHoaDonNhap();
+                IFCTHoaDonNhapBLL ictn = new CTHoaDonNhapBLL();
                 Console.Clear();
                 IO.BoxTitle("                                    NHẬP THÔNG TIN HÓA ĐƠN BÁN", 1, 1, 14, 100);
                 IO.Writexy("Mã nhân viên bán:", 5, 4);
@@ -86,6 +88,7 @@ namespace Grocery.Presenation
                     fhh.Hien(1, 16, ihh.XemDSHangHoa(), 5, 0);
                     do
                     {
+                        IO.Clear(13, 6, 5, ConsoleColor.Black);
                         cthdb.mahang = int.Parse(IO.ReadNumber(14, 6));
                         if (cthdb.mahang < 0)
                         {
@@ -108,6 +111,7 @@ namespace Grocery.Presenation
                     IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 12);
                     do
                     {
+                        IO.Clear(39, 6, 5, ConsoleColor.Black);
                         cthdb.soluong = int.Parse(IO.ReadNumber(40, 6));
                         if (cthdb.soluong < 0)
                         {
@@ -117,9 +121,12 @@ namespace Grocery.Presenation
                     } while (cthdb.soluong < 0);
                     IO.Clear(5, 12, 80, ConsoleColor.Black);
                     IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 12);
+                    IO.Clear(5, 16, 99, ConsoleColor.Black);
+                    fhdn.HienCT(1, 16, ictn.XemDSCTHoaDonNhap(), 5, 0);
                     do
                     {
-                        cthdb.donvi = IO.ReadString(62, 6);
+                        IO.Clear(62, 6, 5, ConsoleColor.Black);
+                        cthdb.donvi = IO.ReadString(63, 6);
                         if (cthdb.donvi == null)
                         {
                             IO.Clear(5, 12, 80, ConsoleColor.Black);
@@ -128,18 +135,11 @@ namespace Grocery.Presenation
                     } while (cthdb.donvi == null);
                     IO.Clear(5, 12, 80, ConsoleColor.Black);
                     IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 12);
-                    do
-                    {
-                        cthdb.giaban = double.Parse(IO.ReadNumber(78, 6));
-                        if (cthdb.giaban < 0)
-                        {
-                            IO.Clear(5, 12, 80, ConsoleColor.Black);
-                            IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 12);
-                        }
-                    } while (cthdb.giaban < 0);
-                    IO.Clear(5, 12, 80, ConsoleColor.Black);
-                    IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 12);
                     
+                    HangHoa ghh = hhbll.ReturnGiaBan(cthdb.mahang);
+                    IO.Writexy(ghh.giaban.ToString(), 79, 6);
+                    cthdb.giaban = ghh.giaban;
+
                     IO.Writexy(cthdb.thanhtien.ToString(), 17, 7);
                     icthdn.ThemCTHoaDonBan(cthdb);
 
@@ -181,7 +181,7 @@ namespace Grocery.Presenation
                 HoaDonBanBLL HDBBLL = new HoaDonBanBLL();
                 IFCTHoaDonBanBLL ctb = new CTHoaDonBanBLL();
                 Console.Clear();
-                IO.BoxTitle("                                  XÓA HÓA ĐƠN BÁN", 1, 1, 8, 100);
+                IO.BoxTitle("                                  XÓA HÓA ĐƠN BÁN", 1, 1, 7, 100);
                 IO.Writexy("Nhập mã hóa đơn bán cần xóa:", 5, 4);
                 Hien(1, 8, hdb.XemDSHoaDonBan(), 5, 0);
                 do

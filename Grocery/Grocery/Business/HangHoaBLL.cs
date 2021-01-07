@@ -40,39 +40,31 @@ namespace Grocery.Business
                 }
             return kt;
         }
-        public bool KiemTraMa(int mahh)
+
+        public HangHoa ReturnGiaBan(int mahh)
+        {
+            HangHoa ghh = null;
+            foreach (HangHoa hh in HHDA.GetData())
+            {
+                if (hh.mahh==mahh)
+                {
+                    ghh = new HangHoa(hh);
+                    break;
+                }
+            }
+            return ghh;
+        }
+        public bool KiemTraDotHH(int dot, string tenhang)
         {
             bool kt = false;
             foreach (HangHoa hh in HHDA.GetData())
-                if (hh.mahh == mahh)
+                if (hh.đot == dot && hh.tenhang == tenhang)
                 {
                     kt = true;
                     break;
                 }
             return kt;
-        }
-        public bool KiemTraTenHH(int mahh, string tenhang)
-        {
-            bool kt = false;
-            foreach (CTHoaDonNhap hh in CTHDNDA.GetData())
-                if (hh.mahang == mahh && hh.tenhang==tenhang)
-                {
-                    kt = true;
-                    break;
-                }
-            return kt;
-        }
-        public bool KiemTraSLN(int mahh, string tenhang, int SL)
-        {
-            bool kt = false;
-            foreach (CTHoaDonNhap hh in CTHDNDA.GetData())
-                if (hh.mahang == mahh && hh.tenhang == tenhang && hh.soluong==SL)
-                {
-                    kt = true;
-                    break;
-                }
-            return kt;
-        }
+        }      
         public bool KiemTraTen(string tenhh)
         {
             bool kt = false;

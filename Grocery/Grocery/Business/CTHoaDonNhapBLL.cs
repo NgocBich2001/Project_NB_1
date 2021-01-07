@@ -42,11 +42,35 @@ namespace Grocery.Business
             }
             return cthdn;
         }
+        public CTHoaDonNhap ReturnDotNhap(string tenhang, int đot)
+        {
+            CTHoaDonNhap cthdn = null;
+            foreach (CTHoaDonNhap ctn in CTHDNDA.GetData())
+            {
+                if (ctn.tenhang==tenhang && ctn.đot==đot)
+                {
+                    cthdn = new CTHoaDonNhap(ctn);
+                    break;
+                }
+            }
+            return cthdn;
+        }
         public bool KiemTra(int mahdn)
         {
             bool kt = false;
             foreach (CTHoaDonNhap cthdn in CTHDNDA.GetData())
                 if (cthdn.mahdn == mahdn)
+                {
+                    kt = true;
+                    break;
+                }
+            return kt;
+        }
+        public bool KiemTraDot(string tenhang, int dot)
+        {
+            bool kt = false;
+            foreach (CTHoaDonNhap cthdn in CTHDNDA.GetData())
+                if (cthdn.tenhang == tenhang && cthdn.đot == dot)
                 {
                     kt = true;
                     break;
