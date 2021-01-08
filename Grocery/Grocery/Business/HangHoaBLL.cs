@@ -103,14 +103,7 @@ namespace Grocery.Business
             }
             return hanghoa;
         }
-        public void CongSL(HangHoa hh, int sl)
-        {
-            HangHoaDAL hhdal = new HangHoaDAL();
-            if (KiemTra(hh.mahh) == true)
-                hhdal.UpdateCong(hh, sl);
-            else
-                throw new Exception("Không tồn tại mã này!");
-        }
+        
         public void TruSL(HangHoa hh, int sl)
         {
             HangHoaDAL hhdal = new HangHoaDAL();

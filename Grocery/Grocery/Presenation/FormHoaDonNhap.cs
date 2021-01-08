@@ -25,8 +25,6 @@ namespace Grocery.Presenation
                 HoaDonNhapBLL nbll = new HoaDonNhapBLL();
                 CTHoaDonNhap cthdn = new CTHoaDonNhap();
                 CTHoaDonNhapBLL ctnb = new CTHoaDonNhapBLL();
-                HangHoaBLL hhbll = new HangHoaBLL();
-                IFHangHoaBLL ihhbll = new HangHoaBLL();
                 FormNhaCC fcc = new FormNhaCC();
                 IFNhaCCBLL icc = new NhaCCBLL();
                 NhaCCBLL ccbll = new NhaCCBLL();
@@ -259,12 +257,6 @@ namespace Grocery.Presenation
                     IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 16);
                     IO.Writexy(cthdn.thanhtien.ToString(), 51, 11);
                     ctn.ThemCTHoaDonNhap(cthdn);
-
-                    HangHoa hh = ihhbll.LayHangHoa(cthdn.mahang);
-                    if (hhbll.KiemTra(cthdn.mahang) == true)
-                        hhbll.CongSL(hh, cthdn.soluong);
-                    else
-                        cthdn.soluong = cthdn.soluong;
 
                     IO.Writexy("Nhấn B/b để nhập tiếp. Nhấn phím bất kỳ để dừng nhập!", 5, 12);
                     ConsoleKeyInfo b = Console.ReadKey();

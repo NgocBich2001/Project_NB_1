@@ -82,20 +82,5 @@ namespace Grocery.DataAccessLayer
                 sw.WriteLine(list[i].mahh + "\t" + list[i].tenhang + "\t" + list[i].mancc + "\t" + list[i].đot + "\t" + list[i].NSX + "\t" + list[i].HSD + "\t" + list[i].slnhapve + "\t" + list[i].slhienco + "\t" + list[i].gianhap + "\t" + list[i].giaban);
             sw.Close();
         }
-        public void UpdateCong(HangHoa hh, int sl)
-        {
-            List<HangHoa> list = GetData();
-            for (int i = 0; i < list.Count; ++i)
-                if (list[i].mahh == hh.mahh)
-                {
-                    list[i] = hh;
-                    list[i].slhienco += sl;
-                    break;
-                }
-            StreamWriter sw = File.CreateText(txtfile1);
-            for (int i = 0; i < list.Count; ++i)
-                sw.WriteLine(list[i].mahh + "\t" + list[i].tenhang + "\t" + list[i].mancc + "\t" + list[i].đot + "\t" + list[i].NSX + "\t" + list[i].HSD + "\t" + list[i].slnhapve + "\t" + list[i].slhienco + "\t" + list[i].gianhap + "\t" + list[i].giaban);
-            sw.Close();
-        }
     }
 }

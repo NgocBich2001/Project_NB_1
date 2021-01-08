@@ -214,13 +214,12 @@ namespace Grocery.Presenation
                 IO.Writexy(hh.slhienco.ToString(), 44, 7);
                 IO.Writexy(hh.gianhap.ToString(), 60, 7);
                 IO.Writexy(hh.giaban.ToString(), 79, 7);
-                //fhdn.HienCT(1, 13, ctn.XemDSCTHoaDonNhap(), 5, 1);
 
                 IO.Clear(5, 9, 60, ConsoleColor.Black);
                 IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 9);
                 do
                 {
-                    IO.Clear(64, 4, 10, ConsoleColor.Black);
+                    
                     tenhang = IO.ReadString(65, 4);
                     if (tenhang == null)
                     {
@@ -234,7 +233,7 @@ namespace Grocery.Presenation
                 
                 do
                 {
-                    IO.Clear(19, 5, 5, ConsoleColor.Black);
+                    
                     mancc = int.Parse(IO.ReadNumber(20, 5));
                     if (mancc <= 0)
                     {
@@ -258,7 +257,7 @@ namespace Grocery.Presenation
                
                 do
                 {
-                    IO.Clear(10, 6, 4, ConsoleColor.Black);
+                   
                     đot = int.Parse(IO.ReadNumber(11, 6));
                     if (đot <= 0)
                     {
@@ -283,7 +282,6 @@ namespace Grocery.Presenation
 
                 do
                 {
-                    IO.Clear(19, 6, 10, ConsoleColor.Black);
                     nsx = IO.ReadString(20, 6);
                     if (nsx == null)
                     {
@@ -296,7 +294,7 @@ namespace Grocery.Presenation
 
                 do
                 {
-                    IO.Clear(44, 6, 10, ConsoleColor.Black);
+                   
                     hsd = IO.ReadString(45, 6);
                     if (hsd == null)
                     {
@@ -322,7 +320,7 @@ namespace Grocery.Presenation
 
                 do
                 {
-                    IO.Clear(43, 7, 4, ConsoleColor.Black);
+                
                     slc = int.Parse(IO.ReadNumber(44, 7));
                     if (sln <= 0)
                     {
@@ -335,7 +333,6 @@ namespace Grocery.Presenation
 
                 do
                 {
-                    IO.Clear(59, 7, 10, ConsoleColor.Black);
                     gianhap = double.Parse(IO.ReadNumber(60, 7));
                     if (gianhap <= 0)
                     {
@@ -348,7 +345,7 @@ namespace Grocery.Presenation
 
                 do
                 {
-                    IO.Clear(78, 7, 10, ConsoleColor.Black);
+                    
                     giaban = double.Parse(IO.ReadNumber(79, 7));
                     if (giaban <= 0)
                     {
