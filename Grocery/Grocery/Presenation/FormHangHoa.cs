@@ -200,7 +200,7 @@ namespace Grocery.Presenation
                     if (mahh < 0 || hhbll.KiemTra(mahh) == false)
                     {
                         IO.Clear(5, 8, 80, ConsoleColor.Black);
-                        IO.Writexy("Không tồn tại mã hàng này. Vui lòng kiểm tra lại!", 5, 8);
+                        IO.Writexy("Không tồn tại mã hàng này. Vui lòng kiểm tra lại!", 5, 9);
                     }
                 } while (mahh < 0 || hhbll.KiemTra(mahh) == false);
 

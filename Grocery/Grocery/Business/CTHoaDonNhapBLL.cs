@@ -66,6 +66,28 @@ namespace Grocery.Business
                 }
             return kt;
         }
+        public bool KiemTraMaHang(int mahdn, int mahang)
+        {
+            bool kt = false;
+            foreach (CTHoaDonNhap cthdn in CTHDNDA.GetData())
+                if (cthdn.mahdn == mahdn && cthdn.mahang==mahang)
+                {
+                    kt = true;
+                    break;
+                }
+            return kt;
+        }
+        public bool KiemTraTen(int mahdn, string tenhang)
+        {
+            bool kt = false;
+            foreach (CTHoaDonNhap cthdn in CTHDNDA.GetData())
+                if (cthdn.mahdn == mahdn && cthdn.tenhang==tenhang)
+                {
+                    kt = true;
+                    break;
+                }
+            return kt;
+        }
         public bool KiemTraDot(string tenhang, int dot)
         {
             bool kt = false;

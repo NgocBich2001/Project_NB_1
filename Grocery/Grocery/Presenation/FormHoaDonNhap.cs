@@ -142,7 +142,17 @@ namespace Grocery.Presenation
                             IO.Clear(5, 16, 99, ConsoleColor.Black);
                             IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 16);
                         }
-                    } while (cthdn.mahang < 0);
+                        else
+                        {
+                            if (ctnb.KiemTraMaHang(cthdn.mahdn, cthdn.mahang) == true)
+                            {
+                                IO.Clear(5, 16, 99, ConsoleColor.Black);
+                                IO.Writexy("Mã này đã tồn tại!", 5, 16);
+                            }
+                            else
+                                break;
+                        }
+                    } while (cthdn.mahang < 0 || ctnb.KiemTraMaHang(cthdn.mahdn, cthdn.mahang) == true);
 
                     IO.Clear(5, 16, 99, ConsoleColor.Black);
                     IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 16);
@@ -155,7 +165,17 @@ namespace Grocery.Presenation
                             IO.Clear(5, 16, 99, ConsoleColor.Black);
                             IO.Writexy("Nhập sai. Xin vui lòng nhập lại!", 5, 16);
                         }
-                    } while (cthdn.tenhang==null);
+                        else
+                        {
+                            if (ctnb.KiemTraTen(cthdn.mahdn, cthdn.tenhang) == true)
+                            {
+                                IO.Clear(5, 16, 99, ConsoleColor.Black);
+                                IO.Writexy("Mặt hàng này đã tồn tại!", 5, 16);
+                            }
+                            else
+                                break;
+                        }
+                    } while (cthdn.tenhang==null || ctnb.KiemTraTen(cthdn.mahdn, cthdn.tenhang) == true);
 
                     IO.Clear(5, 16, 99, ConsoleColor.Black);
                     IO.Writexy("Enter để nhập, Esc để thoát, X để xem chi tiết...", 5, 16);
@@ -311,7 +331,7 @@ namespace Grocery.Presenation
                 HoaDonNhapBLL HDNBLL = new HoaDonNhapBLL();
                 CTHoaDonNhapBLL ctnbll = new CTHoaDonNhapBLL();
                 Console.Clear();
-                IO.BoxTitle("                                TÌM KIẾM CHI TIẾT HÓA ĐƠN NHẬP", 1, 1, 5, 100);
+                IO.BoxTitle("                                TÌM KIẾM CHI TIẾT HÓA ĐƠN NHẬP", 1, 1, 7, 100);
                 IO.Writexy("Nhập mã hóa đơn cần xem chi tiết:", 5, 4);
                 Hien(1, 8, HDNBLL.XemDSHoaDonNhap(), 5, 0);
                 
@@ -453,9 +473,9 @@ namespace Grocery.Presenation
                 y = yy;
                 d = 0;
                 IO.Writexy("                           DANH SÁCH CHI TIẾT HÓA ĐƠN NHẬP", x, y);
-                IO.Writexy("┌──────┬────┬───────────┬────┬───────────┬───────────┬──────┬──────┬──────────┬─────────────┐", x, y + 1);
-                IO.Writexy("│Mã HDN│ MH │ Tên hàng  │Đợt │    NSX    │    HSD    │  SL  │  ĐV  │ Giá nhập │ Thành tiền  │", x, y + 2);
-                IO.Writexy("├──────┼────┼───────────┼────┼───────────┼───────────┼──────┼──────┼──────────┼─────────────┤", x, y + 3);
+                IO.Writexy("┌──────┬────┬────────────────┬────┬───────────┬───────────┬──────┬──────┬──────────┬─────────────┐", x, y + 1);
+                IO.Writexy("│Mã HDN│ MH │    Tên hàng    │Đợt │    NSX    │    HSD    │  SL  │  ĐV  │ Giá nhập │ Thành tiền  │", x, y + 2);
+                IO.Writexy("├──────┼────┼────────────────┼────┼───────────┼───────────┼──────┼──────┼──────────┼─────────────┤", x, y + 3);
                 y += 4;
                 for (int i = head; i < final; i++)
                 {
@@ -464,28 +484,28 @@ namespace Grocery.Presenation
                     IO.Writexy("│", x + 7, y + d);
                     IO.Writexy(list[i].mahang.ToString(), x + 8, y + d, 4);
                     IO.Writexy("│", x + 12, y + d);
-                    IO.Writexy(list[i].tenhang.ToString(), x + 13, y + d, 11);
-                    IO.Writexy("│", x + 24, y + d);
-                    IO.Writexy(list[i].đot.ToString(), x + 25, y + d, 4);
+                    IO.Writexy(list[i].tenhang.ToString(), x + 13, y + d, 16);
                     IO.Writexy("│", x + 29, y + d);
-                    IO.Writexy(list[i].NSX.ToString(), x + 30, y + d, 11);
-                    IO.Writexy("│", x + 41, y + d);
-                    IO.Writexy(list[i].HSD.ToString(), x + 42, y + d, 11);
-                    IO.Writexy("│", x + 53, y + d);
-                    IO.Writexy(list[i].soluong.ToString(), x + 54, y + d, 6);
-                    IO.Writexy("│", x + 60, y + d);
-                    IO.Writexy(list[i].donvi.ToString(), x + 61, y + d, 6);
-                    IO.Writexy("│", x + 67, y + d);
-                    IO.Writexy(list[i].gianhap.ToString(), x + 68, y + d, 10);
-                    IO.Writexy("│", x + 78, y + d);
-                    IO.Writexy(list[i].thanhtien.ToString(), x + 79, y + d, 13);
-                    IO.Writexy("│", x + 92, y + d);
+                    IO.Writexy(list[i].đot.ToString(), x + 30, y + d, 4);
+                    IO.Writexy("│", x + 34, y + d);
+                    IO.Writexy(list[i].NSX.ToString(), x + 35, y + d, 11);
+                    IO.Writexy("│", x + 46, y + d);
+                    IO.Writexy(list[i].HSD.ToString(), x + 47, y + d, 11);
+                    IO.Writexy("│", x + 58, y + d);
+                    IO.Writexy(list[i].soluong.ToString(), x + 59, y + d, 6);
+                    IO.Writexy("│", x + 65, y + d);
+                    IO.Writexy(list[i].donvi.ToString(), x + 66, y + d, 6);
+                    IO.Writexy("│", x + 72, y + d);
+                    IO.Writexy(list[i].gianhap.ToString(), x + 73, y + d, 10);
+                    IO.Writexy("│", x + 83, y + d);
+                    IO.Writexy(list[i].thanhtien.ToString(), x + 84, y + d, 13);
+                    IO.Writexy("│", x + 97, y + d);
                     if (i < final - 1)
-                        IO.Writexy("├──────┼────┼───────────┼────┼───────────┼───────────┼──────┼──────┼──────────┼─────────────┤", x, y + d + 1);
+                        IO.Writexy("├──────┼────┼────────────────┼────┼───────────┼───────────┼──────┼──────┼──────────┼─────────────┤", x, y + d + 1);
                     y += 1;
                     d += 1;
                 }
-                IO.Writexy("└──────┴────┴───────────┴────┴───────────┴───────────┴──────┴──────┴──────────┴─────────────┘", x, y + d - 1);
+                IO.Writexy("└──────┴────┴────────────────┴────┴───────────┴───────────┴──────┴──────┴──────────┴─────────────┘", x, y + d - 1);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage, x, y + d);
                 IO.Writexy(" Trang " + curpage + "/" + totalpage + "          Nhấn PagegUp để xem trước, PagegDown để xem tiếp, Esc để thoát...", x, y + d);
                 if (type == 0)
